@@ -1,0 +1,17 @@
+
+
+<md-menu md-position-mode="target-right target" md-offset="0 50">
+    <md-button ng-show="loggedIn" ng-click="$mdOpenMenu($event)">
+        <i class="material-icons">face</i>
+    </md-button>
+    <md-menu-content width="4" >
+            <h3>{{user.displayName}}</h3>
+            <img class="face" src="{{user.profileImageURL}}">
+        <md-button class="md-raised" ng-show="loggedIn" ui-sref="account">
+            Edit Account
+        </md-button>
+        <md-button class="md-raised md-warn" ng-click="logout()">logout</md-button>
+    </md-menu-content>
+</md-menu>
+
+

@@ -1,0 +1,23 @@
+<h2>Thank you!</h2>
+
+<div>
+    order id: {{invoice.orderId}}<br>
+    date: {{date| date: 'short'}}<br>
+    client name: {{invoice.clientName}}<br>
+    ------------------------------------------------------
+    <div ng-repeat="(productId, productInfo) in invoice.products">
+        Item name: {{productInfo.itemName}}<br>
+        Price: {{productInfo.price}}<br>
+        Quantity: {{productInfo.quantity}}<br>
+    </div>
+    ------------------------------------------------------
+    <br>
+    status: received<br>
+    pick-up time:{{invoice.schedule| date: 'short'}}<br>
+    subtotal:{{invoice|orderSubTotal}}<br>
+    payment: {{invoice.payment.token? 'credit card': 'payment upon pickup'}}<br>
+    note:{{invoice.note}}
+
+    <hr>
+</div>
+<button ng-click="OK()">OK</button>

@@ -1,0 +1,19 @@
+
+<div ui-scrollpoint scrollpoint-group="navtoolbar1 navtoolbar2" layout-gt-sm="row" layout-sm="column" layout-wrap layout-padding ng-firebase="products">
+    <div flex-gt-sm="33"  flex-gt-md="33"  flex-gt-lg="25" ng-repeat="(itemId, item) in $value">
+        <md-content class="md-padding" layout-align="center center">
+            <md-card>
+                <a href="" ng-click="showDetail($event, itemId)" style="text-decoration: none;">
+                    <img class="md-card-image" ng-src="{{item.image}}">
+                    <md-card-content layout-align="center center">
+                        <p>{{item.itemName}} <br>
+                            list price: USD {{item.listPrice|currency : '$' : 2}} <br>
+                            price: USD {{item.price|currency : '$' : 2}}</p>
+                    </md-card-content>
+                </a>
+            </md-card>
+        </md-content>
+    </div>
+</div>
+
+

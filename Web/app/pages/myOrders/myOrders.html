@@ -1,0 +1,41 @@
+<h2>My orders</h2>
+<button ng-click="loadOrders(-0.5,1)">today</button>
+<button ng-click="loadOrders(-0.5,3)">future 3 days</button>
+<button ng-click="loadOrders(7, 65535)">next week</button>
+<button ng-click="loadOrders(-65535, 65535)">all orders</button>
+<hr>
+
+
+<form name="status">
+    <label>
+        <input type="radio" ng-model="filterOpt.orderStatus" value="received">
+        received
+    </label>
+    <label>
+        <input type="radio" ng-model="filterOpt.orderStatus" value="preparing">
+        preparing
+    </label>
+    <label>
+        <input type="radio" ng-model="filterOpt.orderStatus" value="ready">
+        ready
+    </label>
+</form>
+
+search:<input ng-model="search" ng-change="refreshFilter()">
+<hr>
+
+<div ng-repeat="order in myOrders">
+    <a href>{{order.$id}}</a><br>
+    date: {{order.createdTime| date: 'fullDate'}}<br>
+    ------------------------------------------------------
+    <div ng-repeat="(productId, productInfo) in order.products">
+        Item name: {{productInfo.itemName}}<br>
+        Price: {{productInfo.price|currency : '$' : 2}}<br>
+        Quantity: {{productInfo.quantity}}<br>
+    </div>
+    ------------------------------------------------------
+    <br>
+    status:{{order.orderStatus}}<br>
+    subtotal:{{order|orderSubTotal|currency : '$' : 2}}
+    <hr>
+</div>

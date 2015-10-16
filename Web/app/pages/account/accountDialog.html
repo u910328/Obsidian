@@ -1,0 +1,100 @@
+<md-dialog flex="50">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Account</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" layout-align="center center" ng-click="closeDialog()">
+                    <md-icon class="material-icons" style="height: 24px;">clear</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <div layout="column">
+                <form>
+                    <div layout-gt-sm="row" layout-sm="column" class="md-padding">
+                        <md-card flex>
+                            <img class="md-face" src="{{profile.profileImageURL}}">
+                            <md-card-content layout-align="center center">
+                                <md-input-container flex>
+                                    <label>Name</label>
+                                    <input ng-model="profile.name">
+                                </md-input-container>
+                                <md-input-container ng-show="user.provider==='password'">
+                                    <label>{{profile.email}}</label>
+                                    <input ng-model="user.email" type="email" >
+                                </md-input-container>
+                                <md-input-container ng-hide="user.provider==='password'">
+                                    <label>Email</label>
+                                    <input ng-model="user.email" type="email">
+                                </md-input-container>
+
+                            </md-card-content>
+                        </md-card>
+                        <md-card ng-show="user.provider==='password'" flex>
+                            <form>
+                                <fieldset>
+                                    <legend>Change Password</legend>
+
+                                    <label>
+                                        <span>Old Password:</span>
+                                        <input type="password" ng-keypress="clear()" ng-model="oldpass"/>
+                                    </label>
+
+                                    <label>
+                                        <span>New Password:</span>
+                                        <input type="password" ng-keypress="clear()" ng-model="newpass"/>
+                                    </label>
+
+                                    <label>
+                                        <span>Confirm New Password:</span>
+                                        <input type="password" ng-keypress="clear()" ng-model="confirm"/>
+                                    </label>
+
+                                    <button ng-click="changePassword(oldpass, newpass, confirm)">change password</button>
+
+                                    <p class="error" ng-show="err">{{err}}</p>
+
+                                    <p class="good" ng-show="msg">{{msg}}</p>
+                                </fieldset>
+                            </form>
+
+                            <form>
+                                <fieldset>
+                                    <legend>Change Email</legend>
+
+                                    <label>
+                                        <span>New Email:</span>
+                                        <input type="text" ng-keypress="clear()" ng-model="newEmail"/>
+                                    </label>
+
+                                    <label>
+                                        <span>Password:</span>
+                                        <input type="password" ng-keypress="clear()" ng-model="pass"/>
+                                    </label>
+
+                                    <button ng-click="changeEmail(pass, newEmail)">update email</button>
+
+                                    <p class="error" ng-show="emailerr">{{emailerr}}</p>
+
+                                    <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
+                                </fieldset>
+                            </form>
+                        </md-card>
+                    </div>
+                </form>
+            </div>
+
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <md-button ng-click="logout()">Log Out</md-button>
+        </div>
+    </form>
+
+
+
+
+</md-dialog>
+
+
+

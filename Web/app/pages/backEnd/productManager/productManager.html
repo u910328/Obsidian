@@ -1,0 +1,25 @@
+<div>
+    <h2>Products</h2>
+    <div ng-show="!selectedProduct.itemId" ng-repeat="(productId, product) in products">
+        <a href="" ng-click="selectProduct(productId)">{{product.itemName}}</a><a href="" ng-click="removeProduct(productId)">[X]</a>
+    </div>
+    <button ng-click="createProduct()">create new product</button><button ng-show="selectedProduct.itemId" ng-click="clearProduct()">X</button>
+    <form ng-show="selectedProduct.itemId" ng-submit="updateProduct()">
+        id:<input required ng-model="selectedProduct.itemId"/><br>
+        name:<input required ng-model="selectedProduct.itemName"/><br>
+        image:<input required ng-model="selectedProduct.image"/><br>
+        description:<textarea required ng-model="selectedProduct.description"></textarea><br>
+        list price:<input required ng-model="selectedProduct.listPrice"/><br>
+        price:<input required ng-model="selectedProduct.price"/><br>
+        options:
+        <div ng-repeat="option in selectedProduct.options track by $index">
+            {{$index+1}}: <input required ng-model="selectedProduct.options[$index]"
+                                 ng-model-options="{debounce:1000}"><br>
+        </div>
+        <a href="" ng-click="addOpt()">[+]</a>
+        <a ng-hide="selectedProduct.options.length===0" href="" ng-click="removeOpt()">[X]</a>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+{{be.test}}

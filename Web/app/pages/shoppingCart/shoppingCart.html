@@ -1,0 +1,129 @@
+<div ng-show="waiting"><img src="http://www.nasa.gov/multimedia/videogallery/ajax-loader.gif" width="20" height="20"/>Please
+    wait...
+</div>
+
+<div ng-hide="waiting">
+    <h2>ShoppingCart</h2>
+    <ngcart-cart></ngcart-cart>
+    <hr>
+    <div ng-hide="!ngCart.getTotalItems()">
+        <form name="checkOut" stripe-form="stripeCallback" ng-submit="submitOrder()">
+            <md-input-container>
+                <label>Note</label>
+                <textarea name="note" ng-model="note" md-maxlength="10"></textarea>
+                <div ng-messages="checkOut.note.$error" ng-show="checkOut.note.$dirty">
+                    <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+
+            <br>
+            Schedule:
+            <md-datepicker ng-model="dt"
+                           ng-change="changeDt()"
+                           md-min-date="minDate"
+                           md-max-date="maxDate">
+            </md-datepicker>
+
+            <md-input-container>
+                <label>hour</label>
+                <md-select name="scheduleHour" ng-model="hour" ng-change="changeTime()">
+                    <md-option ng-repeat="hr in [10,11,12,13,14,15,16,17,18,19,20]" value="{{hr}}">{{hr}}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>minute</label>
+                <md-select name="scheduleMinute" ng-model="minute" ng-change="changeTime()">
+                    <md-option ng-repeat="min in [0,15,30,45]" value="{{min}}">{{min}}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Name</label>
+                <input name="name" ng-model="clientName" required
+                       type="text" md-maxlength="50">
+                <div ng-messages="checkOut.name.$error" ng-show="checkOut.name.$touched">
+                    <div ng-message="md-maxlength">That's too long!</div>
+                    <div ng-message="required">Client's name is required!</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Email</label>
+                <input name="email" ng-model="clientEmail"
+                       type="email" md-maxlength="50">
+                <div ng-messages="checkOut.email.$error" ng-show="checkOut.email.$dirty">
+                    <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Phone</label>
+                <input name="phone" ng-model="clientPhone"
+                       ui-mask="(999) 999-9999">
+                <div ng-messages="checkOut.phone.$error" ng-show="checkOut.phone.$dirty">
+                    <div ng-message="mask">Invalid phone number!</div>
+                </div>
+            </md-input-container>
+
+            <label>upon pickup
+                <input type="radio" ng-model="paymentMethod" value="uponPickup">
+            </label>
+            <label>online:
+                <input type="radio" ng-model="paymentMethod" value="online">
+            </label>
+
+            <div ng-if="paymentMethod==='online'">
+                <md-input-container>
+                    <label>Card number</label>
+                    <input name="cardNumber" ng-model="number"
+                           payments-validate="card"
+                           payments-format="card"
+                           payments-type-model="type"
+                           ng-class="checkOut.cardNumber.$card.type">
+                    <div ng-messages="checkOut.cardNumber.$error" ng-show="checkOut.cardNumber.$dirty">
+                        <div ng-message="card">Invalid card number!</div>
+                    </div>
+
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Expiry</label>
+                    <input name="expiry" ng-model="expiry"
+                           payments-validate="expiry"
+                           payments-format="expiry">
+                    <div ng-messages="checkOut.expiry.$error" ng-show="checkOut.expiry.$dirty">
+                        <div ng-message="expiry">Invalid expiry!</div>
+                    </div>
+
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Name on card</label>
+                    <input name="nameOnCard" ng-model="nameOnCard" required>
+                    <div ng-messages="checkOut.nameOnCard.$error" ng-show="checkOut.nameOnCard.$dirty">
+                        <div ng-message="required">Please enter your name!</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>CVC</label>
+                    <input name="cvc" ng-model="cvc" required
+                           payments-validate="cvc"
+                           payments-format="cvc"
+                           payments-type-model="type">
+                    <div ng-messages="checkOut.cvc.$error" ng-show="checkOut.cvc.$dirty">
+                        <div ng-message="cvc">Invalid cvc!</div>
+                        <div ng-message="required">cvc is required!</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">Submit</button>
+            <input type="button" class="btn btn-warning btn-large" ng-click="emptyCart()" value="empty cart!">
+            <button class="btn btn-primary btn-large" ui-sref="home">shop more</button>
+        </form>
+
+
+    </div>
+</div>

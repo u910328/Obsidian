@@ -1,0 +1,66 @@
+<div>
+    <h2>Orders</h2>
+    <!--OrderId: {{selectedOrder.orderId}}<br>
+    Client name: {{selectedOrder.clientName}}<br>
+    Item name: {{selectedOrder.itemName}}<br>
+    List price: {{selectedOrder.listPrice}}<br>
+    Price: {{selectedOrder.price}}<br>
+    Sub total:{{selectedOrder.price*selectedOrder.quantity}}<br>
+    Created time: {{selectedOrder.createdTime}}<br>
+    Status: {{orderStatus[selectedOrder.orderId]}}-->
+    <button ng-click="loadOrders(-0.5,1)">today</button>
+    <button ng-click="loadOrders(-0.5,3)">future 3 days</button>
+    <button ng-click="loadOrders(7, 65535)">next week</button>
+    <button ng-click="loadOrders(-65535,65535)">all orders</button>
+    <hr>
+
+
+    <form name="status">
+        <span ng-repeat="status in statusOptions">
+            <label>
+                <input type="radio" ng-model="filterOpt.orderStatus" value="{{status}}">
+                {{status}}
+            </label>
+        </span>
+    </form>
+
+    <div ng-repeat="(productId, product) in products">
+        <label>{{product.itemName}}: <input type="checkbox" ng-model="filterOpt[productId]"></label>
+    </div>
+
+    <label>已付款: <input type="checkbox" ng-model="isPaid"
+                       ng-change="filterOpt['isPaid']= isPaid? 'succeeded':'uponPickup'">
+    </label>
+    <br>
+
+    search:<input ng-model="search" ng-change="refreshFilter()"><br>
+    <button ng-click="filterOpt={}">clear</button>
+    <hr>
+    <div ng-repeat="order in allOrders||reverse"
+         ng-init="orderStatus[order.$id]=order.orderStatus; calcSubTotal(order.$id, order.products, this)">
+        <a href>{{order.$id}}</a>
+        <a href ng-click="removeOrder(order.$id, order.clientId)">[X]</a><br>
+
+        schedule: {{order.schedule| date: 'M/d/yy'}}<br>
+        pick up time:{{order.schedule| date: 'h:mm a'}}<br>
+        client name: {{order.clientName}}<br>
+        client phone: {{order.clientPhone}}<br>
+        payment: {{order.payment.method}}{{order.payment.status=='succeeded'? ':paid':''}}<br>
+        ------------------------------------------------------
+        <div ng-repeat="(productId, productInfo) in order.products">
+            Item name: {{productInfo.itemName}}<br>
+            Price: {{productInfo.price|currency : '$' : 2}}<br>
+            Quantity: {{productInfo.quantity}}<br>
+        </div>
+        ------------------------------------------------------
+        <br>
+        status:
+        <select ng-options="status for status in statusOptions"
+                ng-model="orderStatus[order.$id]"
+                ng-change="changeOrderStatus(order.$id, order.clientId, orderStatus[order.$id])">
+        </select><br>
+        subtotal:{{order|orderSubTotal|currency : '$' : 2}}
+        <hr>
+    </div>
+</div>
+

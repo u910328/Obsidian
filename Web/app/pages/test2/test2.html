@@ -1,0 +1,43 @@
+<div id="scrollExample" ui-scrollpoint="+100">
+    <p ui-scrollpoint>They see me scrollin...</p>
+
+    <p ui-scrollpoint scrollpoint-group="box1 box2">They see me scrollin...</p>
+
+    <p ui-scrollpoint>They see me scrollin...</p>
+
+    <p ui-scrollpoint="-100">offest: -100</p>
+    Try scrolling past this line and see effect on above lines...
+</div>
+
+<div class="box" id="box1">box1</div>
+<div class="box" id="box2">box1</div>
+
+<input ng-model="inputDelayTest" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" ng-change="changed()">
+<button ng-click="test()">test</button>
+<div class="placeholder"></div>
+
+
+<style>
+    div.ui-scrollpoint {
+        background: yellow;
+    }
+
+    p.ui-scrollpoint {
+        background: lightgreen;
+    }
+
+    .box {
+        height: 100px;
+        width: 100px;
+        background: yellow;
+        margin: 10px;
+    }
+
+    .box.ui-scrollpoint {
+        background: red;
+    }
+
+    .placeholder {
+        height: 500px
+    }
+</style>

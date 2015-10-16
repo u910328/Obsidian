@@ -1,0 +1,11 @@
+<h2>Test</h2>
+
+<p class="status good" ng-show="loggedIn">Hello! You are logged in with id {{user.uid}}.</p>
+<p class="status" ng-hide="loggedIn">Welcome. You are not <a href="#/login">logged in</a></p>
+
+queryString: <input ng-model="queryString">
+<button ng-click="doSearch()">test</button>
+<div ng-repeat="item in result.hits">
+    {{item._id}}<br>
+    {{item._source}}
+</div>
