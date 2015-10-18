@@ -1,6 +1,22 @@
+<md-content>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+        <md-toolbar>
+            <md-toolbar-filler layout layout-align="center center">
+                <i ng-hide="loggedIn" class="material-icons">face</i>
+                <img ng-show="loggedIn" class="face" ng-src="{{user.profileImageURL}}">
+            </md-toolbar-filler>
+            <md-button ng-show="loggedIn" ng-click="sideNavLogout('left')">Log out</md-button>
+        </md-toolbar>
+    </md-sidenav>
+</md-content>
+<md-content layout="column">
+    <md-button ui-sref="backEnd.orders">orders</md-button>
+    <md-button ui-sref="backEnd.productManager">productManager</md-button>
+</md-content>
 
-<a ui-sref="backEnd.orders">orders</a>
-<a ui-sref="backEnd.productManager">productManager</a>
 <md-content ui-view="content"></md-content>
+
+
+
 
 
