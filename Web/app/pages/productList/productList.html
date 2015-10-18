@@ -1,6 +1,7 @@
 
-<div ui-scrollpoint scrollpoint-group="navtoolbar1 navtoolbar2" layout-gt-sm="row" layout-sm="column" layout-wrap layout-padding ng-firebase="products">
-    <div flex-gt-sm="33"  flex-gt-md="33"  flex-gt-lg="25" ng-repeat="(itemId, item) in $value">
+<div layout-gt-sm="row" layout-sm="column" layout-wrap layout-padding ng-firebase="products">
+    <img class="md-image" ng-src="http://placekitten.com/1200/600">
+    <div ui-scrollpoint scrollpoint-group="navtoolbar"  flex-gt-sm="33"  flex-gt-md="33"  flex-gt-lg="25" ng-repeat="(itemId, item) in $value">
         <md-content class="md-padding" layout-align="center center">
             <md-card>
                 <a href="" ng-click="showDetail($event, itemId)" style="text-decoration: none;">

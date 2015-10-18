@@ -1,7 +1,7 @@
 'use strict';
 
 var ENV = {
-    DEV_MODE: false,
+    DEV_MODE: true,
     BUNDLE: 'dist/bundle.js'
 };
 // Declare app level module which depends on filters, and services
@@ -162,7 +162,7 @@ if (typeof module !== 'undefined' && module.exports) {module.exports = {modulePa
 
 
         // your Firebase data URL goes here, no trailing slash
-        .constant('FBURL', 'https://lauchbox.firebaseio.com')
+        .constant('FBURL', 'https://frecome.firebaseio.com')
         .constant('config', {
             debug: true,
             shipping: 0,

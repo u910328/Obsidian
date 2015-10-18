@@ -19,19 +19,17 @@
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-cloak class="layout-row" style="overflow: hidden">
-<div class="layout-column flex" layout-fill>
+<div layout="column" flex layout-fill>
 
-    <md-toolbar layout="row" id="navtoolbar1" class="md-whiteframe-2dp">
-        <div class="md-toolbar-tools" id="navtoolbar2">
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools" id="navtoolbar">
             <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
                 <md-icon aria-label="Menu"
                          md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
             </md-button>
             <h1>Obsidian 0.8</h1>
             <md-menu-bar hide-sm>
-                <md-button class='md-hue-1 md-primary' ui-sref="home">home</md-button>
-
-
+                <md-button ui-sref="home">home</md-button>
                 <md-button ui-sref="productList">product list</md-button>
 
                 <!--<md-button ng-hide="loggedIn" ui-sref="login">login</md-button>-->
@@ -45,40 +43,40 @@
                 <md-button ng-show="loggedIn" ui-sref="myOrders">myOrders</md-button>
                 <md-button ui-sref="test">Test</md-button>
                 <md-button ui-sref="test2">Test2</md-button>
-                <acc-window></acc-window>
-                <!--<md-button ng-show="loggedIn" ng-click="showAccountWindow=!showAccountWindow">account window</md-button>-->
             </md-menu-bar>
+            <acc-window></acc-window>
         </div>
     </md-toolbar>
     <!--<md-toolbar class="md-menu-toolbar"  hide-sm>-->
-        <!--<div layout="row">-->
-            <!--&lt;!&ndash;<md-toolbar-filler layout layout-align="center center" style="height: 100px;">&ndash;&gt;-->
-                <!--&lt;!&ndash;<i class="material-icons">face</i>&ndash;&gt;-->
-            <!--&lt;!&ndash;</md-toolbar-filler>&ndash;&gt;-->
-            <!--<md-menu-bar>-->
-                <!--<md-button ui-sref="home">home</md-button>-->
-                <!--<md-button ui-sref="productList">product list</md-button>-->
+    <!--<div layout="row">-->
+    <!--&lt;!&ndash;<md-toolbar-filler layout layout-align="center center" style="height: 100px;">&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="material-icons">face</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;</md-toolbar-filler>&ndash;&gt;-->
+    <!--<md-menu-bar>-->
+    <!--<md-button ui-sref="home">home</md-button>-->
+    <!--<md-button ui-sref="productList">product list</md-button>-->
 
-                <!--&lt;!&ndash;<md-button ng-hide="loggedIn" ui-sref="login">login</md-button>&ndash;&gt;-->
-                <!--<md-button ng-hide="loggedIn" href ng-click="showLogin($event)">login</md-button>-->
-                <!--&lt;!&ndash;<md-button ng-show="loggedIn" ui-sref="account">account</md-button>&ndash;&gt;-->
-                <!--<md-button ng-show="loggedIn" href ng-click="showAccount($event)">account</md-button>-->
+    <!--&lt;!&ndash;<md-button ng-hide="loggedIn" ui-sref="login">login</md-button>&ndash;&gt;-->
+    <!--<md-button ng-hide="loggedIn" href ng-click="showLogin($event)">login</md-button>-->
+    <!--&lt;!&ndash;<md-button ng-show="loggedIn" ui-sref="account">account</md-button>&ndash;&gt;-->
+    <!--<md-button ng-show="loggedIn" href ng-click="showAccount($event)">account</md-button>-->
 
-                <!--&lt;!&ndash;<md-button ng-show="loggedIn" ui-sref="account">account</md-button>&ndash;&gt;-->
-                <!--<md-button ui-sref="shoppingCart">shopping cart [{{cartTotalItems}}]</md-button>-->
-                <!--<md-button ng-show="debug" ui-sref="backEnd">backEnd</md-button>-->
-                <!--<md-button ng-show="loggedIn" ui-sref="myOrders">myOrders</md-button>-->
-                <!--<md-button ui-sref="test">Test</md-button>-->
-                <!--<md-button ui-sref="test2">Test2</md-button>-->
-                <!--&lt;!&ndash;<md-button ng-show="loggedIn" ng-click="showAccountWindow=!showAccountWindow">account window</md-button>&ndash;&gt;-->
-            <!--</md-menu-bar>-->
-            <!--<acc-window></acc-window>-->
-        <!--</div>-->
+    <!--&lt;!&ndash;<md-button ng-show="loggedIn" ui-sref="account">account</md-button>&ndash;&gt;-->
+    <!--<md-button ui-sref="shoppingCart">shopping cart [{{cartTotalItems}}]</md-button>-->
+    <!--<md-button ng-show="debug" ui-sref="backEnd">backEnd</md-button>-->
+    <!--<md-button ng-show="loggedIn" ui-sref="myOrders">myOrders</md-button>-->
+    <!--<md-button ui-sref="test">Test</md-button>-->
+    <!--<md-button ui-sref="test2">Test2</md-button>-->
+    <!--&lt;!&ndash;<md-button ng-show="loggedIn" ng-click="showAccountWindow=!showAccountWindow">account window</md-button>&ndash;&gt;-->
+    <!--</md-menu-bar>-->
+    <!--<acc-window></acc-window>-->
+    <!--</div>-->
     <!--</md-toolbar>-->
     <!--<md-content ng-show="showAccountWindow"><acc-window></acc-window></md-content>-->
 
 
-    <md-content ui-view layout-fill ui-scrollpoint-target></md-content>
+
+    <md-content ui-scrollpoint-target  ui-view ></md-content>
 
 
 
@@ -124,6 +122,7 @@
     </div>
 
 </div>
+
 
 
 

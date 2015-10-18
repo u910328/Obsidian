@@ -111,7 +111,7 @@
         };
     });
 
-    app.directive('accWindow', function (){
+    mod.directive('accWindow', function (){
          return {
              restrict: 'E',
              templateUrl: 'pages/account/accountWindow.html',

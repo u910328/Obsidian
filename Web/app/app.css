@@ -1,7 +1,29 @@
 /* app css stylesheet */
+html, body{
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
+html, body{
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
 
 .md-toolbar-tools.ui-scrollpoint {
-    background-color: blue;
+    background-color: green;
 }
 
 .face {
@@ -19,64 +41,64 @@
 }
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li.hide {
-   display: none;
+    display: none;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
 }
 
 p.status {
-   color: red;
+    color: red;
 }
 
 p.status.good, p.good {
-   color: green;
+    color: green;
 }
 
 form label {
-   display: block;
-   margin: 15px 0;
+    display: block;
+    margin: 15px 0;
 }
 
 form label span {
-   display: block;
-   font-weight: bold;
+    display: block;
+    font-weight: bold;
 }
 
 .error {
-   color: red;
+    color: red;
 }
 
 fieldset {
-   float: left;
-   margin-right: 25px;
-   padding: 25px;
+    float: left;
+    margin-right: 25px;
+    padding: 25px;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
