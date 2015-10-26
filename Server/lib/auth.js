@@ -23,6 +23,6 @@ function auth(){
     return def.promise
 }
 
-auth();
+//auth();
 
 module.exports = auth; // this will return an auth promise

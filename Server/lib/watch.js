@@ -1,29 +1,32 @@
-var util=require('./util'),
-    watchList=require('./watchList'),
-    _=require('lodash'),
-    firebaseUtil=require('./firebaseUtil');
+var util = require('./util'),
+    q = require('q'),
+    _ = require('lodash'),
+    firebaseUtil = require('./firebaseUtil'),
+    errorHandler = require('./errorHandler');
 
-function handler(promise, callback){
-    promise.then(callback);
-}
-
-function watch(watchList, globalPromises){
-    _.forOwn(watchList, function (value,key) {
-        var refUrl=value.refUrl||key,
-            opt=value.options||{},
-            ref = firebaseUtil.ref(refUrl, opt),
-            handlers = value.handlers||{},
-            def= q.defer(),
-            promises={snapshot:def.promise};
-        _.forOwn(handlers, function (value, name) {
-            promises[name]=util.getPromises(value.resolve, promises, globalPromises||{})
-                .then(value.handler);
-        });
+function watch(watchList, globalPromises) {
+    _.forOwn(watchList, function (value, key) {
+        var refUrl = value.refUrl || key,
+            opt = value.options || {},
+            tasks = value.tasks || {},
+            ref = firebaseUtil.ref(refUrl, opt);
 
         ref.on('child_added', function (snap) {
-            def.resolve(snap)
+            var promises = {snapshot: snap};
+
+            _.forOwn(tasks, function (task, handlerName) {
+                var isArray = _.isArray(task),
+                    _handler = isArray ? _.last(task) : task.handler,
+                    _resolve = isArray ? _.dropRight(task) : task.resolve;
+
+                promises[handlerName] = util.resolve(_resolve, promises, globalPromises || {})
+                    .spread(_handler);
+            });
         }, function (error) {
-            def.reject(error)
+            errorHandler(error);
         })
     })
 }
+
+//watch(watchList);
+module.exports = watch;

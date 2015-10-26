@@ -8,7 +8,9 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var ngAnnotate = require('gulp-ng-annotate');
+var concat = require('gulp-concat');
 var config = require('./app/config.js');
+
 
 var files=[];
 for(var key in config.modulePaths){
@@ -18,6 +20,20 @@ console.log(files);
 var bundleArr= config.env.BUNDLE.split('/');
 var bundleFileName=bundleArr[bundleArr.length-1];
 var bundelFilePath='./app/'+config.env.BUNDLE.replace(bundleFileName,'');
+
+gulp.task('build-js', function(){
+    var js=['app/components/**/*.js','app/core/*.js','app/custom/*.js','app/pages/**/*.js', '!app/**/**/*_test.js'];
+    return gulp.src(files)
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(concat(bundleFileName||'bundle.js'))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(bundelFilePath||'./app/dist/'));
+});
+
+
+
 
 gulp.task('js', function () {
     // set up the browserify instance on a task basis

@@ -6,6 +6,7 @@ function formalizeRefUrl(refUrl) {
     //TODO
     return refUrl
 }
+
 function queryRef(refUrl, options) {
     var opt = options || {},
         ref = new Firebase(formalizeRefUrl(refUrl));
@@ -39,27 +40,27 @@ function queryRef(refUrl, options) {
     return ref;
 }
 
-function watch(watchList, generalOpt) {
-    var ref = {},
-        gOpt = generalOpt || {};
-
-    function onComplete(key) {
-        return function (snap, prevKey) {
-            if (typeof watchList[key].onComplete === 'function') {
-                watchList[key].onComplete.apply(null, [snap, prevKey])
-            }
-        }
-    }
-
-    for (var key in watchList) {
-        if (watchList.hasOwnProperty(key)) {
-            watchList[key].opt = watchList[key].opt || {};
-            ref[key] = queryRef(watchList[key].refUrl);
-            queryRef.on(watchList[key].opt.type || gOpt.type || 'value', onComplete(key))
-        }
-    }
-    return ref
-}
+//function watch(watchList, generalOpt) {
+//    var ref = {},
+//        gOpt = generalOpt || {};
+//
+//    function onComplete(key) {
+//        return function (snap, prevKey) {
+//            if (typeof watchList[key].onComplete === 'function') {
+//                watchList[key].onComplete.apply(null, [snap, prevKey])
+//            }
+//        }
+//    }
+//
+//    for (var key in watchList) {
+//        if (watchList.hasOwnProperty(key)) {
+//            watchList[key].opt = watchList[key].opt || {};
+//            ref[key] = queryRef(watchList[key].refUrl);
+//            queryRef.on(watchList[key].opt.type || gOpt.type || 'value', onComplete(key))
+//        }
+//    }
+//    return ref
+//}
 
 
 function replaceParams(objOrStr, params) {
@@ -119,6 +120,6 @@ function batchUpload(uploadList) {
 
 
 module.exports = {
-    watch: watch,
-    ref: queryRef
+    ref: queryRef,
+    test:'test'
 };
