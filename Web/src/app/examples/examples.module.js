@@ -17,6 +17,7 @@
             'app.examples.maps',
             'app.examples.menu',
             'app.examples.todo',
-            'app.examples.ui'
+            'app.examples.ui',
+            'ngCart','ui.mask'
         ]);
 })();

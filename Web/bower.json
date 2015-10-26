@@ -25,6 +25,7 @@
         "angular-translate-storage-cookie": "~2.7.2",
         "angular-translate-storage-local": "~2.7.2",
         "angular-ui-calendar": "~1.0.0",
+        "angular-ui-mask":"~1.4.7",
         "angular-ui-router": "~0.2.13",
         "angularfire": "~1.1.3",
         "animate.css-scss": "https://github.com/geoffgraham/animate.scss.git#master",
@@ -34,6 +35,7 @@
         "jquery": "~2.1.3",
         "material-design-iconic-font": "~2.1.2",
         "textAngular": "~1.3.7",
+        "ng-cart": "1.0.0",
         "weather-icons": "https://github.com/chk1/weather-icons.git#master"
     },
     "devDependencies": {
