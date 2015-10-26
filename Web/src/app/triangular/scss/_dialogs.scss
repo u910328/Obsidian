@@ -1,0 +1,8 @@
+.mobile-fullwidth-dialog {
+  max-width: none;
+}
+@media (max-width: 599px) {
+  .mobile-fullwidth-dialog {
+    min-height: 100%;
+  }
+}

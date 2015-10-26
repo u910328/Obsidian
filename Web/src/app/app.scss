@@ -1,0 +1,22 @@
+// import angular material scss
+@import "angular-material/angular-material";
+
+// import animate scss
+@import "animate.css-scss/animate.scss";
+
+// import triangular module scss
+@import "triangular/triangular";
+
+// set template font family
+button, select, html, textarea, input {
+  font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
+}
+
+// Add your CSS here
+
+/**
+ *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
