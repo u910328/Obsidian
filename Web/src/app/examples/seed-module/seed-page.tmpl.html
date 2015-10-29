@@ -1,0 +1,56 @@
+<!--<md-content class="padded-content-page">-->
+    <!--<div layout="row" layout-align="center center">-->
+        <!--<h2 class="md-display-3" translate>SEED.TITLE</h2>-->
+    <!--</div>-->
+    <!--<div class="margin-20" layout="row" layout-align="center center">-->
+        <!--<ul class="seed-list">-->
+            <!--<li class="md-headline" ng-repeat="test in vm.testData">-->
+                <!--{{test}}-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</md-content>-->
+
+<form>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Log in</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-list>
+        <md-list-item class="md-3-line">
+            <div class="md-list-item-text">
+                <md-content>
+                    <div layout layout-sm="column">
+                        <md-input-container>
+                            <label>Email</label>
+                            <input ng-model="email" type="email">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>password</label>
+                            <input ng-model="pass" type="password">
+                        </md-input-container>
+                        <md-input-container ng-cloak ng-show="createMode">
+                            <label>confirm password</label>
+                            <input ng-model="confirm" type="password">
+                        </md-input-container>
+                    </div>
+                    <md-button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</md-button>
+                    <md-button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</md-button>
+                </md-content>
+            </div>
+        </md-list-item>
+    </md-list>
+    <div class="md-actions" layout-gt-sm="row" layout-sm="column">
+        <md-button ng-click="login(email, pass)" ng-hide="createMode">Log In</md-button>
+        <md-button ng-click="createMode = true" ng-hide="createMode">Register</md-button>
+        <span flex></span>
+        <md-button ng-hide="createMode" ng-click="loginWithProvider('google')">Log in with Google</md-button>
+        <md-button ng-hide="createMode" ng-click="loginWithProvider('facebook')">Log in with Facebook</md-button>
+
+    </div>
+
+
+    <p ng-show="err" class="error">{{err}}</p>
+</form>
