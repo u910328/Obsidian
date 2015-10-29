@@ -14,17 +14,17 @@ var gutil = require('gulp-util');
  *  to inject css preprocessor deps and js files in karma
  */
 exports.wiredep = {
-  directory: 'bower_components'
+    directory: 'bower_components'
 };
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
-exports.errorHandler = function(title) {
-  'use strict';
+exports.errorHandler = function (title) {
+    'use strict';
 
-  return function(err) {
-    gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-    this.emit('end');
-  };
+    return function (err) {
+        gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+        this.emit('end');
+    };
 };
