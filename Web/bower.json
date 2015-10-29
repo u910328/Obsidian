@@ -1,6 +1,6 @@
 {
     "name": "obsidian",
-    "version": "0.0.0",
+    "version": "0.10.1",
     "dependencies": {
         "angular": "1.4.7",
         "angular-animate": "1.4.7",
