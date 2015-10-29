@@ -6,7 +6,7 @@
         .controller('CalendarController', CalendarController);
 
     /* @ngInject */
-    function CalendarController($scope, $rootScope, $mdDialog, $mdToast, $filter, $element, triTheming, triLayout, uiCalendarConfig) {
+    function CalendarController($scope, $rootScope, $mdDialog, $mdToast, $filter, $element, obTheming, obLayout, uiCalendarConfig) {
         var vm = this;
         vm.addEvent = addEvent;
         vm.calendarOptions = {
@@ -21,7 +21,7 @@
                 // update toolbar with new day for month name
                 $rootScope.$broadcast('calendar-changeday', vm.currentDay);
                 // update background image for month
-                triLayout.layout.contentClass = 'calendar-background-image background-overlay-static overlay-gradient-10 calendar-background-month-' + vm.currentDay.month();
+                obLayout.layout.contentClass = 'calendar-background-image background-overlay-static overlay-gradient-10 calendar-background-month-' + vm.currentDay.month();
             },
             dayClick: function(date, jsEvent, view) { //eslint-disable-line
                 vm.currentDay = date;
@@ -46,13 +46,13 @@
                     var toastMessage = 'CALENDAR.EVENT.EVENT-UPDATED';
                     if(angular.isDefined(event.deleteMe) && event.deleteMe === true) {
                         // remove the event from the calendar
-                        uiCalendarConfig.calendars['triangular-calendar'].fullCalendar('removeEvents', event._id);
+                        uiCalendarConfig.calendars['obsidian-calendar'].fullCalendar('removeEvents', event._id);
                         // change toast message
                         toastMessage = 'CALENDAR.EVENT.EVENT-DELETED';
                     }
                     else {
                         // update event
-                        uiCalendarConfig.calendars['triangular-calendar'].fullCalendar('updateEvent', event);
+                        uiCalendarConfig.calendars['obsidian-calendar'].fullCalendar('updateEvent', event);
                     }
 
                     // pop a toast
@@ -119,7 +119,7 @@
                 var inAnHour = moment(randomMonthDate).add(1, 'h');
                 var randomEvent = Math.floor(Math.random() * (eventNames.length - 0));
                 var randomLocation = Math.floor(Math.random() * (locationNames.length - 0));
-                var randomPalette = pickRandomProperty(triTheming.palettes);
+                var randomPalette = pickRandomProperty(obTheming.palettes);
 
                 vm.eventSources[0].events.push({
                     title: eventNames[randomEvent],
@@ -128,9 +128,9 @@
                     end: inAnHour,
                     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, fugiat! Libero ut in nam cum architecto error magnam, quidem beatae deleniti, facilis perspiciatis modi unde nostrum ea explicabo a adipisci!',
                     location: locationNames[randomLocation],
-                    backgroundColor: triTheming.rgba(triTheming.palettes[randomPalette]['500'].value),
-                    borderColor: triTheming.rgba(triTheming.palettes[randomPalette]['500'].value),
-                    textColor: triTheming.rgba(triTheming.palettes[randomPalette]['500'].contrast),
+                    backgroundColor: obTheming.rgba(obTheming.palettes[randomPalette]['500'].value),
+                    borderColor: obTheming.rgba(obTheming.palettes[randomPalette]['500'].value),
+                    textColor: obTheming.rgba(obTheming.palettes[randomPalette]['500'].contrast),
                     palette: randomPalette
                 });
             }

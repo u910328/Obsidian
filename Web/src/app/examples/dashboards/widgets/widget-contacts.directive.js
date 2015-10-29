@@ -12,7 +12,7 @@
         // Creates:
         //
         var directive = {
-            requrie: 'triWidget',
+            requrie: 'obWidget',
             link: link,
             restrict: 'A'
         };

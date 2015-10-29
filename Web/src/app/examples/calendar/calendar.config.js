@@ -6,20 +6,20 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/calendar');
 
         $stateProvider
-        .state('triangular.admin-calendar', {
+        .state('obsidian.admin-calendar', {
             abstract: true,
             views: {
                 sidebarLeft: {
-                    templateUrl: 'app/triangular/components/menu/menu.tmpl.html',
+                    templateUrl: 'app/obsidian/components/menu/menu.tmpl.html',
                     controller: 'MenuController',
                     controllerAs: 'vm'
                 },
                 sidebarRight: {
-                    templateUrl: 'app/triangular/components/notifications-panel/notifications-panel.tmpl.html',
+                    templateUrl: 'app/obsidian/components/notifications-panel/notifications-panel.tmpl.html',
                     controller: 'NotificationsPanelController',
                     controllerAs: 'vm'
                 },
@@ -39,7 +39,7 @@
             }
         })
 
-        .state('triangular.admin-calendar.calendar', {
+        .state('obsidian.admin-calendar.calendar', {
             // set the url of this page
             url: '/calendar',
             // set the html template to show on this page
@@ -49,11 +49,11 @@
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             // give the menu a name to show (should be translatable and in the il8n folder json)
             name: 'MENU.CALENDAR.CALENDAR',
             // point this menu to the state we created in the $stateProvider above
-            state: 'triangular.admin-calendar.calendar',
+            state: 'obsidian.admin-calendar.calendar',
             // set the menu type to a link
             type: 'link',
             // set an icon for this menu

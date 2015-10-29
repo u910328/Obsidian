@@ -6,16 +6,16 @@
         .config(translateConfig);
 
     /* @ngInject */
-    function translateConfig(triSettingsProvider, APP_LANGUAGES) {
+    function translateConfig(obSettingsProvider, APP_LANGUAGES) {
         // set app name & logo (used in loader, sidemenu, login pages, etc)
-        triSettingsProvider.setName('triangular');
-        triSettingsProvider.setLogo('assets/images/logo.png');
+        obSettingsProvider.setName('obsidian');
+        obSettingsProvider.setLogo('assets/images/logo.png');
         // set current version of app (shown in footer)
-        triSettingsProvider.setVersion('2.2.0');
+        obSettingsProvider.setVersion('2.2.0');
 
-        // setup available languages in triangular
+        // setup available languages in obsidian
         for (var lang = APP_LANGUAGES.length - 1; lang >= 0; lang--) {
-            triSettingsProvider.addLanguage({
+            obSettingsProvider.addLanguage({
                 name: APP_LANGUAGES[lang].name,
                 key: APP_LANGUAGES[lang].key
             });

@@ -1,6 +1,6 @@
 <div class="dashboard-container overlay-10 padded-content-page" layout="column">
     <div layout="row" layout-margin>
-        <tri-widget flex="70" flex-sm="100" server-widget>
+        <ob-widget flex="70" flex-sm="100" server-widget>
             <md-tabs flex md-dynamic-height md-no-disconnect md-stretch-tabs="always" md-no-pagination>
                 <md-tab label="{{'DASHBOARDS.SERVER.REAL_TIME' | translate}}">
                     <md-content class="md-padding">
@@ -26,9 +26,9 @@
                     </md-content>
                 </md-tab>
             </md-tabs>
-        </tri-widget>
+        </ob-widget>
         <div flex="30" flex-sm="100" class="drag-container" layout="column" layout-margin dragula='"drag-server-container"'>
-            <tri-widget palette-background="triCyan:500" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
+            <ob-widget palette-background="obCyan:500" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
                 <div>
                     <md-icon class="font-size-5 opacity-50" md-font-icon="zmdi zmdi-gps-dot"></md-icon>
                 </div>
@@ -36,8 +36,8 @@
                     <p class="md-display-1 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis">192.168.1.1</p>
                     <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>DASHBOARDS.SERVER.IP</p>
                 </div>
-            </tri-widget>
-            <tri-widget palette-background="triCyan:600" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
+            </ob-widget>
+            <ob-widget palette-background="obCyan:600" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
                 <div>
                     <md-icon class="font-size-5 opacity-50" md-font-icon="zmdi zmdi-memory"></md-icon>
                 </div>
@@ -45,8 +45,8 @@
                     <p class="md-display-1 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="2" decimals="0" options="{suffix: 'Gb'}"></p>
                     <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>DASHBOARDS.SERVER.MEMORY</p>
                 </div>
-            </tri-widget>
-            <tri-widget palette-background="triCyan:700" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
+            </ob-widget>
+            <ob-widget palette-background="obCyan:700" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
                 <div>
                     <md-icon class="font-size-5 opacity-50" md-font-icon="zmdi zmdi-storage"></md-icon>
                 </div>
@@ -54,8 +54,8 @@
                     <p class="md-display-1 font-weight-100 margin-top-0 margin-bottom-0" countupto="30" decimals="0" options="{suffix: 'Gb'}"></p>
                     <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>DASHBOARDS.SERVER.DISK</p>
                 </div>
-            </tri-widget>
-            <tri-widget palette-background="triCyan:800" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
+            </ob-widget>
+            <ob-widget palette-background="obCyan:800" background="primary" content-layout="row" content-layout-align="space-between center" content-padding>
                 <div>
                     <md-icon class="font-size-5 opacity-50" md-font-icon="zmdi zmdi-pin"></md-icon>
                 </div>
@@ -63,11 +63,11 @@
                     <p class="md-display-1 font-weight-100 margin-top-0 margin-bottom-0">London</p>
                     <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>DASHBOARDS.SERVER.LOCATION</p>
                 </div>
-            </tri-widget>
+            </ob-widget>
         </div>
     </div>
     <div layout="row" layout-sm="column" layout-margin>
-        <tri-widget flex="50" flex-sm="100" title="DASHBOARDS.SERVER.DISKS">
+        <ob-widget flex="50" flex-sm="100" title="DASHBOARDS.SERVER.DISKS">
             <md-divider></md-divider>
             <md-list>
                 <md-list-item ng-repeat="disk in ::vm.disks">
@@ -77,8 +77,8 @@
                     <md-divider ng-hide="::$last"></md-divider>
                 </md-list-item>
             </md-list>
-        </tri-widget>
-        <tri-widget flex title="DASHBOARDS.SERVER.JOB" background="primary">
+        </ob-widget>
+        <ob-widget flex title="DASHBOARDS.SERVER.JOB" background="primary">
             <md-divider></md-divider>
             <md-list>
                 <md-list-item class="md-2-line" ng-repeat="job in ::vm.jobs">
@@ -91,17 +91,17 @@
                     <md-divider ng-hide="$last"></md-divider>
                 </md-list-item>
             </md-list>
-        </tri-widget>
+        </ob-widget>
 
     </div>
 
     <div layout="row" layout-sm="column" layout-margin>
-        <tri-widget chartjs-pie-widget flex="40" flex-md="40" flex-sm="100" title="DASHBOARDS.SERVER.DISKUSAGE" subtitle="DASHBOARDS.SERVER.DATE" content-padding>
+        <ob-widget chartjs-pie-widget flex="40" flex-md="40" flex-sm="100" title="DASHBOARDS.SERVER.DISKUSAGE" subtitle="DASHBOARDS.SERVER.DATE" content-padding>
             <div flex>
                 <canvas class="chart-doughnut full-width" chart-data="vm.serverChart.data" chart-legend="true" chart-labels="vm.serverChart.labels"></canvas>
             </div>
-        </tri-widget>
-        <tri-widget flex-sm="100" title="DASHBOARDS.SERVER.USAGE" palette-background="triCyan:600" content-layout="column" content-layout-align="start center">
+        </ob-widget>
+        <ob-widget flex-sm="100" title="DASHBOARDS.SERVER.USAGE" palette-background="obCyan:600" content-layout="column" content-layout-align="start center">
             <div class="full-width" layout="row" layout-padding>
                 <h4 flex="20" class="opacity-80 margin-0 margin-right-20" translate>DASHBOARDS.SERVER.DISK</h4>
                 <div flex>
@@ -133,6 +133,6 @@
                     <span class="md-caption">(65% <span translate>DASHBOARDS.SERVER.LIMIT</span>)</span>
                 </div>
             </div>
-        </tri-widget>
+        </ob-widget>
     </div>
 </div>

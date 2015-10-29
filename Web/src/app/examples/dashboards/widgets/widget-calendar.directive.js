@@ -9,7 +9,7 @@
     function calendarWidget() {
         // Usage:
         //
-        // <tri-widget calendar-widget></tri-widget>
+        // <ob-widget calendar-widget></ob-widget>
         //
         // Creates:
         //

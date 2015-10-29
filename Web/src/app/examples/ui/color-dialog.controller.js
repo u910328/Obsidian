@@ -6,7 +6,7 @@
         .controller('ColorDialogController', ColorDialogController);
 
     /* @ngInject */
-    function ColorDialogController($scope, name, palette, triTheming) {
+    function ColorDialogController($scope, name, palette, obTheming) {
         var vm = this;
         vm.itemStyle = itemStyle;
         vm.name = name;
@@ -16,8 +16,8 @@
 
         function itemStyle(palette) {
             return {
-                'background-color': triTheming.rgba(palette.value),
-                'color': triTheming.rgba(palette.contrast)
+                'background-color': obTheming.rgba(palette.value),
+                'color': obTheming.rgba(palette.contrast)
             };
         }
 

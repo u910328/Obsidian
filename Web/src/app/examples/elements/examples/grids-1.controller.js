@@ -6,7 +6,7 @@
         .controller('Grids1Controller', Grids1Controller);
 
     /* @ngInject */
-    function Grids1Controller(triTheming) {
+    function Grids1Controller(obTheming) {
         var vm = this;
         vm.colorTiles = (function() {
             var tiles = [];
@@ -24,15 +24,15 @@
         function setColors(tile) {
             var result;
             var count = 0;
-            for (var palette in triTheming.palettes) {
+            for (var palette in obTheming.palettes) {
                 if (Math.random() < 1 / ++count && palette !== 'white') {
                     tile.palette = palette;
-                    result = triTheming.palettes[palette];
+                    result = obTheming.palettes[palette];
                 }
             }
 
             tile.hue = Math.floor((Math.random() * 9) + 1) * 100;
-            tile.color = triTheming.rgba(result[tile.hue].value);
+            tile.color = obTheming.rgba(result[tile.hue].value);
         }
 
         function randomSpan() {

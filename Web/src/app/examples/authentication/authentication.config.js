@@ -6,7 +6,7 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/authentication');
 
         $stateProvider
@@ -38,14 +38,14 @@
             controller: 'ForgotController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.profile', {
+        .state('obsidian.admin-default.profile', {
             url: '/profile',
             templateUrl: 'app/examples/authentication/profile/profile.tmpl.html',
             controller: 'ProfileController',
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.AUTH.AUTH',
             icon: 'zmdi zmdi-account',
             type: 'dropdown',
@@ -68,7 +68,7 @@
                 type: 'link'
             },{
                 name: 'MENU.AUTH.PROFILE',
-                state: 'triangular.admin-default.profile',
+                state: 'obsidian.admin-default.profile',
                 type: 'link'
             }]
         });

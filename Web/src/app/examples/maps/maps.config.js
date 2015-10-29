@@ -6,17 +6,17 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, uiGmapGoogleMapApiProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, uiGmapGoogleMapApiProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/maps');
 
         $stateProvider
-        .state('triangular.admin-default.maps-fullwidth', {
+        .state('obsidian.admin-default.maps-fullwidth', {
             url: '/maps/fullwidth',
             templateUrl: 'app/examples/maps/maps-fullwidth.tmpl.html',
             controller: 'MapController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.maps-demos', {
+        .state('obsidian.admin-default.maps-demos', {
             url: '/maps/demos',
             templateUrl: 'app/examples/maps/maps-demo.tmpl.html'
         });
@@ -26,18 +26,18 @@
             libraries: 'weather,geometry,visualization'
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.MAPS.MAPS',
             icon: 'zmdi zmdi-pin',
             type: 'dropdown',
             priority: 7.1,
             children: [{
                 name: 'MENU.MAPS.FULLWIDTH',
-                state: 'triangular.admin-default.maps-fullwidth',
+                state: 'obsidian.admin-default.maps-fullwidth',
                 type: 'link'
             },{
                 name: 'MENU.MAPS.DEMOS',
-                state: 'triangular.admin-default.maps-demos',
+                state: 'obsidian.admin-default.maps-demos',
                 type: 'link'
             }]
         });

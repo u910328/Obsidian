@@ -6,14 +6,14 @@
         .controller('ColorsController', ColorsController);
 
     /* @ngInject */
-    function ColorsController($mdDialog, triTheming) {
+    function ColorsController($mdDialog, obTheming) {
         var vm = this;
         vm.colourRGBA = colourRGBA;
-        vm.palettes = triTheming.palettes;
+        vm.palettes = obTheming.palettes;
         vm.selectPalette = selectPalette;
 
         function colourRGBA(value) {
-            var rgba = triTheming.rgba(value);
+            var rgba = obTheming.rgba(value);
             return {
                 'background-color': rgba
             };

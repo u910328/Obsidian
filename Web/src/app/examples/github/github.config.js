@@ -6,11 +6,11 @@
         .config(config);
 
     /* @ngInject */
-    function config($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function config($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/github');
 
         $stateProvider
-        .state('triangular.admin-default.github', {
+        .state('obsidian.admin-default.github', {
             url: '/github',
             templateUrl: 'app/examples/github/github.tmpl.html',
             controller: 'GithubController',
@@ -23,14 +23,14 @@
             }
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.GITHUB.GITHUB',
-            state: 'triangular.admin-default.github',
+            state: 'obsidian.admin-default.github',
             type: 'link',
             icon: 'fa fa-github',
             priority: 1.1
         });
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             type: 'divider',
             priority: 1.2
         });

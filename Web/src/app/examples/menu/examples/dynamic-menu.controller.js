@@ -6,7 +6,7 @@
         .controller('MenuDynamicController', MenuDynamicController);
 
     /* @ngInject */
-    function MenuDynamicController(dynamicMenuService, triMenu) {
+    function MenuDynamicController(dynamicMenuService, obMenu) {
         var vm = this;
         // get dynamic menu service to store & keep track the state of the menu status
         vm.dynamicMenu = dynamicMenuService.dynamicMenu;
@@ -17,16 +17,16 @@
 
         function toggleExtraMenu(showMenu) {
             if(showMenu) {
-                triMenu.addMenu({
+                obMenu.addMenu({
                     name: 'MENU.MENU.DYNAMIC-MENU',
                     icon: 'zmdi zmdi-flower-alt',
                     type: 'link',
                     priority: 0.0,
-                    state: 'triangular.admin-default.menu-dynamic-dummy-page'
+                    state: 'obsidian.admin-default.menu-dynamic-dummy-page'
                 });
             }
             else {
-                triMenu.removeMenu('triangular.admin-default.menu-dynamic-dummy-page');
+                obMenu.removeMenu('obsidian.admin-default.menu-dynamic-dummy-page');
             }
         }
     }

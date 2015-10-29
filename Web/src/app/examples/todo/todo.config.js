@@ -6,11 +6,11 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/todo');
 
         $stateProvider
-        .state('triangular.admin-default.todo', {
+        .state('obsidian.admin-default.todo', {
             url: '/todo',
             views: {
                 '': {
@@ -32,10 +32,10 @@
             }
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.TODO.TITLE',
             icon: 'zmdi zmdi-check',
-            state: 'triangular.admin-default.todo',
+            state: 'obsidian.admin-default.todo',
             type: 'link',
             priority: 2.4
         });

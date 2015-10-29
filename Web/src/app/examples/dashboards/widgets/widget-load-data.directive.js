@@ -9,11 +9,11 @@
     function loadDataWidget($parse, $http, $mdDialog) {
         // Usage:
         //
-        // <tri-widget load-data-widget="{ variableName: urlOfJSONData }"></tri-widget>
+        // <ob-widget load-data-widget="{ variableName: urlOfJSONData }"></ob-widget>
         // Creates:
         //
         var directive = {
-            require: 'triWidget',
+            require: 'obWidget',
             link: link,
             restrict: 'A'
         };

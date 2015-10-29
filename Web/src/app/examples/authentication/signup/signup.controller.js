@@ -6,9 +6,9 @@
         .controller('SignupController', SignupController);
 
     /* @ngInject */
-    function SignupController($scope, $state, $mdToast, $http, $filter, triSettings, API_CONFIG) {
+    function SignupController($scope, $state, $mdToast, $http, $filter, obSettings, API_CONFIG) {
         var vm = this;
-        vm.triSettings = triSettings;
+        vm.obSettings = obSettings;
         vm.signupClick = signupClick;
         vm.user = {
             name: '',

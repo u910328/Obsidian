@@ -5,37 +5,37 @@
         .module('app.examples.email')
         .config(moduleConfig)
         .constant('EMAIL_ROUTES', [{
-            state: 'triangular-no-scroll.email.inbox',
+            state: 'obsidian-no-scroll.email.inbox',
             name: 'MENU.EMAIL.INBOX',
             url: '/email/inbox',
             icon: 'zmdi zmdi-inbox'
         },{
-            state: 'triangular-no-scroll.email.trash',
+            state: 'obsidian-no-scroll.email.trash',
             name: 'MENU.EMAIL.TRASH',
             url: '/email/trash',
             icon: 'zmdi zmdi-minus-circle'
         },{
-            state: 'triangular-no-scroll.email.sent',
+            state: 'obsidian-no-scroll.email.sent',
             name: 'MENU.EMAIL.SENT',
             url: '/email/sent',
             icon: 'zmdi zmdi-email'
         }]);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider, EMAIL_ROUTES) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider, EMAIL_ROUTES) {
         $translatePartialLoaderProvider.addPart('app/examples/email');
 
         $stateProvider
-        .state('triangular-no-scroll.email', {
+        .state('obsidian-no-scroll.email', {
             abstract: true,
             views: {
                 sidebarLeft: {
-                    templateUrl: 'app/triangular/components/menu/menu.tmpl.html',
+                    templateUrl: 'app/obsidian/components/menu/menu.tmpl.html',
                     controller: 'MenuController',
                     controllerAs: 'vm'
                 },
                 sidebarRight: {
-                    templateUrl: 'app/triangular/components/notifications-panel/notifications-panel.tmpl.html',
+                    templateUrl: 'app/obsidian/components/notifications-panel/notifications-panel.tmpl.html',
                     controller: 'NotificationsPanelController',
                     controllerAs: 'vm'
                 },
@@ -118,9 +118,9 @@
             });
         });
 
-        triMenuProvider.addMenu(emailMenu);
+        obMenuProvider.addMenu(emailMenu);
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             type: 'divider',
             priority: 2.3
         });

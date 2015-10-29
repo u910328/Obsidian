@@ -6,15 +6,15 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/examples/dashboards');
 
         $stateProvider
-        .state('triangular.sales-layout', {
+        .state('obsidian.sales-layout', {
             abstract: true,
             views: {
                 sidebarLeft: {
-                    templateUrl: 'app/triangular/components/menu/menu.tmpl.html',
+                    templateUrl: 'app/obsidian/components/menu/menu.tmpl.html',
                     controller: 'MenuController',
                     controllerAs: 'vm'
                 },
@@ -26,33 +26,33 @@
                 }
             }
         })
-        .state('triangular.admin-default.dashboard-general', {
+        .state('obsidian.admin-default.dashboard-general', {
             url: '/dashboards/general',
             templateUrl: 'app/examples/dashboards/general/dashboard-general.tmpl.html'
         })
-        .state('triangular.admin-default.dashboard-analytics', {
+        .state('obsidian.admin-default.dashboard-analytics', {
             url: '/dashboards/analytics',
             templateUrl: 'app/examples/dashboards/analytics/dashboard-analytics.tmpl.html',
             controller: 'DashboardAnalyticsController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.dashboard-server', {
+        .state('obsidian.admin-default.dashboard-server', {
             url: '/dashboards/server',
             templateUrl: 'app/examples/dashboards/server/dashboard-server.tmpl.html',
             controller: 'DashboardServerController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.dashboard-widgets', {
+        .state('obsidian.admin-default.dashboard-widgets', {
             url: '/dashboards/widgets',
             templateUrl: 'app/examples/dashboards/widgets.tmpl.html'
         })
-        .state('triangular.admin-default.dashboard-social', {
+        .state('obsidian.admin-default.dashboard-social', {
             url: '/dashboards/social',
             templateUrl: 'app/examples/dashboards/social/dashboard-social.tmpl.html',
             controller: 'DashboardSocialController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.dashboard-sales', {
+        .state('obsidian.admin-default.dashboard-sales', {
             url: '/dashboards/sales',
             data: {
                 layout: {
@@ -72,45 +72,45 @@
                 }
             }
         })
-        .state('triangular.admin-default.dashboard-draggable', {
+        .state('obsidian.admin-default.dashboard-draggable', {
             url: '/dashboards/draggable-widgets',
             templateUrl: 'app/examples/dashboards/dashboard-draggable.tmpl.html',
             controller: 'DashboardDraggableController',
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.DASHBOARDS.DASHBOARDS',
             icon: 'zmdi zmdi-home',
             type: 'dropdown',
             priority: 2.1,
             children: [{
                 name: 'MENU.DASHBOARDS.ANALYTICS',
-                state: 'triangular.admin-default.dashboard-analytics',
+                state: 'obsidian.admin-default.dashboard-analytics',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.GENERAL',
-                state: 'triangular.admin-default.dashboard-general',
+                state: 'obsidian.admin-default.dashboard-general',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.SALES',
-                state: 'triangular.admin-default.dashboard-sales',
+                state: 'obsidian.admin-default.dashboard-sales',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.SERVER',
-                state: 'triangular.admin-default.dashboard-server',
+                state: 'obsidian.admin-default.dashboard-server',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.SOCIAL',
-                state: 'triangular.admin-default.dashboard-social',
+                state: 'obsidian.admin-default.dashboard-social',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.WIDGETS',
-                state: 'triangular.admin-default.dashboard-widgets',
+                state: 'obsidian.admin-default.dashboard-widgets',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.DRAGGABLE',
-                state: 'triangular.admin-default.dashboard-draggable',
+                state: 'obsidian.admin-default.dashboard-draggable',
                 type: 'link'
             }]
         });

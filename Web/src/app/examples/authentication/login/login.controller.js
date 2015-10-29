@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state, triSettings) {
+    function LoginController($state, obSettings) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.socialLogins = [{
@@ -26,7 +26,7 @@
             color: '#337ab7',
             url: '#'
         }];
-        vm.triSettings = triSettings;
+        vm.obSettings = obSettings;
         // create blank user variable for login form
         vm.user = {
             email: '',
@@ -36,7 +36,7 @@
         ////////////////
 
         function loginClick() {
-            $state.go('triangular.admin-default.introduction');
+            $state.go('obsidian.admin-default.introduction');
         }
     }
 })();

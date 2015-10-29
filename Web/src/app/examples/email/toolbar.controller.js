@@ -6,9 +6,9 @@
         .controller('EmailToolbarController', EmailToolbarController);
 
     /* @ngInject */
-    function EmailToolbarController($rootScope, $mdMedia, $filter, $mdUtil, $mdSidenav, $state, triBreadcrumbsService, triLayout, EMAIL_ROUTES) {
+    function EmailToolbarController($rootScope, $mdMedia, $filter, $mdUtil, $mdSidenav, $state, obBreadcrumbsService, obLayout, EMAIL_ROUTES) {
         var vm = this;
-        vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
+        vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.filterEmailList = filterEmailList;
         vm.hideMenuButton = hideMenuButton;
         vm.openSideNav = openSideNav;
@@ -27,7 +27,7 @@
         }
 
         function hideMenuButton() {
-            return triLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-md');
+            return obLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-md');
         }
 
         /**

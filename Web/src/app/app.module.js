@@ -3,7 +3,7 @@
 
     angular
         .module('app', [
-            'triangular',
+            'obsidian',
             'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngMaterial',
             'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular),
              'seed-module',
@@ -13,7 +13,7 @@
         // version of this seed app is compatible with angularFire 1.0.0
         // see tags for other versions: https://github.com/firebase/angularFire-seed/tags
         .constant('version', '2.2.0')
-        // create a constant for languages so they can be added to both triangular & translate
+        // create a constant for languages so they can be added to both obsidian & translate
         .constant('APP_LANGUAGES', [{
             name: 'LANGUAGES.CHINESE',
             key: 'zh'
@@ -29,7 +29,7 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://triangular-api.oxygenna.com/'
+            'url':  'http://obsidian-api.oxygenna.com/'
         })
         // where to redirect users if they need to authenticate (see security.js)
         .constant('loginRedirectState', 'login')

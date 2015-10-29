@@ -6,11 +6,11 @@
         .config(moduleConfig);
 
     /* @ngInject */
-    function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
+    function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
         $translatePartialLoaderProvider.addPart('app/seed-module');
 
         $stateProvider
-        .state('triangular.admin-default.seed-page', {
+        .state('obsidian.admin-default.seed-page', {
             url: '/seed-module/seed-page',
             templateUrl: 'app/seed-module/seed-page.tmpl.html',
             // set the controller to load for this page
@@ -18,14 +18,14 @@
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
+        obMenuProvider.addMenu({
             name: 'MENU.SEED.SEED-MODULE',
             icon: 'zmdi zmdi-grade',
             type: 'dropdown',
             priority: 1.1,
             children: [{
                 name: 'MENU.SEED.SEED-PAGE',
-                state: 'triangular.admin-default.seed-page',
+                state: 'obsidian.admin-default.seed-page',
                 type: 'link'
             }]
         });

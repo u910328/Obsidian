@@ -3,7 +3,7 @@
         <md-card>
             <md-toolbar>
                 <div class="padding-20 text-center">
-                    <div><img ng-src="{{::vm.triSettings.logo}}" alt="{{vm.triSettings.name}}"></div>
+                    <div><img ng-src="{{::vm.obSettings.logo}}" alt="{{vm.obSettings.name}}"></div>
                     <h1 class="md-headline" translate>SIGNUP.TITLE</h1>
                 </div>
             </md-toolbar>
@@ -34,13 +34,13 @@
 
                     <md-input-container>
                         <label for="password" translate>SIGNUP.PASSWORD.LABEL</label>
-                        <input id="password" label="password" name="password" type="password" ng-model="vm.user.password" tri-same-password="signup.confirm" ng-minlength="8" required/>
+                        <input id="password" label="password" name="password" type="password" ng-model="vm.user.password" ob-same-password="signup.confirm" ng-minlength="8" required/>
                         <ng-messages for="signup.password.$error" ng-include="'app/examples/authentication/signup/password.messages.html'" ng-if="signup.password.$dirty"></ng-messages>
                     </md-input-container>
 
                     <md-input-container>
                         <label for="password" translate>SIGNUP.PASSWORD_CONFIRM.LABEL</label>
-                        <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.user.confirm" tri-same-password="signup.password" ng-minlength="8" required/>
+                        <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.user.confirm" ob-same-password="signup.password" ng-minlength="8" required/>
                         <ng-messages for="signup.confirm.$error" ng-include="'app/examples/authentication/signup/password.messages.html'" ng-if="signup.confirm.$dirty"></ng-messages>
                     </md-input-container>
 

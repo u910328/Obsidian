@@ -6,19 +6,19 @@
         .config(config);
 
     /* @ngInject */
-    function config(triLayoutProvider) {
-        triLayoutProvider.setDefaultOption('toolbarSize', 'default');
+    function config(obLayoutProvider) {
+        obLayoutProvider.setDefaultOption('toolbarSize', 'default');
 
-        triLayoutProvider.setDefaultOption('toolbarShrink', true);
+        obLayoutProvider.setDefaultOption('toolbarShrink', true);
 
-        triLayoutProvider.setDefaultOption('toolbarClass', '');
+        obLayoutProvider.setDefaultOption('toolbarClass', '');
 
-        triLayoutProvider.setDefaultOption('contentClass', '');
+        obLayoutProvider.setDefaultOption('contentClass', '');
 
-        triLayoutProvider.setDefaultOption('sideMenuSize', 'full');
+        obLayoutProvider.setDefaultOption('sideMenuSize', 'full');
 
-        triLayoutProvider.setDefaultOption('showToolbar', true);
+        obLayoutProvider.setDefaultOption('showToolbar', true);
 
-        triLayoutProvider.setDefaultOption('footer', true);
+        obLayoutProvider.setDefaultOption('footer', true);
     }
 })();

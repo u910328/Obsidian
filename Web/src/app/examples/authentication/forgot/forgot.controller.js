@@ -6,9 +6,9 @@
         .controller('ForgotController', ForgotController);
 
     /* @ngInject */
-    function ForgotController($scope, $state, $mdToast, $filter, $http, triSettings, API_CONFIG) {
+    function ForgotController($scope, $state, $mdToast, $filter, $http, obSettings, API_CONFIG) {
         var vm = this;
-        vm.triSettings = triSettings;
+        vm.obSettings = obSettings;
         vm.user = {
             email: ''
         };

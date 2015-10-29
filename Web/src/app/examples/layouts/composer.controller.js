@@ -6,11 +6,11 @@
         .controller('LayoutsComposerController', LayoutsComposerController);
 
     /* @ngInject */
-    function LayoutsComposerController($rootScope, $filter, $document, triTheming, triLayout) {
+    function LayoutsComposerController($rootScope, $filter, $document, obTheming, obLayout) {
         var vm = this;
         vm.allPagesCode = '';
         vm.updateOption = updateOption;
-        vm.layout = triLayout.layout;
+        vm.layout = obLayout.layout;
         vm.onePageCode = '';
         vm.options = {
             toolbarSizes: {
@@ -31,15 +31,15 @@
 
         function createCodeSnippets() {
             vm.allPagesCode =
-                'triLayoutProvider.setDefaultOption(\'toolbarSize\', \'' + vm.layout.toolbarSize + '\');\n' +
-                'triLayoutProvider.setDefaultOption(\'toolbarShrink\', ' + vm.layout.toolbarShrink + ');\n' +
-                'triLayoutProvider.setDefaultOption(\'toolbarClass\', \'' + vm.layout.toolbarClass + '\');\n' +
-                'triLayoutProvider.setDefaultOption(\'contentClass\', \'' + vm.layout.contentClass + '\');\n' +
-                'triLayoutProvider.setDefaultOption(\'sideMenuSize\', \'' + vm.layout.sideMenuSize + '\');\n' +
-                'triLayoutProvider.setDefaultOption(\'footer\', ' + vm.layout.footer + ');\n';
+                'obLayoutProvider.setDefaultOption(\'toolbarSize\', \'' + vm.layout.toolbarSize + '\');\n' +
+                'obLayoutProvider.setDefaultOption(\'toolbarShrink\', ' + vm.layout.toolbarShrink + ');\n' +
+                'obLayoutProvider.setDefaultOption(\'toolbarClass\', \'' + vm.layout.toolbarClass + '\');\n' +
+                'obLayoutProvider.setDefaultOption(\'contentClass\', \'' + vm.layout.contentClass + '\');\n' +
+                'obLayoutProvider.setDefaultOption(\'sideMenuSize\', \'' + vm.layout.sideMenuSize + '\');\n' +
+                'obLayoutProvider.setDefaultOption(\'footer\', ' + vm.layout.footer + ');\n';
 
             vm.onePageCode =
-                '.state(\'triangular.admin-default.my-state\', {' + '\n' +
+                '.state(\'obsidian.admin-default.my-state\', {' + '\n' +
                 '    // set the url of this page' + '\n' +
                 '    url: \'/my-route\',' + '\n' +
                 '    // set the html template to show on this page' + '\n' +

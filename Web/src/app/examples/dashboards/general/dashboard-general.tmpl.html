@@ -1,6 +1,6 @@
 <div class="dashboard-container overlay-5 padded-content-page" layout="column">
     <div layout="row" layout-sm="column" layout-margin>
-        <tri-widget calendar-widget flex class="widget-calendar" palette-background="triCyan:500" content-layout="column">
+        <ob-widget calendar-widget flex class="widget-calendar" palette-background="obCyan:500" content-layout="column">
             <div flex layout="row" layout-align="start center" layout-padding>
                 <div flex layout="column">
                     <h3 class="md-subhead text-ellipsis margin-0">
@@ -26,11 +26,11 @@
             <div flex layout="row" layout-padding>
                 <div ui-calendar="calendarController.calendarOptions" ng-model="calendarController.calendarEvents" calendar="calendarWidget"></div>
             </div>
-        </tri-widget>
+        </ob-widget>
 
 
         <div layout="column" flex layout-margin>
-            <tri-widget palette-background="deep-orange:500" content-layout="column" content-layout-align="start space-between">
+            <ob-widget palette-background="deep-orange:500" content-layout="column" content-layout-align="start space-between">
                 <h2 class="md-display-2 font-weight-100 margin-0" flex layout-padding>Call Sue</h2>
                 <md-divider></md-divider>
                 <div flex="20" layout="row" layout-align="space-between center" layout-padding>
@@ -39,8 +39,8 @@
                         <md-icon md-font-icon="zmdi zmdi-call"></md-icon>
                     </md-button>
                 </div>
-            </tri-widget>
-            <tri-widget palette-background="purple:300" content-layout="column" content-layout-align="start space-between">
+            </ob-widget>
+            <ob-widget palette-background="purple:300" content-layout="column" content-layout-align="start space-between">
                 <h2 class="md-display-2 font-weight-100 margin-0" flex layout-padding>Clean Desk</h2>
                 <md-divider></md-divider>
                 <div flex="20" layout="row" layout-align="space-between center" layout-padding>
@@ -49,20 +49,20 @@
                         <md-icon md-font-icon="zmdi zmdi-event"></md-icon>
                     </md-button>
                 </div>
-            </tri-widget>
+            </ob-widget>
         </div>
-        <tri-widget todo-widget class="dashboard-todo-widget" palette-background="light-blue:600" title="Todo List" subtitle="Your current todo list" title-position="top" content-align="center start" content-padding>
+        <ob-widget todo-widget class="dashboard-todo-widget" palette-background="light-blue:600" title="Todo List" subtitle="Your current todo list" title-position="top" content-align="center start" content-padding>
             <md-list flex class="padding-left-0">
                 <md-list-item ng-repeat="todo in todos">
                     <md-checkbox ng-model="todo.done"></md-checkbox>
                     <p>{{todo.name}}</p>
                 </md-list-item>
             </md-list>
-        </tri-widget>
+        </ob-widget>
     </div>
 
     <div layout="row" layout-sm="column" layout-margin>
-        <tri-widget class="widget-blog" flex="60" flex-sm="100" content-layout="column" content-layout-align="center top">
+        <ob-widget class="widget-blog" flex="60" flex-sm="100" content-layout="column" content-layout-align="center top">
             <img src="assets/images/backgrounds/material-backgrounds/mb-bg-01.jpg" alt="some bg">
             <div class="widget-blog-text padding-10">
                 <h2>It's all about Material</h2>
@@ -86,9 +86,9 @@
                     </md-fab-actions>
                 </md-fab-speed-dial>
             </div>
-        </tri-widget>
+        </ob-widget>
 
-        <tri-widget chat-widget flex class="widget-chat" title="DASHBOARDS.GENERAL.CHAT" content-layout="column" content-layout-align="start">
+        <ob-widget chat-widget flex class="widget-chat" title="DASHBOARDS.GENERAL.CHAT" content-layout="column" content-layout-align="start">
             <md-divider></md-divider>
             <md-list class="padding-top-20 padding-bottom-0" flex>
                 <md-list-item ng-repeat="chat in ::conversation" class="md-3-line" ng-class="userClass($even)" ng-init="userColor = $even ? 'cyan' : 'light-green'">
@@ -106,11 +106,11 @@
                     <input type="text">
                 </md-input-container>
             </div>
-        </tri-widget>
+        </ob-widget>
     </div>
     <div layout="row" layout-sm="column" layout-margin>
         <div layout="column" layout-margin layout-fill flex="40" flex-sm="100">
-           <tri-widget flex="70" weather-widget="Sitia" background-image="assets/images/dashboards/weather.jpg" palette-background="deep-orange:800" content-layout="column" content-layout-align="space-between center" flex>
+           <ob-widget flex="70" weather-widget="Sitia" background-image="assets/images/dashboards/weather.jpg" palette-background="deep-orange:800" content-layout="column" content-layout-align="space-between center" flex>
 
                     <div layout="column" flex layout-align="start center">
                         <p class="md-caption">{{weather.date | amDateFormat:'dddd, MMMM Do YYYY'}}</p>
@@ -126,15 +126,15 @@
                             <p class="margin-0">{{::weather.location}}</p>
                         </div>
                     </div>
-            </tri-widget>
+            </ob-widget>
 
-            <tri-widget flex title="Color palette" subtitle="Color in material design is inspired by bold hues and bright highlights. "  palette-background="deep-orange:800" background-image="assets/images/backgrounds/material-backgrounds/mb-bg-05.jpg" overlay-title title-position="bottom" >
-            </tri-widget>
+            <ob-widget flex title="Color palette" subtitle="Color in material design is inspired by bold hues and bright highlights. "  palette-background="deep-orange:800" background-image="assets/images/backgrounds/material-backgrounds/mb-bg-05.jpg" overlay-title title-position="bottom" >
+            </ob-widget>
         </div>
 
         <div flex layout="column" layout-margin>
             <div layout-margin>
-            <tri-widget palette-background="triCyan:500" twitter-widget>
+            <ob-widget palette-background="obCyan:500" twitter-widget>
 
                 <div layout="row" layout-align="space-between center" class="padding-normal">
                     <i class="fa fa-twitter font-size-4 opacity-50"></i>
@@ -155,10 +155,10 @@
                         </md-tab>
                     </md-tabs>
                 </div>
-            </tri-widget>
+            </ob-widget>
             </div>
             <div layout="row" layout-margin>
-                 <tri-widget flex="50" title="DASHBOARDS.GENERAL.CONTACTS" contacts-widget>
+                 <ob-widget flex="50" title="DASHBOARDS.GENERAL.CONTACTS" contacts-widget>
                     <md-list>
                         <md-list-item ng-repeat="contact in ::contacts">
                             <img class="md-avatar" ng-src="{{::contact.image}}" alt="{{::contact.name}}">
@@ -167,8 +167,8 @@
                             <md-divider ng-hide="$last"></md-divider>
                         </md-list-item>
                     </md-list>
-                </tri-widget>
-                <tri-widget palette-background="deep-orange:600">
+                </ob-widget>
+                <ob-widget palette-background="deep-orange:600">
                     <img class="full-width" src="assets/images/avatars/avatar-big.png" alt="my face">
 
                     <div>
@@ -180,7 +180,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptatibus.
                         </p>
                     </div>
-                </tri-widget>
+                </ob-widget>
             </div>
         </div>
     </div>

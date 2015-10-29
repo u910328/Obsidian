@@ -6,7 +6,7 @@
         .controller('LockController', LockController);
 
     /* @ngInject */
-    function LockController($state, triSettings) {
+    function LockController($state, obSettings) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.user = {
@@ -14,14 +14,14 @@
             email: 'info@oxygenna.com',
             password: ''
         };
-        vm.triSettings = triSettings;
+        vm.obSettings = obSettings;
 
         ////////////////
 
         // controller to handle login check
         function loginClick() {
             // user logged in ok so goto the dashboard
-            $state.go('triangular.admin-default.dashboard-general');
+            $state.go('obsidian.admin-default.dashboard-general');
         }
     }
 })();
