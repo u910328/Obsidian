@@ -29,17 +29,18 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://obsidian-api.oxygenna.com/'
+            'url':  'http://triangular-api.oxygenna.com/'
         })
         // where to redirect users if they need to authenticate (see security.js)
         .constant('loginRedirectState', 'login')
 
 
         // your Firebase data URL goes here, no trailing slash
-        .constant('FBURL', 'https://frecome.firebaseio.com')
+        .constant('FBURL', 'https://lauchbox.firebaseio.com')
         .constant('config', {
             debug: true,
             shipping: 0,
-            taxRate: 0
+            taxRate: 0,
+            home:'obsidian.admin-default.introduction'
         });
 })();
