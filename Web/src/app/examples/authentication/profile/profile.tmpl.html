@@ -54,7 +54,7 @@
                             <textarea id="bio" label="bio" name="bio" ng-model="vm.user.bio"/>
                         </md-input-container>
 
-                        <md-button class="md-raised md-primary margin-left-0" ng-disabled="profile.$invalid" translate="PROFILE.BUTTON"></md-button>
+                        <md-button class="md-raised md-primary margin-left-0" ng-click="updateProfile()" ng-disabled="profile.$invalid" translate="PROFILE.BUTTON"></md-button>
                     </form>
                 </md-content>
             </md-tab>

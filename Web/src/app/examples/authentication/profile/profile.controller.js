@@ -6,7 +6,7 @@
         .controller('ProfileController', ProfileController);
 
     /* @ngInject */
-    function ProfileController() {
+    function ProfileController($rootScope) {
         var vm = this;
         vm.settingsGroups = [{
             name: 'ADMIN.NOTIFICATIONS.ACCOUNT_SETTINGS',
@@ -39,16 +39,20 @@
                 enabled: true
             }]
         }];
+        var userInfo=$rootScope.user[$rootScope.user.provider];
         vm.user = {
-            name: 'Christos',
-            email: 'info@oxygenna.com',
-            location: 'Sitia, Crete, Greece',
-            website: 'http://www.oxygenna.com',
-            twitter: 'oxygenna',
-            bio: 'We are a small creative web design agency \n who are passionate with our pixels.',
-            current: '',
-            password: '',
-            confirm: ''
+            name: $rootScope.user.name||userInfo.displayName,
+            email: $rootScope.user.email||userInfo.email
+            //location: 'Sitia, Crete, Greece',
+            //website: 'http://www.oxygenna.com',
+            //twitter: 'oxygenna',
+            //bio: 'We are a small creative web design agency \n who are passionate with our pixels.',
+            //current: '',
+            //password: '',
+            //confirm: ''
         };
+        vm.updateProfile= function () {
+            
+        }
     }
 })();
