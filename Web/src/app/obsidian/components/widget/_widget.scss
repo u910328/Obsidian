@@ -3,7 +3,7 @@
   position: relative;
   background-size: cover;
   background-color: #fff;
-  transition: all .2s;
+  transition: all .3s;
   min-height: 100px;
   .widget-avatar {
     border-radius: 50%;
@@ -79,6 +79,7 @@
     }
   }
   .chart-container {
+    flex: 1 1;
     width: 100%;
     height: 100%;
   }
@@ -238,16 +239,21 @@ chart-legend ul {
   }
 }
 
-// Draggable widgets
+$shadow-key-umbra-opacity:      0.2;
+$shadow-key-penumbra-opacity:   0.14;
+$shadow-ambient-shadow-opacity: 0.12;
 
+// Draggable widgets
 .drag-container > .widget {
   &:hover {
-    box-shadow: $whiteframe-shadow-24dp;
+    cursor: move;
+    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 12px 17px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 22px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+    z-index: 1;
   }
 }
 
 .widget.gu-mirror {
-  box-shadow: $whiteframe-shadow-24dp;
+  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 12px 17px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 22px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
 }
 
 .drag-container > .gu-transit {

@@ -1,5 +1,5 @@
 (function() {
-    'use sobct';
+    'use strict';
 
     angular
         .module('app.examples.menu')

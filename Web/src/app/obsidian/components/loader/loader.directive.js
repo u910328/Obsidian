@@ -3,13 +3,13 @@
 
     angular
         .module('obsidian.components')
-        .directive('obLoader', ObLoader);
+        .directive('obLoader', TriLoader);
 
     /* @ngInject */
-    function ObLoader ($rootScope) {
+    function TriLoader ($rootScope) {
         var directive = {
             bindToController: true,
-            controller: ObLoaderController,
+            controller: TriLoaderController,
             controllerAs: 'vm',
             template: '<div flex class="loader" ng-show="vm.status.active" layout="column" layout-fill layout-align="center center"><div class="loader-inner"><md-progress-circular md-mode="indeterminate"></md-progress-circular></div><h3 class="md-headline">{{vm.appName}}</h3></div>',
             link: link,
@@ -39,7 +39,7 @@
     }
 
     /* @ngInject */
-    function ObLoaderController ($rootScope,obLoaderService, obSettings) {
+    function TriLoaderController ($rootScope, obLoaderService, obSettings) {
         var vm = this;
         vm.appName         = obSettings.name;
         vm.status          = obLoaderService.status;

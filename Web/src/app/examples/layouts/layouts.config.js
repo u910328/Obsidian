@@ -29,7 +29,7 @@
             data: {
                 layout: {
                     toolbarSize: 'md-tall',
-                    toolbarClass: 'full-image-background mb-bg-21'
+                    toolbarClass: 'full-image-background mb-bg-fb-14'
                 }
             },
             url: '/layouts/tall-toolbar',

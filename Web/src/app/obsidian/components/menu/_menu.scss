@@ -1,11 +1,11 @@
 // Side menu
-tri-menu {
+ob-menu {
   overflow-y: auto;
   z-index: 1;
 }
 
 /* Style for scrollbar on webkit browsers in windows - looks nice already on other operating systems ;) */
-.os-windows tri-menu {
+.os-windows ob-menu {
   &::-webkit-scrollbar {
     width: 8px;
     background: rgba(0,0,0,0.1);
@@ -75,6 +75,16 @@ tri-menu {
     transform: rotate(90deg);
   }
 }
+
+// Side menu Badges
+.side-menu-badge {
+  border-radius: 8px;
+  padding: 6px 8px;
+  float: right;
+  line-height: 1.2;
+  margin-top: 11px;
+}
+
 
 // Side menu levels
 .drop-down-list {
@@ -170,7 +180,7 @@ $submenu-overlay: #999999;
 
 // Collapsible Menu
 .admin-sidebar-collapsed.md-locked-open {
-  .sidebar-left-title, .sidebar-left-icon {
+  .sidebar-left-title, .sidebar-left-icon, .side-menu-badge {
     opacity: 0;
     transition: all .2s;
     transition-delay: .3s;
@@ -184,7 +194,7 @@ $submenu-overlay: #999999;
     max-height: 0;
   }
   &.hover {
-    .sidebar-left-title, .sidebar-left-icon {
+    .sidebar-left-title, .sidebar-left-icon, .side-menu-badge {
       opacity: 1;
     }
     .side-menu-link span {
@@ -220,7 +230,7 @@ $submenu-overlay: #999999;
 }
 
 // Side menu
-tri-menu {
+ob-menu {
   overflow-y: auto;
   z-index: 1;
   transform: translateZ(0);

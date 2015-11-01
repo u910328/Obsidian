@@ -47,7 +47,8 @@
     "TABLES": {
         "NEXT": "下一页",
         "PREV": "前页",
-        "OF": "的"
+        "OF": "的",
+        "ROWS": "每页行数:"
     },
     "MESSAGES": {
         "LANGUAGE_CHANGED": "措辞的改变"

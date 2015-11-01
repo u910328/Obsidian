@@ -3,10 +3,10 @@
 
     angular
         .module('obsidian.components')
-        .directive('triTable', triTable);
+        .directive('obTable', obTable);
 
     /* @ngInject */
-    function triTable($filter) {
+    function obTable($filter) {
         var directive = {
             restrict: 'E',
             scope: {

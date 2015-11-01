@@ -26,7 +26,13 @@
             url: '/forms/wizard',
             templateUrl: 'app/examples/forms/wizard.tmpl.html',
             controller: 'FormWizardController',
-            controllerAs: 'wizardController'
+            controllerAs: 'wizardController',
+            data: {
+                layout: {
+                    contentClass: 'full-image-background mb-bg-fb-02 background-overlay-static',
+                    innerContentClass: 'overlay-gradient-20'
+                }
+            }
         })
         .state('obsidian.admin-default.forms-validation', {
             url: '/forms/validation',

@@ -1,11 +1,11 @@
 {
     "MENU": {
         "SEED": {
-            "SEED-MODULE": "种子模块",
-            "SEED-PAGE": "开始页"
+            "SEED-MODULE": "種子模組",
+            "SEED-PAGE": "開始頁面"
         }
     },
     "SEED": {
-        "TITLE": "欢迎来到第三角测试页"
+        "TITLE": "歡迎來到黑曜岩測試頁"
     }
 }

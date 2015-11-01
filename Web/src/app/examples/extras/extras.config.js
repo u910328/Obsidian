@@ -1,5 +1,5 @@
 (function() {
-    'use sobct';
+    'use strict';
 
     angular
         .module('app.examples.extras')
@@ -57,6 +57,10 @@
             },{
                 name: 'MENU.EXTRAS.BLANK',
                 state: 'obsidian.admin-default.extra-blank',
+                type: 'link'
+            },{
+                name: 'MENU.EXTRAS.TIMELINE',
+                state: 'obsidian.admin-default.extra-timeline',
                 type: 'link'
             }]
         });

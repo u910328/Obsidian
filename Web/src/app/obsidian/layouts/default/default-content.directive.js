@@ -33,18 +33,18 @@
 
             function injectFooterUpdateContent() {
                 var contentView = $element.find('#admin-panel-content-view');
+                var footerElem = contentView.find('#footer');
+                if (footerElem.length === 0) {
+                    // add footer to the content view
+                    $templateRequest('app/obsidian/components/footer/footer.tmpl.html')
+                    .then(function(template) {
+                        // compile template with current scope and add to the content
+                        var linkFn = $compile(template);
+                        var content = linkFn($scope);
+                        contentView.append(content);
+                    });
 
-                // add footer to the content view
-                $templateRequest('app/obsidian/components/footer/footer.tmpl.html')
-                .then(function(template) {
-                    // compile template with current scope and add to the content
-                    var linkFn = $compile(template);
-                    var content = linkFn($scope);
-                    contentView.append(content);
-                });
-
-                // update md-content that view has changed so that md-scroll-shrink toolbar works
-                $rootScope.$broadcast('$mdContentLoaded', $element);
+                }
             }
         }
     }

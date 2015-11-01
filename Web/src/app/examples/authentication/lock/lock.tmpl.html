@@ -1,9 +1,11 @@
 <div layout="row" flex layout-padding layout-fill layout-align="center center">
     <div flex="40" flex-lg="50" flex-md="70" flex-sm="100">
         <md-card>
-            <md-toolbar>
-                <div class="padding-20 text-center">
-                    <div><img ng-src="{{::vm.obSettings.logo}}" alt="{{vm.obSettings.name}}"></div>
+            <md-toolbar class="padding-20">
+                <div layout="row" layout-align="center center">
+                    <img ng-src="{{::vm.obSettings.logo}}" alt="{{vm.obSettings.name}}">
+                </div>
+                <div layout="row" layout-align="center center">
                     <h1 class="md-headline">
                         <span translate>LOCK.TITLE</span> {{vm.user.name}}
                     </h1>

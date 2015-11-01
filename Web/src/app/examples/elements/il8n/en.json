@@ -25,7 +25,8 @@
             "TOASTS": "Toasts",
             "LISTS": "Lists",
             "CHIPS": "Chips",
-            "MENUS": "Menus"
+            "MENUS": "Menus",
+            "UPLOAD": "Upload"
         }
     }
 }

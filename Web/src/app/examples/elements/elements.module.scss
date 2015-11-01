@@ -3,10 +3,6 @@
   min-height: 100px;
 }
 
-.elements-buttons-try-out {
-  text-align: right;
-}
-
 .elements-buttons-raised-usage {
   width: 400px;
   .elements-raised-content {
@@ -25,20 +21,8 @@
 
   .md-fab {
     position: absolute;
-    bottom: 36px;
+    bottom: 26px;
     right: 26px;
-  }
-}
-
-.elements-buttons-flat-usage {
-  width: 400px;
-  padding: 16px;
-}
-
-.elements-buttons-flat-buttons {
-  .md-button {
-    width: 100px;
-    padding-left: 5px;
   }
 }
 

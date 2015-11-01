@@ -38,17 +38,17 @@
             name: 'Server',
             notifications: [{
                 title: 'Server Down',
-                icon: 'zmdi zmdi-error',
+                icon: 'zmdi zmdi-alert-circle',
                 iconColor: 'rgb(244, 67, 54)',
                 date: moment().startOf('hour')
             },{
                 title: 'Slow Response Time',
-                icon: 'zmdi zmdi-warning',
+                icon: 'zmdi zmdi-alert-triangle',
                 iconColor: 'rgb(255, 152, 0)',
                 date: moment().startOf('hour')
             },{
                 title: 'Server Down',
-                icon: 'zmdi zmdi-error',
+                icon: 'zmdi zmdi-alert-circle',
                 iconColor: 'rgb(244, 67, 54)',
                 date: moment().startOf('hour')
             }]
@@ -154,7 +154,7 @@
         ////////////////
 
         // add an event to switch tabs (used when user clicks a menu item before sidebar opens)
-        $scope.$on('triSwitchNotificationTab', function($event, tab) {
+        $scope.$on('obSwitchNotificationTab', function($event, tab) {
             vm.currentTab = tab;
         });
 

@@ -3,10 +3,10 @@
 
     angular
         .module('obsidian.components')
-        .directive('obWizard', ObWizard);
+        .directive('obWizard', TriWizard);
 
     /* @ngInject */
-    function ObWizard() {
+    function TriWizard() {
         // Usage: <div ob-wizard> (put some forms in here) </div>
         //
         // Creates: Nothing

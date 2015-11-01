@@ -9,7 +9,7 @@
     function config(obLayoutProvider) {
         obLayoutProvider.setDefaultOption('toolbarSize', 'default');
 
-        obLayoutProvider.setDefaultOption('toolbarShrink', true);
+        obLayoutProvider.setDefaultOption('toolbarShrink', false);
 
         obLayoutProvider.setDefaultOption('toolbarClass', '');
 

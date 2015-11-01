@@ -1,5 +1,5 @@
 <md-content flex layout class="admin-notifications">
-    <md-tabs flex layout-fill md-stretch-tabs="always" md-selected="vm.currentTab">
+    <md-tabs flex md-stretch-tabs="always" md-selected="vm.currentTab">
         <md-tab>
             <md-tab-label>
                 <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
@@ -59,8 +59,8 @@
                         <div ng-repeat="group in ::vm.statisticsGroups">
                             <md-subheader class="md-primary"><span translate>{{::group.name}}</span></md-subheader>
                             <md-list-item ng-repeat="stat in ::group.stats" layout="column" layout-align="space-around start">
-                                <p translate>{{::stat.title}}</p>
                                 <md-progress-linear ng-class="::stat.mdClass" md-mode="determinate" ng-value="::stat.value"></md-progress-linear>
+                                <p translate>{{::stat.title}}</p>
                             </md-list-item>
                         </div>
                     </md-list>

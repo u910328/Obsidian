@@ -28,11 +28,7 @@
             state: 'obsidian.admin-default.github',
             type: 'link',
             icon: 'fa fa-github',
-            priority: 1.1
-        });
-        obMenuProvider.addMenu({
-            type: 'divider',
-            priority: 1.2
+            priority: 2.2
         });
     }
 })();

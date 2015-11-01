@@ -5,6 +5,12 @@
   .layout-margin {
     margin: 0px;
   }
+
+  // until layout is fixed in material we need to add this
+  // https://github.com/angular/material/issues/5014
+  .layout-margin > .widget {
+    margin: 8px;
+  }
 }
 // - Chart Container
 .dashboard-fullwidth-chart {

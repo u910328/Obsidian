@@ -1,7 +1,7 @@
 <div class="dashboard-container overlay-10 padded-content-page" layout="column">
     <div layout="row" layout-margin>
         <ob-widget flex="70" flex-sm="100" server-widget>
-            <md-tabs flex md-dynamic-height md-no-disconnect md-stretch-tabs="always" md-no-pagination>
+            <md-tabs layout-fill flex md-dynamic-height md-no-disconnect md-stretch-tabs="always" md-no-pagination>
                 <md-tab label="{{'DASHBOARDS.SERVER.REAL_TIME' | translate}}">
                     <md-content class="md-padding">
                         <h1 class="md-headline"><span translate>DASHBOARDS.SERVER.BANDWIDTH</span> <span class="md-caption">(Mbps)</span></h1>
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div layout="row" layout-sm="column" layout-margin>
-        <ob-widget flex="50" flex-sm="100" title="DASHBOARDS.SERVER.DISKS">
+        <ob-widget class="flex" flex="50" flex-sm="100" title="DASHBOARDS.SERVER.DISKS">
             <md-divider></md-divider>
             <md-list>
                 <md-list-item ng-repeat="disk in ::vm.disks">
@@ -78,9 +78,9 @@
                 </md-list-item>
             </md-list>
         </ob-widget>
-        <ob-widget flex title="DASHBOARDS.SERVER.JOB" background="primary">
+        <ob-widget flex title="DASHBOARDS.SERVER.JOB" background="primary" content-layout="row">
             <md-divider></md-divider>
-            <md-list>
+            <md-list flex>
                 <md-list-item class="md-2-line" ng-repeat="job in ::vm.jobs">
                     <div class="md-list-item-text">
                         <h3>{{::job.job}}</h3>
@@ -96,7 +96,7 @@
     </div>
 
     <div layout="row" layout-sm="column" layout-margin>
-        <ob-widget chartjs-pie-widget flex="40" flex-md="40" flex-sm="100" title="DASHBOARDS.SERVER.DISKUSAGE" subtitle="DASHBOARDS.SERVER.DATE" content-padding>
+        <ob-widget chartjs-pie-widget class="flex" flex="40" flex-md="40" flex-sm="100" title="DASHBOARDS.SERVER.DISKUSAGE" subtitle="DASHBOARDS.SERVER.DATE" content-padding>
             <div flex>
                 <canvas class="chart-doughnut full-width" chart-data="vm.serverChart.data" chart-legend="true" chart-labels="vm.serverChart.labels"></canvas>
             </div>

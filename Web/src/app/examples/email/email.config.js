@@ -106,7 +106,7 @@
             name: 'MENU.EMAIL.EMAIL',
             icon: 'zmdi zmdi-email',
             type: 'dropdown',
-            priority: 2.2,
+            priority: 2.1,
             children: []
         };
 
@@ -114,7 +114,8 @@
             emailMenu.children.push({
                 name: route.name,
                 state: route.state,
-                type: 'link'
+                type: 'link',
+                badge: Math.round(Math.random() * (20 - 1) + 1)
             });
         });
 

@@ -21,15 +21,20 @@
             var $widgets  = [];
             var $dividers = [];
 
+
+            function isLoaded(widget) {
+                return widget.clientHeight > 1;
+            }
+
             // using interval checking since window load event does not work on some machines
             var widgetsLoaded = $interval(function() {
                 $widgets = $element.find('.timeline-widget');
-                if($widgets.length > 0 && $widgets[0].clientHeight > 1) {
+                if($widgets.length > 0 && $widgets.toArray().every(isLoaded)) {
                     $dividers = $element.find('.timeline-x-axis');
                     onScrollCallback();
                     $interval.cancel(widgetsLoaded);
                 }
-            }, 100);
+            }, 1000);
 
             var onScrollCallback =  function() {
                 for(var i = 0; i < $widgets.length; i++) {

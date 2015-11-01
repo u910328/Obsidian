@@ -8,6 +8,6 @@
     /* @ngInject */
     function SeedPageController() {
         var vm = this;
-        vm.testData = ['obsidian', 'is', 'ok'];
+        vm.testData = ['obsidian', 'is', 'great'];
     }
 })();

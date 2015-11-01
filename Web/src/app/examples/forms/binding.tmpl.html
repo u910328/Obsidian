@@ -3,21 +3,28 @@
 
     <p class="md-caption">Try filling in the form below to see what happens to the user data structure in the second panel.</p>
 
-    <md-tabs class="example-tabs margin-bottom-40" md-dynamic-height md-border-bottom>
-        <md-tab label="example">
-            <md-content class="padding-40">
-                <div ng-controller="Binding1Controller" ng-include="'app/examples/forms/examples/binding-1.tmpl.html'" layout="row" layout-align="center center"></div>
-            </md-content>
-        </md-tab>
-        <md-tab label="HTML">
-            <md-content>
-                <div flex hljs language="html" include="'app/examples/forms/examples/binding-1.tmpl.html'"></div>
-            </md-content>
-        </md-tab>
-        <md-tab label="JS">
-            <md-content>
-                <div flex hljs language="javascript" include="'app/examples/forms/examples/binding-1.controller.js'"></div>
-            </md-content>
-        </md-tab>
-    </md-tabs>
+    <div class="example-code md-whiteframe-z1 margin-bottom-20">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Binding a form to data</h2>
+            </div>
+        </md-toolbar>
+        <md-tabs class="example-tabs margin-bottom-40" md-dynamic-height md-border-bottom>
+            <md-tab label="example">
+                <div class="md-tabs-content padding-40">
+                    <div ng-controller="Binding1Controller" ng-include="'app/examples/forms/examples/binding-1.tmpl.html'" layout="row" layout-sm="column" layout-align="center center"></div>
+                </div>
+            </md-tab>
+            <md-tab label="HTML">
+                <div class="md-tabs-content">
+                    <div flex hljs language="html" include="'app/examples/forms/examples/binding-1.tmpl.html'"></div>
+                </div>
+            </md-tab>
+            <md-tab label="JS">
+                <div class="md-tabs-content">
+                    <div flex hljs language="javascript" include="'app/examples/forms/examples/binding-1.controller.js'"></div>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </div>
 </md-content>

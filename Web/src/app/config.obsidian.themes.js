@@ -67,7 +67,7 @@
 
         obThemingProvider.theme('white-cyan')
         .primaryPalette('white')
-        .accentPalette('cyan', {
+        .accentPalette('obCyan', {
             'default': '500'
         })
         .warnPalette('deep-orange');
@@ -119,7 +119,8 @@
         // DARK KNIGHT SKIN
         obThemingProvider.theme('dark')
         .primaryPalette('black', {
-            'default': '300'
+            'default': '300',
+            'hue-1': '400'
         })
         .accentPalette('amber')
         .warnPalette('deep-orange')

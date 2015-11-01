@@ -9,7 +9,7 @@
     function FooterController(obSettings, obLayout) {
         var vm = this;
         vm.name = obSettings.name;
-        vm.date = new Date();
+        vm.copyright = obSettings.copyright;
         vm.layout = obLayout.layout;
         vm.version = obSettings.version;
     }

@@ -35,7 +35,8 @@
     "TABLES": {
         "NEXT": "Next Page",
         "PREV": "Previous Page",
-        "OF": "of"
+        "OF": "of",
+        "ROWS": "Rows per page:"
     },
     "404": {
         "TITLE": "404",

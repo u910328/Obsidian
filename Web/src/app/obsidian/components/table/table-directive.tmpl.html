@@ -5,7 +5,7 @@
                 <md-icon ng-show="showSortOrder(column.field, true)" class="zmdi-hc-rotate-90" md-font-icon="zmdi zmdi-arrow-back"></md-icon>
                 <md-icon ng-show="showSortOrder(column.field, false)" class="zmdi-hc-rotate-270" md-font-icon="zmdi zmdi-arrow-back"></md-icon>
                 <span>
-                    {{column.title}}
+                    {{column.title | translate}}
                 </span>
             </th>
         </tr>
@@ -20,7 +20,7 @@
             <td colspan="{{columns.length}}">
                 <div class="md-table-footer" layout="row" layout-align="end center">
                     <div class="md-table-page-select" layout="row" layout-align="center center">
-                        <span>Rows per page:</span>
+                        <span>TABLES.ROWS</span>
                         <md-select ng-model="pageSize" ng-change="refresh(true)">
                             <md-option value="5">5</md-option>
                             <md-option value="10">10</md-option>

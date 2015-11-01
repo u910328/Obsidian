@@ -6,19 +6,26 @@
 
     <p class="md-caption">Try creating a dialog with the example below</p>
 
-    <md-tabs class="example-tabs margin-bottom-40" md-dynamic-height md-border-bottom>
-        <md-tab label="example">
-            <md-content class="padding-40" ng-include="'app/examples/elements/examples/dialog-1.tmpl.html'"></md-content>
-        </md-tab>
-        <md-tab label="HTML">
-            <md-content>
-                <div flex hljs language="html" include="'app/examples/elements/examples/dialog-1.tmpl.html'"></div>
-            </md-content>
-        </md-tab>
-        <md-tab label="JS">
-            <md-content>
-                <div flex hljs language="js" include="'app/examples/elements/examples/dialog-1.controller.js'"></div>
-            </md-content>
-        </md-tab>
-    </md-tabs>
+    <div class="example-code md-whiteframe-z1 margin-bottom-20">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Create a dialog</h2>
+            </div>
+        </md-toolbar>
+        <md-tabs class="example-tabs" md-dynamic-height md-border-bottom>
+            <md-tab label="example">
+                <div class="md-tabs-content padding-40" ng-include="'app/examples/elements/examples/dialog-1.tmpl.html'"></div>
+            </md-tab>
+            <md-tab label="HTML">
+                <div class="md-tabs-content">
+                    <div flex hljs language="html" include="'app/examples/elements/examples/dialog-1.tmpl.html'"></div>
+                </div>
+            </md-tab>
+            <md-tab label="JS">
+                <div class="md-tabs-content">
+                    <div flex hljs language="js" include="'app/examples/elements/examples/dialog-1.controller.js'"></div>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
 </div>

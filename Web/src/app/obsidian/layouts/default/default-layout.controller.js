@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name AdminController
- * @module obsidian
+ * @module obAngular
  * @kind function
  *
  * @description

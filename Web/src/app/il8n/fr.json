@@ -47,7 +47,8 @@
     "TABLES": {
         "NEXT": "Page Suivante",
         "PREV": "Page Précédente",
-        "OF": "de"
+        "OF": "de",
+        "ROWS": "Lignes par page:"
     },
     "MESSAGES": {
         "LANGUAGE_CHANGED": "Langue Changé"

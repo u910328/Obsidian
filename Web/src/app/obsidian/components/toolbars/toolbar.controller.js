@@ -6,7 +6,7 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obLayout) {
+    function DefaultToolbarController($scope, $rootScope, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obLayout) {
         var vm = this;
         vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
@@ -43,7 +43,7 @@
         }
 
         function toggleNotificationsTab(tab) {
-            $scope.$parent.$broadcast('obSwitchNotificationTab', tab);
+            $rootScope.$broadcast('obSwitchNotificationTab', tab);
             vm.openSideNav('notifications');
         }
 

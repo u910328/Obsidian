@@ -37,6 +37,7 @@
             icon: 'zmdi zmdi-check',
             state: 'obsidian.admin-default.todo',
             type: 'link',
+            badge: Math.round(Math.random() * (20 - 1) + 1),
             priority: 2.4
         });
     }

@@ -3,18 +3,26 @@
 
     <p>Checkboxes use animation to communicate focused and pressed states.</p>
 
-    <md-tabs class="example-tabs margin-bottom-40" md-dynamic-height md-border-bottom>
-        <md-tab label="example">
-            <md-content class="padding-40">
-                <md-card ng-init="checkboxes = { primary: true, default: true, warn: true }">
-                    <md-card-content layout="column" layout-padding layout-align="space-around start" ng-include="'app/examples/elements/examples/checkboxes-1.tmpl.html'"></md-card-content>
-                </md-card>
-            </md-content>
-        </md-tab>
-        <md-tab label="HTML">
-            <md-content>
-                <div flex hljs language="html" include="'app/examples/elements/examples/checkboxes-1.tmpl.html'"></div>
-            </md-content>
-        </md-tab>
-    </md-tabs>
+    <div class="example-code md-whiteframe-z1 margin-bottom-20">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Simple Checkbox</h2>
+            </div>
+        </md-toolbar>
+
+        <md-tabs class="example-tabs" md-dynamic-height md-border-bottom>
+            <md-tab label="example">
+                <div class="md-tabs-content padding-40">
+                    <md-card ng-init="checkboxes = { primary: true, default: true, warn: true }">
+                        <md-card-content layout="column" layout-padding layout-align="space-around start" ng-include="'app/examples/elements/examples/checkboxes-1.tmpl.html'"></md-card-content>
+                    </md-card>
+                </div>
+            </md-tab>
+            <md-tab label="HTML">
+                <div class="md-tabs-content">
+                    <div flex hljs language="html" include="'app/examples/elements/examples/checkboxes-1.tmpl.html'"></div>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </div>
 </div>
