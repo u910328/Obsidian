@@ -7,6 +7,7 @@
 
     /* @ngInject */
     function ProfileController($rootScope) {
+        //TODO: wait after user is resolved
         var vm = this;
         vm.settingsGroups = [{
             name: 'ADMIN.NOTIFICATIONS.ACCOUNT_SETTINGS',
@@ -39,18 +40,21 @@
                 enabled: true
             }]
         }];
-        var userInfo=$rootScope.user[$rootScope.user.provider];
-        vm.user = {
-            name: $rootScope.user.name||userInfo.displayName,
-            email: $rootScope.user.email||userInfo.email
-            //location: 'Sitia, Crete, Greece',
-            //website: 'http://www.oxygenna.com',
-            //twitter: 'oxygenna',
-            //bio: 'We are a small creative web design agency \n who are passionate with our pixels.',
-            //current: '',
-            //password: '',
-            //confirm: ''
-        };
+        vm.user={};
+        if($rootScope.user) {
+            angular.forEach($rootScope.user.info, function (value, key) {
+                vm.user[key] = value;
+            });
+        }
+        //vm.user = {
+        //    location: 'Sitia, Crete, Greece',
+        //    website: 'http://www.oxygenna.com',
+        //    twitter: 'oxygenna',
+        //    bio: 'We are a small creative web design agency \n who are passionate with our pixels.',
+        //    current: '',
+        //    password: '',
+        //    confirm: ''
+        //};
         vm.updateProfile= function () {
             
         }

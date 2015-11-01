@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -10,40 +10,40 @@
         $translatePartialLoaderProvider.addPart('app/examples/authentication');
 
         $stateProvider
-        .state('authentication', {
-            abstract: true,
-            templateUrl: 'app/examples/authentication/layouts/authentication.tmpl.html'
-        })
-        .state('authentication.login', {
-            url: '/login',
-            templateUrl: 'app/examples/authentication/login/login.tmpl.html',
-            controller: 'LoginController',
-            controllerAs: 'vm'
-        })
-        .state('authentication.signup', {
-            url: '/signup',
-            templateUrl: 'app/examples/authentication/signup/signup.tmpl.html',
-            controller: 'SignupController',
-            controllerAs: 'vm'
-        })
-        .state('authentication.lock', {
-            url: '/lock',
-            templateUrl: 'app/examples/authentication/lock/lock.tmpl.html',
-            controller: 'LockController',
-            controllerAs: 'vm'
-        })
-        .state('authentication.forgot', {
-            url: '/forgot',
-            templateUrl: 'app/examples/authentication/forgot/forgot.tmpl.html',
-            controller: 'ForgotController',
-            controllerAs: 'vm'
-        })
-        .state('obsidian.admin-default.profile', {
-            url: '/profile',
-            templateUrl: 'app/examples/authentication/profile/profile.tmpl.html',
-            controller: 'ProfileController',
-            controllerAs: 'vm'
-        });
+            .state('authentication', {
+                abstract: true,
+                templateUrl: 'app/examples/authentication/layouts/authentication.tmpl.html'
+            })
+            .state('authentication.login', {
+                url: '/login',
+                templateUrl: 'app/examples/authentication/login/login.tmpl.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
+            .state('authentication.signup', {
+                url: '/signup',
+                templateUrl: 'app/examples/authentication/signup/signup.tmpl.html',
+                controller: 'SignupController',
+                controllerAs: 'vm'
+            })
+            .state('authentication.lock', {
+                url: '/lock',
+                templateUrl: 'app/examples/authentication/lock/lock.tmpl.html',
+                controller: 'LockController',
+                controllerAs: 'vm'
+            })
+            .state('authentication.forgot', {
+                url: '/forgot',
+                templateUrl: 'app/examples/authentication/forgot/forgot.tmpl.html',
+                controller: 'ForgotController',
+                controllerAs: 'vm'
+            })
+            .stateAuthenticated('obsidian.admin-default.profile', {
+                url: '/profile',
+                templateUrl: 'app/examples/authentication/profile/profile.tmpl.html',
+                controller: 'ProfileController',
+                controllerAs: 'vm'
+            });
 
         obMenuProvider.addMenu({
             name: 'MENU.AUTH.AUTH',
@@ -54,19 +54,19 @@
                 name: 'MENU.AUTH.LOGIN',
                 state: 'authentication.login',
                 type: 'link'
-            },{
+            }, {
                 name: 'MENU.AUTH.SIGN_UP',
                 state: 'authentication.signup',
                 type: 'link'
-            },{
+            }, {
                 name: 'MENU.AUTH.FORGOT',
                 state: 'authentication.forgot',
                 type: 'link'
-            },{
+            }, {
                 name: 'MENU.AUTH.LOCK',
                 state: 'authentication.lock',
                 type: 'link'
-            },{
+            }, {
                 name: 'MENU.AUTH.PROFILE',
                 state: 'obsidian.admin-default.profile',
                 type: 'link'

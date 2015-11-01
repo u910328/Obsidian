@@ -60,37 +60,22 @@
             //    ]
             //};
 
-            /*Auth.checkThenCreateAccount=function(authData){
-             var def=$q.defer();
-             Auth.checkIfAccountExistOnFb(authData).then(
-
-             function(snap){
-             if(snap===null) Auth.createAccount(authData).then(
-             function(authData){def.resolve(authData);},
-             function(err){def.reject(err)}
-             )},
-             function(err){
-             def.reject(err)
-             });
-             return def.promise
-             };*/
-
             Auth.basicAccountUserData = function (authData) {
                 var provider = authData.provider,
                     name = authData[provider].displayName || authData.uid,
                     email = authData[provider].email || null,
                     profileImageURL = authData[provider].profileImageURL || null;
                 if (provider === 'password') name = snippet.firstPartOfEmail(authData.password.email);
-                var basicUserInfo = {
-                    createdTime: Firebase.ServerValue.TIMESTAMP,
+                var basicUser = {createdTime: Firebase.ServerValue.TIMESTAMP};
+                basicUser.info = {
                     name: name,
                     email: email,
                     profileImageURL: profileImageURL
                 };
-                basicUserInfo[provider] = {
+                basicUser[provider] = {
                     id: authData[provider].id || null
                 };
-                return basicUserInfo
+                return basicUser
             };
 
 

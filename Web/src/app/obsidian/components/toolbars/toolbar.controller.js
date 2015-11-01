@@ -6,11 +6,12 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $rootScope, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obLayout) {
+    function DefaultToolbarController($scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obLayout) {
         var vm = this;
         vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
         vm.languages = obSettings.languages;
+        vm.logout=logout;
         vm.openSideNav = openSideNav;
         vm.hideMenuButton = hideMenuButton;
         vm.switchLanguage = switchLanguage;
@@ -19,6 +20,10 @@
         // initToolbar();
 
         ////////////////
+
+        function logout() {
+            Auth.$unauth();
+        }
 
         function openSideNav(navID) {
             $mdUtil.debounce(function(){

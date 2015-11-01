@@ -29,7 +29,7 @@
             $state.go('home');
         };
 
-        Auth.$onAuth(function (user) { //app.js也有同樣的用法
+        Auth.$onAuth(function (user) {
             $rootScope.user = user;
             $rootScope.loggedIn = !!user;
 
@@ -40,33 +40,20 @@
                 $rootScope.loggedIn = !!user;
 
                 var loadList = {
-                    profileImageURL: {
-                        refUrl: 'users/' + user.uid + '/profileImageURL'
+                    info: {
+                        refUrl: 'users/' + user.uid + '/info'
                     },
-                    email: {
-                        refUrl: 'users/' + user.uid + '/email'
-                    },
-                    phone: {
-                        refUrl: 'users/' + user.uid + '/phone'
+                    createdTime: {
+                        refUrl: 'users/' + user.uid + '/createdTime'
                     }
                 };
 
                 $firebase.load(loadList).then(function (res) {
-                    user.profileImageURL = res.profileImageURL;
-                    user.email = res.email;
-                    user.phone = res.phone;
+                    user.createdTime = res.createdTime;
+                    user.info = res.info;
                     $rootScope.user = user;
                     console.log($rootScope.user);
                 });
-                //Notification
-                //_ref=$firebase.ref('users/'+user.uid+'/notification').orderByChild('unread').equalTo(true).limitToLast(10);
-                //$rootScope.notification=$firebaseArray(_ref);
-                //
-                //$rootScope.$watch('notification',function(obj){
-                //    var newNoti=$rootScope.notification.$getRecord(obj.key)||{};
-                //    var orderStatus='your order('+obj.key+') is '+newNoti.orderStatus;
-                //    ngNotify(orderStatus);
-                //});
             } else {
                 console.log('no user', user);
                 $firebase.params = {};
