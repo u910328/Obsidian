@@ -42,7 +42,12 @@
                 url: '/profile',
                 templateUrl: 'app/examples/authentication/profile/profile.tmpl.html',
                 controller: 'ProfileController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve:{
+                    resolvedData: /*@ngInject*/ function(promiseService){
+                        return promiseService.all({"userData":'userData'})
+                    }
+                }
             });
 
         obMenuProvider.addMenu({

@@ -15,7 +15,7 @@
                 <form name="forgot">
                     <md-input-container>
                         <label for="email" translate>FORGOT.EMAIL.LABEL</label>
-                        <input id="email" label="email" name="email" type="email" ng-model="vm.user.email" required/>
+                        <input id="email" label="email" name="email" type="email" ng-model="vm.email" required/>
                         <div ng-messages="forgot.email.$error" ng-if="forgot.email.$dirty">
                             <div ng-message when="required"><span translate>FORGOT.EMAIL.PLEASE_ENTER</span></div>
                             <div ng-message when="email"><span translate>FORGOT.EMAIL.PLEASE_VALID</span></div>

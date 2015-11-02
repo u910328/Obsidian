@@ -6,8 +6,9 @@
         .controller('ProfileController', ProfileController);
 
     /* @ngInject */
-    function ProfileController($rootScope) {
-        //TODO: wait after user is resolved
+    function ProfileController($rootScope, resolvedData, Auth) {
+        console.log(resolvedData);
+
         var vm = this;
         vm.settingsGroups = [{
             name: 'ADMIN.NOTIFICATIONS.ACCOUNT_SETTINGS',
@@ -40,12 +41,16 @@
                 enabled: true
             }]
         }];
+
+        //user profile.
         vm.user={};
         if($rootScope.user) {
             angular.forEach($rootScope.user.info, function (value, key) {
                 vm.user[key] = value;
             });
         }
+
+
         //vm.user = {
         //    location: 'Sitia, Crete, Greece',
         //    website: 'http://www.oxygenna.com',
@@ -57,6 +62,21 @@
         //};
         vm.updateProfile= function () {
             
+        };
+
+        //change password.
+        vm.pass={
+            "current":'',
+            "new": '',
+            "confirm":''
+        };
+        vm.changePassword= function () {
+            var userData=  $rootScope.user[$rootScope.provider];
+            Auth.$changePassword({
+                email: userData.email,
+                oldPassword: vm.pass.current,
+                newPassword: vm.pass.new
+            })
         }
     }
 })();

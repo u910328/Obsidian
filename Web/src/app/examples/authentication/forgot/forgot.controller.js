@@ -6,9 +6,10 @@
         .controller('ForgotController', ForgotController);
 
     /* @ngInject */
-    function ForgotController($scope, $state, $mdToast, $filter, $http, obSettings, API_CONFIG) {
+    function ForgotController($state, $mdToast, $filter, obSettings, Auth) {
         var vm = this;
         vm.obSettings = obSettings;
+        vm.email = '';
         vm.user = {
             email: ''
         };
@@ -17,31 +18,31 @@
         ////////////////
 
         function resetClick() {
-            $http({
-                method: 'POST',
-                url: API_CONFIG.url + 'reset',
-                data: $scope.user
-            }).
-            success(function(data) {
+
+            Auth.$resetPassword({email:vm.email})
+                .then(success, error);
+
+            function success() {
                 $mdToast.show(
                     $mdToast.simple()
-                    .content($filter('translate')('FORGOT.MESSAGES.RESET_SENT') + ' ' + data.email)
-                    .position('bottom right')
-                    .action($filter('translate')('FORGOT.MESSAGES.LOGIN_NOW'))
-                    .highlightAction(true)
-                    .hideDelay(0)
+                        .content($filter('translate')('FORGOT.MESSAGES.RESET_SENT') + ' ' + vm.email)
+                        .position('bottom right')
+                        .action($filter('translate')('FORGOT.MESSAGES.LOGIN_NOW'))
+                        .highlightAction(true)
+                        .hideDelay(0)
                 ).then(function() {
-                    $state.go('public.auth.login');
-                });
-            }).
-            error(function(data) {
+                        $state.go('authentication.login');
+                    });
+            }
+
+            function error(error) {
                 $mdToast.show(
                     $mdToast.simple()
-                    .content($filter('translate')('FORGOT.MESSAGES.NO_RESET') + ' ' + data.email)
-                    .position('bottom right')
-                    .hideDelay(5000)
+                        .content($filter('translate')('FORGOT.MESSAGES.NO_RESET') + ' ' + vm.email)
+                        .position('bottom right')
+                        .hideDelay(5000)
                 );
-            });
+            }
         }
     }
 })();

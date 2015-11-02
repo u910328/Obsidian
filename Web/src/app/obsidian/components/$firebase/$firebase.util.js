@@ -2,7 +2,8 @@
     "use strict";
 
 // a simple wrapper on Firebase and AngularFire to simplify deps and keep things DRY
-    angular.module('obsidian.components')
+    angular
+        .module('obsidian.components')
         .factory('fbutil', /*@ngInject*/ function ($window, FBURL, $q) {
 
 

@@ -6,7 +6,7 @@
         .run(runFunction);
 
     /* @ngInject */
-    function runFunction($rootScope, $window, $http, $state, $mdSidenav, $q, Auth, $firebase, snippet, config) {
+    function runFunction($rootScope, $window, $http, $state, $mdSidenav, promiseService, Auth, $firebase, snippet, config) {
         // add a class to the body if we are on windows
         if($window.navigator.platform.indexOf('Win') !== -1) {
             $rootScope.bodyClasses = ['os-windows'];
@@ -29,9 +29,13 @@
             $state.go('home');
         };
 
+        promiseService.add('userData');
+
         Auth.$onAuth(function (user) {
             $rootScope.user = user;
             $rootScope.loggedIn = !!user;
+
+            promiseService.reset('userData');
 
             if (user) {
                 $firebase.params = {
@@ -52,10 +56,12 @@
                     user.createdTime = res.createdTime;
                     user.info = res.info;
                     $rootScope.user = user;
+                    promiseService.resolve('userData', $rootScope.user);
                     console.log($rootScope.user);
                 });
             } else {
                 console.log('no user', user);
+                promiseService.resolve('userData', $rootScope.user);
                 $firebase.params = {};
             }
         });
