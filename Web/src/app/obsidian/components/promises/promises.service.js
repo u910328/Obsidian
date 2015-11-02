@@ -16,7 +16,8 @@
             resolve: resolve,
             reject: reject,
             reset: reset,
-            all: all
+            all: all,
+            get:get
         };
 
         function add(promiseName, resolver) {
@@ -61,11 +62,22 @@
             }
         }
 
+        function get(promiseName) {
+            if(angular.isUndefined(status[promiseName])){
+                add(promiseName);
+            }
+            return defers[promiseName].promise
+        }
+
+
         function all(promiseNameObj){
             var promises={};
             angular.forEach(promiseNameObj, function (value,key) {
                 if(angular.isUndefined(status[value])){
                     add(value);
+                } else if(angular.isObject(value)&&angular.isFunction(value.then)){
+                    promises[key] = value;
+                    return;
                 }
                 promises[key] = defers[value].promise;
             });

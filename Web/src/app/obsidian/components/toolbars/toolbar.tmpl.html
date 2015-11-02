@@ -15,8 +15,8 @@
             <md-icon md-font-icon="zmdi zmdi-globe-alt"></md-icon>
         </md-button>
         <md-menu-content width="3">
-            <md-menu-item ng-repeat="language in ::vm.languages">
-                <md-button ng-click="vm.switchLanguage(language.key)" translate="{{::language.name}}" aria-label="{{::language.name}}"></md-button>
+            <md-menu-item ng-repeat="language in vm.languages">
+                <md-button ng-click="vm.switchLanguage(language.key)" translate="{{language.name}}" aria-label="{{language.name}}"></md-button>
             </md-menu-item>
         </md-menu-content>
     </md-menu>

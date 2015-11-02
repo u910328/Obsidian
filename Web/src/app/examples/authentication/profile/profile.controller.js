@@ -6,8 +6,8 @@
         .controller('ProfileController', ProfileController);
 
     /* @ngInject */
-    function ProfileController($rootScope, resolvedData, Auth) {
-        console.log(resolvedData);
+    function ProfileController($rootScope, userData, Auth) {
+        console.log(userData);
 
         var vm = this;
         vm.settingsGroups = [{

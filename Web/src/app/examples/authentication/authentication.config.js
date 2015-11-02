@@ -44,8 +44,8 @@
                 controller: 'ProfileController',
                 controllerAs: 'vm',
                 resolve:{
-                    resolvedData: /*@ngInject*/ function(promiseService){
-                        return promiseService.all({"userData":'userData'})
+                    userData: /*@ngInject*/ function(promiseService){
+                        return promiseService.get('userData')
                     }
                 }
             });

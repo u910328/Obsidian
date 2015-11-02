@@ -17,8 +17,6 @@
         vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
 
-        // initToolbar();
-
         ////////////////
 
         function logout() {
