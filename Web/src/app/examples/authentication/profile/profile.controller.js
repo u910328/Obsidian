@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -6,7 +6,7 @@
         .controller('ProfileController', ProfileController);
 
     /* @ngInject */
-    function ProfileController($rootScope, userData, Auth) {
+    function ProfileController($rootScope, userData, Auth, $firebase, $mdToast) {
         console.log(userData);
 
         var vm = this;
@@ -16,26 +16,26 @@
                 title: 'ADMIN.NOTIFICATIONS.SHOW_LOCATION',
                 icon: 'zmdi zmdi-pin',
                 enabled: true
-            },{
+            }, {
                 title: 'ADMIN.NOTIFICATIONS.SHOW_AVATAR',
                 icon: 'zmdi zmdi-face',
                 enabled: false
-            },{
+            }, {
                 title: 'ADMIN.NOTIFICATIONS.SEND_NOTIFICATIONS',
                 icon: 'zmdi zmdi-notifications-active',
                 enabled: true
             }]
-        },{
+        }, {
             name: 'ADMIN.NOTIFICATIONS.CHAT_SETTINGS',
             settings: [{
                 title: 'ADMIN.NOTIFICATIONS.SHOW_USERNAME',
                 icon: 'zmdi zmdi-account',
                 enabled: true
-            },{
+            }, {
                 title: 'ADMIN.NOTIFICATIONS.SHOW_PROFILE',
                 icon: 'zmdi zmdi-account-box',
                 enabled: false
-            },{
+            }, {
                 title: 'ADMIN.NOTIFICATIONS.ALLOW_BACKUPS',
                 icon: 'zmdi zmdi-cloud-upload',
                 enabled: true
@@ -43,8 +43,8 @@
         }];
 
         //user profile.
-        vm.user={};
-        if($rootScope.user) {
+        vm.user = {};
+        if ($rootScope.user) {
             angular.forEach($rootScope.user.info, function (value, key) {
                 vm.user[key] = value;
             });
@@ -60,18 +60,40 @@
         //    password: '',
         //    confirm: ''
         //};
-        vm.updateProfile= function () {
-            
+        vm.updateProfile = function () {
+            var userUrl = 'users/' + $rootScope.user.uid;
+            $firebase.update(userUrl + '/info', vm.user)
+                .then(success, error);
+
+            function success() {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content('profile updated')
+                        .position('bottom right')
+                        //.action('close'))
+                        //.highlightAction(true)
+                        .hideDelay(1000)
+                ).then(angular.noop);
+            }
+
+            function error(error) {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content($filter('translate')('FORGOT.MESSAGES.NO_RESET') + ' ' + vm.email)
+                        .position('bottom right')
+                        .hideDelay(5000)
+                );
+            }
         };
 
         //change password.
-        vm.pass={
-            "current":'',
+        vm.pass = {
+            "current": '',
             "new": '',
-            "confirm":''
+            "confirm": ''
         };
-        vm.changePassword= function () {
-            var userData=  $rootScope.user[$rootScope.provider];
+        vm.changePassword = function () {
+            var userData = $rootScope.user[$rootScope.provider];
             Auth.$changePassword({
                 email: userData.email,
                 oldPassword: vm.pass.current,

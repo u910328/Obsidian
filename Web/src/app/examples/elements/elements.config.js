@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
-        $translatePartialLoaderProvider.addPart('app/examples/elements/');
+        $translatePartialLoaderProvider.addPart('app/examples/elements');
 
         $stateProvider
         .state('obsidian.admin-default.elements-buttons', {

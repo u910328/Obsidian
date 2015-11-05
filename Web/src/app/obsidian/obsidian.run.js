@@ -12,9 +12,15 @@
             $rootScope.bodyClasses = ['os-windows'];
         }
         // get client's geoip
-        $http.jsonp('http://www.telize.com/geoip?callback=JSON_CALLBACK').then(function (response) {
-            console.log(response)
+        promiseService.add('geoip', function (resolve, reject) {
+            $http.jsonp('http://www.telize.com/geoip?callback=JSON_CALLBACK').then(function (response) {
+                console.log(response);
+                resolve(response);
+            }, function (error) {
+                reject(error);
+            });
         });
+
 
         $rootScope.debug = config.debug;
         if (config.debug) console.log('debug mode');
