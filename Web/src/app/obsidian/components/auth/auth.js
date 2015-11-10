@@ -6,14 +6,14 @@
         .factory('Auth', Auth);
 
     /*@ngInject*/
-    function Auth($firebaseAuth, fbutil, $q, FBURL, snippet, $firebase) {
+    function Auth($firebaseAuth, $q, FBURL, snippet, $firebase) {
 
-        var Auth = $firebaseAuth(fbutil.ref());
+        var Auth = $firebaseAuth($firebase.ref());
 
         Auth.checkIfAccountExistOnFb = function (authData) {
             var def = $q.defer();
             if (!authData) def.reject('AUTH_NEEDED');
-            var ref = fbutil.ref('users', authData.uid, 'createdTime');
+            var ref = $firebase.ref('users/'+ authData.uid+ '/createdTime');
             ref.once('value', function (snap) {
                 if (snap.val() === null) {
                     def.resolve(authData);
@@ -27,8 +27,8 @@
         Auth.createAccount = function (authData, opt) {
             if (!authData) return;
             if (opt === undefined || (typeof opt !== 'object')) {
-                var ref = fbutil.ref('users', authData.uid);
-                return fbutil.handler(function (cb) {
+                var ref = $firebase.ref('users/'+authData.uid);
+                return $firebase.handler(function (cb) {
                     ref.set(Auth.basicAccountUserData(authData, opt), cb);
                 })
             } else {

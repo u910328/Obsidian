@@ -18,6 +18,6 @@
             'app.examples.todo',
             'app.examples.ui',
             'example.seed-module',
-            'ngCart','ui.mask'
+            'app.plugins.ngcart','ui.mask'
         ]);
 })();

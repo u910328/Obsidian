@@ -8,7 +8,6 @@
     /*@ngInject*/
     function $firebase(FBURL, config, $firebaseObject, $q, snippet) {
         var $firebase = {
-            FbObj: FbObj,
             update: update,
             set: set,
             batchUpdate: batchUpdate,
@@ -17,17 +16,17 @@
             ref: ref,
             $communicate: $communicate,
             $object: $object,
-            getMultipleRefVal: getMultipleRefVal,
             isRefUrlValid: isRefUrlValid,
             move: move,
-            load: load
+            load: load,
+            handler:handler
         };
 
         var activeRefUrl = {};
 
         function FbObj(refUrl, opt) {
             var _opt = opt || {},
-                _refUrl = refUrl || '',
+                _refUrl = refUrl || '@',
                 db = $firebase.databases[_refUrl.split("@")[1]] || {};
 
             function isDbOnline() {
@@ -144,19 +143,6 @@
 
         function isRefUrlValid(refUrl) {
             return (typeof refUrl === 'string') && (refUrl.split('/').indexOf('') === -1)
-        }
-
-        //TODO:用$q改寫
-        function Digest(scope, fbObj, isSync, delay) {
-            var timeout;
-            this.reset = function (callback, customDelay) {
-                if (timeout != undefined) clearTimeout(timeout);
-                timeout = setTimeout(function () {
-                    if (callback) callback.apply(null);
-                    if (!isSync) fbObj.goOffline();
-                    if (scope) scope.$digest();
-                }, customDelay || delay);
-            }
         }
 
         function load(loadList, defaultOpt) {
@@ -326,6 +312,7 @@
                 var resUrlArr = snippet.replaceParamsInObj(opt.response, resolveVal.params);
 
                 getResponse(resUrlArr).then(function (response) {
+
                     angular.extend(res, response);
                     def.resolve(res);
                 }, function (error) {
@@ -341,10 +328,12 @@
             var isRenew = {}, promises = {};
 
             function onComplete(key, refUrl) {
-                var def = $q.derfer();
+                var def = $q.defer();
                 promises[key] = def.promise;
 
                 var onSuccess = function (snap) {
+                    console.log(snap.val());
+
                     if (isRenew[key] === true) {
                         def.resolve(snap.val());
                         ref(refUrl).off();
@@ -360,56 +349,34 @@
             }
 
             for (var key in refs) {
-                if (refs.hasOwnProperty(key)) ref(refs[key]).on('value', onComplete(key, refs[key])[0], onComplete(key, refs[key])[1]);
+                var cb=onComplete(key, refs[key]),
+                    success=cb[0], error=cb[1];
+                if (refs.hasOwnProperty(key)) ref(refs[key]).on('value', success, error);
             }
             return $q.all(promises);
         }
 
-        function getMultipleRefVal(refs, opt) {
-            var _opt = opt ? opt : {};
-
-            var res = {},
-                params = {},
-                onComplete = {},
-                onGoingRef = {},
-                def = $q.defer(),
-                refNum = Object.keys(refs).length,
-                indicator = _opt.indicator || '&',
-                currentRefs = angular.extend({}, refs),
-                waitUntil = new snippet.WaitUntil(refNum, function () {
-                    def.resolve(res)
-                });
-
-            for (var key in refs) {
-                onGoingRef[key] = false;
-            }
-
-            function iterate() {
-                currentRefs = snippet.replaceParamsInObj(currentRefs, params);
-                for (var key in onGoingRef) {
-                    if (onGoingRef.hasOwnProperty(key) && currentRefs[key].indexOf(indicator) === -1 && !onGoingRef[key]) {
-
-                        onComplete[key] = new (function (key) {
-                            return function (snap) {
-                                if (typeof snap.val() === 'string') {
-                                    params[indicator + key] = snap.val();
-
-                                }
-                                res[key] = snap.val();
-                                delete onGoingRef[key];
-                                waitUntil.resolve();
-                                iterate();
-                            }
-                        })(key);
-
-                        onGoingRef[key] = true;
-                        ref(currentRefs[key]).once('value', onComplete[key])
+        // convert a node or Firebase style callback to a future
+        function handler(fn, context) {
+            return defer(function (def) {
+                fn.call(context, function (err, result) {
+                    if (err !== null) {
+                        def.reject(err);
                     }
-                }
-            }
-            iterate();
-            return def.promise
+                    else {
+                        def.resolve(result);
+                    }
+                });
+            });
         }
+
+        // abstract the process of creating a future/promise
+        function defer(fn, context) {
+            var def = $q.defer();
+            fn.call(context, def);
+            return def.promise;
+        }
+
         return $firebase
     }
 })();
