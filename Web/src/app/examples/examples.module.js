@@ -17,7 +17,8 @@
             'app.examples.menu',
             'app.examples.todo',
             'app.examples.ui',
+            'app.plugins.ngcart',
             'example.seed-module',
-            'app.plugins.ngcart','ui.mask'
+            'ui.mask'
         ]);
 })();
