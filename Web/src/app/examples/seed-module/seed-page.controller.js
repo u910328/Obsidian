@@ -25,6 +25,6 @@
                 vm.result=res;
             });
         };
-        vm.testData = ['obsidian', 'is', 'great'];
+        vm.testData = ['obsidian', 'is', 'ok'];
     }
 })();
