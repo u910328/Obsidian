@@ -21,19 +21,8 @@
             });
         });
 
-
         $rootScope.debug = config.debug;
         if (config.debug) console.log('debug mode');
-
-        $rootScope.toggleSidenav = function (menuId) {
-            $mdSidenav(menuId).toggle();
-        };
-
-        $rootScope.sideNavLogout = function (menuId) {
-            Auth.$unauth();
-            $mdSidenav(menuId).toggle();
-            $state.go('home');
-        };
 
         promiseService.add('userData');
 

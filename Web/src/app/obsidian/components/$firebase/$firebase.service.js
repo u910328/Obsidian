@@ -13,7 +13,7 @@
             batchUpdate: batchUpdate,
             params: {},
             databases: {},
-            ref: ref,
+            ref: queryRef,
             $communicate: $communicate,
             $object: $object,
             isRefUrlValid: isRefUrlValid,
@@ -93,14 +93,14 @@
             }
         };
 
-        function ref(refUrl, opt) {
-            var fbObj = new FbObj(refUrl, opt);
-            return fbObj.ref()
+        function getUrl(refUrl, params){
+            return snippet.replaceParamsInString(refUrl, angular.extend({},$firebase.params, params));
         }
 
         function queryRef(refUrl, options) {
-            var opt = options || {},
-                ref = $firebase.ref(refUrl);
+            var fbObj = new FbObj(getUrl(refUrl), options),
+                opt = options || {},
+                ref = fbObj.ref();
             if (opt.orderBy) {
                 var orderBy = 'orderBy' + opt.orderBy.split(':')[0];
                 if (orderBy === 'orderByChild') {
@@ -108,7 +108,6 @@
                 } else {
                     ref = ref[orderBy]();
                 }
-
             } else {
                 return ref
             }
@@ -130,15 +129,9 @@
             return ref;
         }
 
-        var objectRepo = {};
 
-        function $object(refUrl) {
-            if (objectRepo[refUrl]) {
-                return objectRepo[refUrl]
-            } else {
-                objectRepo[refUrl] = $firebaseObject(ref(refUrl));
-                return objectRepo[refUrl]
-            }
+        function $object(refUrl, options) {
+            return $firebaseObject(queryRef(refUrl, options));
         }
 
         function isRefUrlValid(refUrl) {
@@ -170,12 +163,14 @@
         }
 
         function update(refUrl, value, onComplete, removePrev, refUrlParams) {
-            var def = $q.defer();
-            var replacedRefUrl = snippet.replaceParamsInString(refUrl, refUrlParams);
-            var fbObj = new FbObj(replacedRefUrl), ref = fbObj.ref(), type = removePrev ? 'set' : 'update';
+            var def = $q.defer(),
+                _refUrlParams=angular.isObject(refUrlParams)? refUrlParams:{},
+                replacedRefUrl = getUrl(refUrl, _refUrlParams),
+                fbObj = new FbObj(replacedRefUrl),
+                ref = fbObj.ref(), type = removePrev ? 'set' : 'update';
 
             //將因push而自動生成的key值放到value內相對應的property中
-            var params = angular.extend({}, refUrlParams, fbObj.params);
+            var params = angular.extend({}, _refUrlParams, fbObj.params);
             //console.log(JSON.stringify(params));
             if (typeof value === 'object' && value != null) {
                 for (var key in params) {
@@ -218,7 +213,7 @@
 
         function batchUpdate(values, isConsecutive) {
             var def = $q.defer(),
-                refUrlParams = angular.extend({}, $firebase.params),
+                refUrlParams = {},
                 _isConsecutive = (isConsecutive || isConsecutive === undefined);
 
             function update(i) {
@@ -332,11 +327,9 @@
                 promises[key] = def.promise;
 
                 var onSuccess = function (snap) {
-                    console.log(snap.val());
-
                     if (isRenew[key] === true) {
                         def.resolve(snap.val());
-                        ref(refUrl).off();
+                        queryRef(refUrl).off();
                     } else {
                         isRenew[key] = true; //server hasn't change the data.
                     }
@@ -351,7 +344,7 @@
             for (var key in refs) {
                 var cb=onComplete(key, refs[key]),
                     success=cb[0], error=cb[1];
-                if (refs.hasOwnProperty(key)) ref(refs[key]).on('value', success, error);
+                if (refs.hasOwnProperty(key)) queryRef(refs[key]).on('value', success, error);
             }
             return $q.all(promises);
         }
