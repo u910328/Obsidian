@@ -26,5 +26,9 @@
             });
         };
         vm.testData = ['obsidian', 'is', 'great'];
+        vm.productId='bd_001';
+        vm.changeProduct=function(id){
+            vm.productId=id;
+        }
     }
 })();

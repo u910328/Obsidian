@@ -1,7 +1,7 @@
 {
     "404": {
         "TITLE": "404",
-        "HOME": "回家去",
+        "HOME": "主頁",
         "MESSAGE": "主页上找不到的",
         "DESCRIPTION": "抱歉，第一页你们要找的人不能找到这里的。 回家页，并从那里开始。"
     },
@@ -13,14 +13,15 @@
     },
     "GENERAL": {
         "CANCEL": "取消",
-        "OK": "好不好"
+        "OK": "好"
     },
     "ADMIN": {
         "TOOLBAR": {
-            "SETTINGS": "环境下",
-            "PROFILE": "简介",
-            "LOGOUT": "注销",
-            "SIDEBAR_TOGGLE": "反复的菜单"
+            "SETTINGS": "設置",
+            "PROFILE": "簡介",
+            "LOGOUT": "登出",
+            "LOGIN": "登入",
+            "SIDEBAR_TOGGLE": "側方清單"
         },
         "NOTIFICATIONS": {
             "ACCOUNT_SETTINGS": "账户环境中",
