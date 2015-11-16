@@ -6,14 +6,13 @@
         .controller('NotificationsPanelController', NotificationsPanelController);
 
     /* @ngInject */
-    function NotificationsPanelController($scope, $http, $mdSidenav, $state, API_CONFIG) {
+    function NotificationsPanelController($scope, obNotificationsService, $firebase, Auth, $http, $mdSidenav, $state, API_CONFIG) {
         var vm = this;
         // sets the current active tab
         vm.close = close;
         vm.currentTab = 0;
-        vm.notificationGroups = [{
-            name: 'Twitter',
-            notifications: [{
+        vm.notificationGroups={
+            "Twitter":[{
                 title: 'Mention from oxygenna',
                 icon: 'fa fa-twitter',
                 iconColor: '#55acee',
@@ -33,10 +32,8 @@
                 icon: 'fa fa-twitter',
                 iconColor: '#55acee',
                 date: moment().startOf('hour')
-            }]
-        },{
-            name: 'Server',
-            notifications: [{
+            }],
+            "Server":[{
                 title: 'Server Down',
                 icon: 'zmdi zmdi-alert-circle',
                 iconColor: 'rgb(244, 67, 54)',
@@ -51,10 +48,8 @@
                 icon: 'zmdi zmdi-alert-circle',
                 iconColor: 'rgb(244, 67, 54)',
                 date: moment().startOf('hour')
-            }]
-        },{
-            name: 'Sales',
-            notifications: [{
+            }],
+            "Sales":[{
                 title: 'Obsidian Admin $21',
                 icon: 'zmdi zmdi-shopping-cart',
                 iconColor: 'rgb(76, 175, 80)',
@@ -85,7 +80,8 @@
                 iconColor: 'rgb(76, 175, 80)',
                 date: moment().startOf('hour')
             }]
-        }];
+        };
+
         vm.openMail = openMail;
         vm.settingsGroups = [{
             name: 'ADMIN.NOTIFICATIONS.ACCOUNT_SETTINGS',
@@ -158,6 +154,11 @@
             vm.currentTab = tab;
         });
 
+        $scope.$watch(obNotificationsService.getNotification, function () {
+            console.log('changed');
+            vm.notificationGroups=obNotificationsService.getNotification();
+        });
+
         // fetch some dummy emails from the API
         $http({
             method: 'GET',
@@ -165,6 +166,7 @@
         }).success(function(data) {
             vm.emails = data.slice(1,20);
         });
+
 
         function openMail() {
             $state.go('private.admin.toolbar.inbox');
