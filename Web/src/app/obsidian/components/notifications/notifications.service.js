@@ -3,7 +3,7 @@
 
     angular
         .module('obsidian.components')
-        .service('obNotificationsService', NotificationsService);
+        .factory('obNotificationsService', NotificationsService);
 
     /* @ngInject */
     function NotificationsService(Auth, $firebase) {
@@ -31,9 +31,20 @@
             if (ref && callback) ref.child(groupName).push(notification);
         }
 
+        function getSubTotal() {
+            var total = 0;
+            angular.forEach(notifications, function (group) {
+                angular.forEach(group, function () {
+                    total += 1
+                })
+            });
+            return total;
+        }
+
         return {
             getNotification: getNotification,
-            addNotification: addNotification
+            addNotification: addNotification,
+            getSubTotal: getSubTotal
         }
     }
 })();

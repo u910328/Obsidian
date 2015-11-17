@@ -155,7 +155,6 @@
         });
 
         $scope.$watch(obNotificationsService.getNotification, function () {
-            console.log('changed');
             vm.notificationGroups=obNotificationsService.getNotification();
         });
 

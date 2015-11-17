@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -6,16 +6,17 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obLayout) {
+    function DefaultToolbarController($scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obNotificationsService, obLayout) {
         var vm = this;
         vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
         vm.languages = obSettings.languages;
-        vm.logout=logout;
+        vm.logout = logout;
         vm.openSideNav = openSideNav;
         vm.hideMenuButton = hideMenuButton;
         vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
+        vm.notificationSubTotal = notificationSubTotal;
 
         ////////////////
 
@@ -24,21 +25,21 @@
         }
 
         function openSideNav(navID) {
-            $mdUtil.debounce(function(){
+            $mdUtil.debounce(function () {
                 $mdSidenav(navID).toggle();
             }, 300)();
         }
 
         function switchLanguage(languageCode) {
             $translate.use(languageCode)
-            .then(function() {
-                $mdToast.show(
-                    $mdToast.simple()
-                    .content($filter('translate')('MESSAGES.LANGUAGE_CHANGED'))
-                    .position('bottom right')
-                    .hideDelay(500)
-                );
-            });
+                .then(function () {
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .content($filter('translate')('MESSAGES.LANGUAGE_CHANGED'))
+                            .position('bottom right')
+                            .hideDelay(500)
+                    );
+                });
         }
 
         function hideMenuButton() {
@@ -50,7 +51,11 @@
             vm.openSideNav('notifications');
         }
 
-        $scope.$on('newMailNotification', function(){
+        function notificationSubTotal() {
+            return obNotificationsService.getSubTotal()
+        }
+
+        $scope.$on('newMailNotification', function () {
             vm.emailNew = true;
         });
     }
