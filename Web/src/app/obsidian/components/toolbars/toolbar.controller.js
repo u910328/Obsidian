@@ -6,7 +6,7 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obNotificationsService, obLayout) {
+    function DefaultToolbarController(config, $scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obNotificationsService, obLayout) {
         var vm = this;
         vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
@@ -21,6 +21,7 @@
         ////////////////
 
         function logout() {
+            $state.go(config.home);
             Auth.$unauth();
         }
 

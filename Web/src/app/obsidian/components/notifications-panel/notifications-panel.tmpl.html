@@ -31,9 +31,11 @@
                     <md-list>
                         <div ng-repeat="(groupName, group) in vm.notificationGroups">
                             <md-subheader class="md-primary">{{groupName}}</md-subheader>
-                            <md-list-item ng-repeat="notification in group" layout="row" layout-align="space-between center">
-                                <md-icon md-font-icon="{{::notification.icon}}" ng-style="{ color: notification.iconColor }"></md-icon>
-                                <p>{{::notification.title}}</p>
+                            <md-list-item
+                                ng-click="vm.removeNotification(groupName, notificationKey)"
+                                ng-repeat="(notificationKey, notification) in group" layout="row" layout-align="space-between center">
+                                <md-icon md-font-icon="{{notification.icon}}" ng-style="{ color: notification.iconColor }"></md-icon>
+                                <p>{{notification.title}}</p>
                                 <span class="md-caption" am-time-ago="notification.date"></span>
                             </md-list-item>
                         </div>

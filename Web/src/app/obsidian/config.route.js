@@ -29,7 +29,7 @@
                     controllerAs: 'vm'
                 },
                 sidebarRight: {
-                    templateUrl: 'app/obsidian/components/notifications/notifications-panel.tmpl.html',
+                    templateUrl: 'app/obsidian/components/notifications-panel/notifications-panel.tmpl.html',
                     controller: 'NotificationsPanelController',
                     controllerAs: 'vm'
                 },
@@ -55,7 +55,7 @@
                     controllerAs: 'vm'
                 },
                 sidebarRight: {
-                    templateUrl: 'app/obsidian/components/notifications/notifications-panel.tmpl.html',
+                    templateUrl: 'app/obsidian/components/notifications-panel/notifications-panel.tmpl.html',
                     controller: 'NotificationsPanelController',
                     controllerAs: 'vm'
                 },

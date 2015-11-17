@@ -10,6 +10,7 @@
         var vm = this;
         // sets the current active tab
         vm.close = close;
+        vm.removeNotification=obNotificationsService.removeNotification;
         vm.currentTab = 0;
         vm.notificationGroups={
             "Twitter":[{

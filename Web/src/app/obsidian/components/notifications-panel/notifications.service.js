@@ -31,6 +31,10 @@
             if (ref && callback) ref.child(groupName).push(notification);
         }
 
+        function removeNotification(groupName, nid) {
+            if (ref && callback) ref.child(groupName).child(nid).remove();
+        }
+
         function getSubTotal() {
             var total = 0;
             angular.forEach(notifications, function (group) {
@@ -44,6 +48,7 @@
         return {
             getNotification: getNotification,
             addNotification: addNotification,
+            removeNotification: removeNotification,
             getSubTotal: getSubTotal
         }
     }
