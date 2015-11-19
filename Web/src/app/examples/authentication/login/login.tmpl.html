@@ -28,7 +28,9 @@
 
                     <div layout="row" layout-align="space-between center">
                         <md-input-container>
-                            <md-checkbox ng-model="vm.rememberMe">
+                            <md-checkbox ng-model="vm.loginOption.remember"
+                                         ng-true-value="'default'"
+                                         ng-false-value="'sessionOnly'">
                                 <span translate>LOGIN.REMEMBER</span>
                             </md-checkbox>
                         </md-input-container>

@@ -13,7 +13,7 @@
         }
         // get client's geoip
         promiseService.add('geoip', function (resolve, reject) {
-            $http.jsonp('https://www.telize.com/geoip?callback=JSON_CALLBACK').then(function (response) {
+            $http.get('https://www.freegeoip.net/json/').then(function (response) {
                 console.log(response);
                 resolve(response);
             }, function (error) {

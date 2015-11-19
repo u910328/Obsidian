@@ -31,8 +31,6 @@
         .constant('API_CONFIG', {
             'url':  'http://triangular-api.oxygenna.com/'
         })
-        // where to redirect users if they need to authenticate (see security.js)
-        .constant('loginRedirectState', 'authentication.login')
 
 
         // your Firebase data URL goes here, no trailing slash
@@ -41,6 +39,9 @@
             debug: true,
             shipping: 0,
             taxRate: 0,
-            home:'obsidian.admin-default.dashboard-analytics'
+            home:'obsidian.admin-default.dashboard-general',
+            defaultUrl:'/dashboards/general',
+            // where to redirect users if they need to authenticate
+            loginRedirectState:'authentication.login'
         });
 })();

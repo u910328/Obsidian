@@ -22,9 +22,11 @@
             vm.err = angular.isObject(err) && err.code ? err.code : err + '';
         }
 
-        vm.login = function (email, pass) {
+        vm.loginOption={};
+
+        vm.login = function (email, pass, opt) {
             vm.err = null;
-            Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true})
+            Auth.$authWithPassword({email: email, password: pass}, opt)
                 .then(function (/* user */) {
                     redirectTo(config.home);
                 }, showError);

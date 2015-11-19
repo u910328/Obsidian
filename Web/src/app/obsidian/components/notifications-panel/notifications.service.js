@@ -11,7 +11,10 @@
             ref,
             callback;
         Auth.$onAuth(function (user) {
-            if (!user) return;
+            if (!user) {
+                notifications = {};
+                return;
+            }
             if (ref && callback) {
                 ref.off('value', callback)
             }

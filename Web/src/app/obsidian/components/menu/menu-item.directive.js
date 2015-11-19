@@ -83,10 +83,10 @@
         }
 
         function openLink() {
+            $mdSidenav('left').close();
             var params = angular.isUndefined(obMenuItem.item.params) ? {} : obMenuItem.item.params;
             $state.go(obMenuItem.item.state, params);
             obMenuItem.item.active = true;
-            $mdSidenav('left').close();
         }
     }
 })();
