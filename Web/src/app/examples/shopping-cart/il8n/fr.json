@@ -1,0 +1,11 @@
+{
+    "MENU": {
+        "SHOPPINGCART": {
+            "SHOPPINGCART-MODULE": "Shopping Cart",
+            "SHOPPINGCART-PAGE": "Shopping Cart Page"
+        }
+    },
+    "SHOPPING": {
+        "TITLE": "Welcome to the obsidian test page"
+    }
+}

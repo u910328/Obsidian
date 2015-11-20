@@ -14,13 +14,13 @@
                 };
             };
 
-            this.addItem = function (id, name, price, quantity, data) {
+            this.addItem = function (id, name, price, quantity, data, relative) {
 
                 var inCart = this.getItemById(id);
 
                 if (typeof inCart === 'object'){
                     //Update quantity of an item if it's already in the cart
-                    inCart.setQuantity(quantity, false);
+                    inCart.setQuantity(quantity, relative);
                 } else {
                     var newItem = new ngCartItem(id, name, price, quantity, data);
                     this.$cart.items.push(newItem);
@@ -29,6 +29,8 @@
 
                 $rootScope.$broadcast('ngCart:change', {});
             };
+
+
 
             this.getItemById = function (itemId) {
                 var items = this.getCart().items;

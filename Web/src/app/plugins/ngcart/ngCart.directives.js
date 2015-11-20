@@ -1,78 +1,108 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.plugins.ngcart')
 
 
-        .directive('ngcartAddtocart', ['ngCart', function(ngCart){
+        .directive('ngcartAddtocart',
+        /* @ngInject */
+        function (ngCart, $mdToast) {
             return {
-                restrict : 'E',
-                controller : 'CartController',
+                restrict: 'E',
+                controller: 'CartAddController',
                 scope: {
-                    id:'@',
-                    name:'@',
-                    quantity:'@',
-                    quantityMax:'@',
-                    price:'@',
-                    data:'='
+                    id: '@',
+                    name: '@',
+                    quantity: '@',
+                    quantityMax: '@',
+                    price: '@',
+                    data: '='
                 },
                 transclude: true,
-                templateUrl: function(element, attrs) {
-                    if ( typeof attrs.templateUrl == 'undefined' ) {
+                templateUrl: function (element, attrs) {
+                    if (typeof attrs.templateUrl == 'undefined') {
                         return 'app/plugins/ngcart/addtocart.tmpl.html';
                     } else {
                         return attrs.templateUrl;
                     }
                 },
-                link:function(scope, element, attrs){
+                link: function (scope, element, attrs) {
+
+                    scope.ngCart = ngCart;
                     scope.attrs = attrs;
-                    scope.inCart = function(){
-                        return  ngCart.getItemById(attrs.id);
+                    scope.inCart = function () {
+                        return ngCart.getItemById(attrs.id);
                     };
 
-                    if (scope.inCart()){
+                    if (scope.inCart()) {
                         scope.q = ngCart.getItemById(attrs.id).getQuantity();
                     } else {
                         scope.q = parseInt(scope.quantity);
                     }
 
-                    scope.qtyOpt =  [];
+                    scope.qtyOpt = [];
                     for (var i = 1; i <= scope.quantityMax; i++) {
                         scope.qtyOpt.push(i);
                     }
+                    function currentQuantity(){
+                        if(scope.inCart()){
+                            return parseInt(ngCart.getItemById(attrs.id).getQuantity());
+                        } else {
+                            return 0
+                        }
+                    }
+                    scope.addItem = function (id, name, price, q, data) {
+
+                        if(parseInt(q)+currentQuantity()>scope.quantityMax){
+                            addQItems(parseInt(scope.quantityMax),false, 'no more ' + name )
+
+                        } else {
+                            addQItems(q,true, 'added ' + name)
+                        }
+                        function addQItems(Q, relative, toastMsg){
+                            ngCart.addItem(id, name, price, Q, data, relative);
+                            $mdToast.show(
+                                $mdToast.simple()
+                                    .content(toastMsg)
+                                    .position('top right')
+                                    .hideDelay(2500)
+                            );
+                        }
+
+                    };
 
                 }
 
             };
-        }])
+        })
 
-        .directive('ngcartCart', [function(){
+        .directive('ngcartCart', [function () {
             return {
-                restrict : 'E',
-                controller : 'CartController',
+                restrict: 'E',
+                controller: 'CartController',
                 scope: {},
-                templateUrl: function(element, attrs) {
-                    if ( typeof attrs.templateUrl == 'undefined' ) {
+                templateUrl: function (element, attrs) {
+                    if (typeof attrs.templateUrl == 'undefined') {
                         return 'app/plugins/ngcart/cart.tmpl.html';
                     } else {
                         return attrs.templateUrl;
                     }
                 },
-                link:function(scope, element, attrs){
+                link: function (scope, element, attrs) {
 
                 }
             };
         }])
 
-        .directive('ngcartSummary', [function(){
+        .directive('ngcartSummary', [function () {
             return {
-                restrict : 'E',
-                controller : 'CartController',
+                restrict: 'E',
+                controller: 'CartController',
                 scope: {},
                 transclude: true,
-                templateUrl: function(element, attrs) {
-                    if ( typeof attrs.templateUrl == 'undefined' ) {
+                templateUrl: function (element, attrs) {
+                    if (typeof attrs.templateUrl == 'undefined') {
                         return 'app/plugins/ngcart/summary.tmpl.html';
                     } else {
                         return attrs.templateUrl;
@@ -81,10 +111,10 @@
             };
         }])
 
-        .directive('ngcartCheckout', [function(){
+        .directive('ngcartCheckout', [function () {
             return {
-                restrict : 'E',
-                controller : ['$rootScope', '$scope', 'ngCart', 'fulfilmentProvider', function($rootScope, $scope, ngCart, fulfilmentProvider) {
+                restrict: 'E',
+                controller: ['$rootScope', '$scope', 'ngCart', 'fulfilmentProvider', function ($rootScope, $scope, ngCart, fulfilmentProvider) {
                     $scope.ngCart = ngCart;
 
                     $scope.checkout = function () {
@@ -103,12 +133,12 @@
                     }
                 }],
                 scope: {
-                    service:'@',
-                    settings:'='
+                    service: '@',
+                    settings: '='
                 },
                 transclude: true,
-                templateUrl: function(element, attrs) {
-                    if ( typeof attrs.templateUrl == 'undefined' ) {
+                templateUrl: function (element, attrs) {
+                    if (typeof attrs.templateUrl == 'undefined') {
                         return 'app/plugins/ngcart/checkout.tmpl.html';
                     } else {
                         return attrs.templateUrl;

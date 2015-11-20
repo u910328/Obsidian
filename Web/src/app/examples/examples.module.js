@@ -19,6 +19,8 @@
             'app.examples.ui',
             'app.plugins.ngcart',
             'example.seed-module',
+            'example.shoppingcart-module',
+            'example.productList-module',
             'ui.mask'
         ]);
 })();

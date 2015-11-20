@@ -12,7 +12,7 @@
         $stateProvider
         .state('obsidian.admin-default.seed-page', {
             url: '/seed-module/seed-page',
-            templateUrl: 'app/seed-module/seed-page.tmpl.html',
+            templateUrl: 'app/seed-module/spcart.html',
             // set the controller to load for this page
             controller: 'SeedPageController',
             controllerAs: 'vm'
