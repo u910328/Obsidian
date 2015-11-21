@@ -164,7 +164,6 @@
             method: 'GET',
             url: API_CONFIG.url + 'email/inbox'
         }).success(function(data) {
-            console.log(data);
             vm.emails = data.slice(1,20);
         });
 
