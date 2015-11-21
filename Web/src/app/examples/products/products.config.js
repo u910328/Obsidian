@@ -23,6 +23,13 @@
                 // set the controller to load for this page
                 controller: 'ProductDetailController',
                 controllerAs: 'vm'
+            })
+            .state('obsidian.admin-default.shoppingCart', {
+                url: '/products/shoppingcart',
+                templateUrl: 'app/examples/products/shopping-cart/shopping-cart.tmpl.html',
+                // set the controller to load for this page
+                controller: 'ShoppingCartController',
+                controllerAs: 'vm'
             });
 
         obMenuProvider.addMenu({
@@ -34,9 +41,13 @@
                 name: 'MENU.PRODUCTS.LIST',
                 state: 'obsidian.admin-default.productList',
                 type: 'link'
-            },{
+            }, {
                 name: 'MENU.PRODUCTS.DETAIL',
                 state: 'obsidian.admin-default.productDetail',
+                type: 'link'
+            }, {
+                name: 'MENU.PRODUCTS.SHOPPINGCART',
+                state: 'obsidian.admin-default.shoppingCart',
                 type: 'link'
             }]
         });

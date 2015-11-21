@@ -20,12 +20,20 @@
             get:get
         };
 
-        function add(promiseName, resolver) {
+        function resolving(promiseName) {
+            var def=defers[promiseName];
+            status[promiseName]='resolving';
+            resolvers[promiseName].apply(null, [def.resolve, def.reject]);
+        }
+
+        function add(promiseName, resolver, executeImediately) {
             var def = $q.defer();
             defers[promiseName] = def;
             resolvers[promiseName] = resolver;
             status[promiseName]=0;
-            if (angular.isFunction(resolvers[promiseName])) resolvers[promiseName].apply(null, [def.resolve, def.reject]);
+            if (executeImediately&&angular.isFunction(resolvers[promiseName])) {
+                resolving(promiseName);
+            }
             def.promise.then(function () {
                 status[promiseName]='resolved'
             }, function () {
@@ -72,14 +80,17 @@
 
         function all(promiseNameObj){
             var promises={};
-            angular.forEach(promiseNameObj, function (value,key) {
-                if(angular.isUndefined(status[value])){
-                    add(value);
-                } else if(angular.isObject(value)&&angular.isFunction(value.then)){
-                    promises[key] = value;
+            angular.forEach(promiseNameObj, function (promiseName,key) {
+                if(angular.isUndefined(defers[promiseName])){
+                    add(promiseName);
+                } else if(angular.isUndefined(status[promiseName])&&angular.isFunction(resolvers[promiseName])) {
+                    resolving(promiseName);
+                } else if(angular.isObject(promiseName)&&angular.isFunction(promiseName.then)){
+                    //promiseName is a external promise here.
+                    promises[key] = promiseName;
                     return;
                 }
-                promises[key] = defers[value].promise;
+                promises[key] = defers[promiseName].promise;
             });
             return $q.all(promises)
         }

@@ -5,7 +5,7 @@
         .module('app.plugins.ngcart')
 
 
-        .directive('ngcartAddtocart', ['ngCart', function(ngCart){
+        .directive('ngcartAddtocart', /* @ngInject */ function(ngCart, $mdToast){
             return {
                 restrict : 'E',
                 controller : 'CartController',
@@ -26,26 +26,54 @@
                     }
                 },
                 link:function(scope, element, attrs){
+                    scope.ngCart = ngCart;
                     scope.attrs = attrs;
-                    scope.inCart = function(){
-                        return  ngCart.getItemById(attrs.id);
+                    scope.inCart = function () {
+                        return ngCart.getItemById(attrs.id);
                     };
 
-                    if (scope.inCart()){
+                    if (scope.inCart()) {
                         scope.q = ngCart.getItemById(attrs.id).getQuantity();
                     } else {
                         scope.q = parseInt(scope.quantity);
                     }
 
-                    scope.qtyOpt =  [];
+                    scope.qtyOpt = [];
                     for (var i = 1; i <= scope.quantityMax; i++) {
                         scope.qtyOpt.push(i);
                     }
+                    function currentQuantity(){
+                        if(scope.inCart()){
+                            return parseInt(ngCart.getItemById(attrs.id).getQuantity());
+                        } else {
+                            return 0
+                        }
+                    }
+                    scope.addToCart = function (id, name, price, q, data) {
+
+                        if(parseInt(q)+currentQuantity()>scope.quantityMax){
+                            addQItems(parseInt(scope.quantityMax),false, 'max quantity reached')
+
+                        } else {
+                            addQItems(q,true, 'item added ')
+                        }
+                        function addQItems(Q, relative, toastMsg){
+                            ngCart.addItem(id, name, price, Q, data, relative);
+                            $mdToast.show(
+                                $mdToast.simple()
+                                    .content(toastMsg)
+                                    .position('top right')
+                                    .hideDelay(2500)
+                            );
+                        }
+
+                    };
+
 
                 }
 
             };
-        }])
+        })
 
         .directive('ngcartCart', [function(){
             return {

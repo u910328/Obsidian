@@ -6,7 +6,7 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController(config, $scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, obBreadcrumbsService, obSettings, obNotificationsService, obLayout) {
+    function DefaultToolbarController(config, $scope, $rootScope, Auth, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, ngCart, obBreadcrumbsService, obSettings, obNotificationsService, obLayout) {
         var vm = this;
         vm.breadcrumbs = obBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
@@ -17,6 +17,7 @@
         vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
         vm.notificationSubTotal = notificationSubTotal;
+        vm.cartSubTotal = cartSubTotal;
 
         ////////////////
 
@@ -54,6 +55,10 @@
 
         function notificationSubTotal() {
             return obNotificationsService.getSubTotal()
+        }
+
+        function cartSubTotal() {
+            return ngCart.getTotalItems()
         }
 
         $scope.$on('newMailNotification', function () {

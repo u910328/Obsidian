@@ -21,6 +21,12 @@
         </md-menu-content>
     </md-menu>
 
+    <md-button class="md-icon-button toolbar-button"
+               ui-sref="obsidian.admin-default.shoppingCart">
+        <md-icon md-font-icon="fa fa-shopping-cart"></md-icon>
+        <span class="toolbar-button-badge" theme-background="accent" ng-if="vm.cartSubTotal()>0">{{vm.cartSubTotal()}}</span>
+    </md-button>
+
     <md-button ng-if="loggedIn"
                class="md-icon-button toolbar-button animated"
                ng-click="vm.toggleNotificationsTab(0)"
