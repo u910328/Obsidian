@@ -1,9 +1,13 @@
 <md-content class="padded-content-page">
 
     <div firebase="products" layout-gt-sm="row" layout-sm="column" layout-wrap layout-padding>
+        <div layout-margin
+             flex="25" flex-gt-lg="20"
+             ng-repeat="(itemId, item) in ref.$value">
+            <md-card ng-click="vm.showDetail(itemId)"
 
-        <md-card class="md-whiteframe-5dp" flex-gt-sm="25"  flex-gt-md="33"  flex-gt-lg="25" ng-repeat="(itemId, item) in ref.$value">
-            <a href="" ng-click="vm.showDetail(itemId)">
+                     class="md-whiteframe-5dp"
+                     style="cursor:pointer">
                 <img class="md-card-image" ng-src="{{item.image}}">
                 <md-card-content layout-align="center center">
                     <div class="content-padded">
@@ -16,7 +20,7 @@
                         </p>
                     </div>
                 </md-card-content>
-            </a>
-        </md-card>
+            </md-card>
+        </div>
     </div>
 </md-content>

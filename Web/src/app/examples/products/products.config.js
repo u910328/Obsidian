@@ -34,7 +34,7 @@
 
         obMenuProvider.addMenu({
             name: 'MENU.PRODUCTS.CART',
-            icon: 'zmdi zmdi-grade',
+            icon: 'fa fa-shopping-cart',
             type: 'dropdown',
             priority: 2.1,
             children: [{
