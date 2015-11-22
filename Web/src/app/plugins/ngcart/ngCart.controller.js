@@ -14,7 +14,6 @@
 
         .controller('CartTableAdvancedController', CartTableAdvancedController)
 
-        .controller('CartTableBasicController', CartTableBasicController);
 
     /* @ngInject */
 
