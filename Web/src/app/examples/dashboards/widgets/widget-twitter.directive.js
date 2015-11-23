@@ -20,14 +20,14 @@
 
         function link($scope) {
             $scope.tweets = [{
-                user: 'oxygenna',
-                body: 'Don\'t miss it! A Material Design Avatar set with 1440 avatars! http://sellfy.com/p/EUcC/ #avatars #materialdesign'
+                user: 'BOSS',
+                body: 'Phasellus sed felis viverra, placerat odio ac, scelerisque leo. Duis non mauris vitae dolor semper commodo sed vel sem. Nam eu lacinia purus.'
             },{
-                user: 'oxygenna',
-                body: 'Looking for a design for emotion case study to convince the boss/client? This one\'s worth $2.8 million.'
+                user: 'BOSS',
+                body: 'Sed ultrices leo a nulla gravida placerat. Morbi eu sem odio. Vivamus id nunc sapien. Fusce ut metus facilisis, tristique neque ut, lacinia dui.'
             },{
-                user: 'oxygenna',
-                body: 'New Freebie! A set of 27 Drinks-Lifestyle Icons available in PSD/AI/PNG format #freebie #icons #drinks http://wp.me/p5Xp06-Fq'
+                user: 'BOSS',
+                body: 'Quisque hendrerit velit nec magna pulvinar consectetur. Mauris molestie ut leo mollis suscipit. In imperdiet.'
             }];
 
             $scope.selectedTab = 0;

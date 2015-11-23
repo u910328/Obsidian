@@ -2,10 +2,10 @@
     "MENU": {
         "LAYOUTS": {
             "TITLE": "布局",
-            "COMPOSER": "作曲家",
-            "FULL-WIDTH": "全宽度的设计",
-            "ICON-MENU": "偶像菜单",
-            "TALL-TOOLBAR": "高高的工具条的背景"
+            "COMPOSER": "自訂",
+            "FULL-WIDTH": "全寬度",
+            "ICON-MENU": "圖示選單",
+            "TALL-TOOLBAR": "高工作列"
         }
     },
     "EXAMPLES": {

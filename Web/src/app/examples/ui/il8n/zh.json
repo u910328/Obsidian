@@ -2,14 +2,14 @@
     "MENU": {
         "UI": {
             "UI": "UI",
-            "COLORS": "颜色",
-            "FONT_AWESOME": "字体太棒了",
-            "MATERIAL_ICONS": "材料的偶像",
-            "TYPOGRAPHY": "字体排印设计",
-            "TOOLBAR": "工具条",
-            "THEME-TEST": "沙坑",
-            "SKINS": "皮",
-            "WEATHER_ICONS": "天气的标志"
+            "COLORS": "顏色",
+            "FONT_AWESOME": "Font Awesome",
+            "MATERIAL_ICONS": "Material圖示",
+            "TYPOGRAPHY": "字體排版",
+            "TOOLBAR": "工具列",
+            "THEME-TEST": "主題測試",
+            "SKINS": "外觀",
+            "WEATHER_ICONS": "氣象圖示"
         }
     },
     "UI": {

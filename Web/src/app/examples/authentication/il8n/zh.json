@@ -1,129 +1,129 @@
 {
     "MENU": {
         "AUTH": {
-            "AUTH": "认证",
-            "LOGIN": "登陆",
-            "SIGN_UP": "签了",
-            "FORGOT": "忘了密码",
-            "LOCK": "锁页",
-            "PROFILE": "简介"
+            "AUTH": "認證",
+            "LOGIN": "登入",
+            "SIGN_UP": "註冊",
+            "FORGOT": "忘記密碼",
+            "LOCK": "鎖住頁面",
+            "PROFILE": "個人簡介"
         }
     },
     "HEADER": {
-        "HEADING": "三角"
+        "HEADING": "Obsidian"
     },
     "LOGIN": {
-        "TITLE": "登陆",
+        "TITLE": "登入",
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址。",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址。"
+            "LABEL": "電子郵件",
+            "PLEASE_ENTER": "請輸入您的電子郵件。",
+            "PLEASE_VALID": "請輸入有效的電子郵件。"
         },
         "PASSWORD": {
-            "LABEL": "密码",
-            "PLEASE_ENTER": "请输入你的密码"
+            "LABEL": "密碼",
+            "PLEASE_ENTER": "請輸入您的密碼"
         },
-        "REMEMBER": "还记得我",
-        "FORGOT": "忘了密码?",
-        "BUTTON": "登陆",
-        "SIGNUP_LINK": "没有一个账户? 创造一个现在",
+        "REMEMBER": "保持登入",
+        "FORGOT": "忘記密碼?",
+        "BUTTON": "登入",
+        "SIGNUP_LINK": "沒有帳戶? 現在創一個",
         "SOCIAL": {
-            "OR": "或者登陆与"
+            "OR": "或以下列方法登入"
         },
         "MESSAGES": {
-            "ACCESS_DENIED": "用户名和密码不正确"
+            "ACCESS_DENIED": "用戶名或密碼不正確"
         }
     },
     "SIGNUP": {
-        "TITLE": "签了",
+        "TITLE": "註冊",
         "NAME": {
-            "LABEL": "的名字",
-            "PLEASE_ENTER": "请输入你的名字"
+            "LABEL": "名字",
+            "PLEASE_ENTER": "請輸入您的姓名"
         },
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址"
+            "LABEL": "電子郵件",
+            "PLEASE_ENTER": "請輸入您的電子郵件",
+            "PLEASE_VALID": "請輸入有效的電子郵件"
         },
         "PASSWORD": {
-            "LABEL": "密码",
-            "PLEASE_ENTER": "请输入密码",
-            "MIN_LENGTH": "你的密码必须超过8个字符长",
-            "SAME_PASSWORD": "你得输入密码"
+            "LABEL": "密碼",
+            "PLEASE_ENTER": "請輸入密碼",
+            "MIN_LENGTH": "您的密碼必須超過8個字符",
+            "SAME_PASSWORD": "請確認您的密碼"
         },
         "PASSWORD_CONFIRM": {
-            "LABEL": "确认密码"
+            "LABEL": "確認密碼"
         },
-        "BUTTON": "签了",
-        "HAVE_LOGIN": "已经有一个帐户吗？ 登录在这里",
+        "BUTTON": "註冊",
+        "HAVE_LOGIN": "已經有帳號？ 由此登入",
         "MESSAGES": {
-            "CONFIRM_SENT": "确认发送给",
-            "LOGIN_NOW": "登陆",
-            "NO_SIGNUP": "能不签，多用户来"
+            "CONFIRM_SENT": "確認發送",
+            "LOGIN_NOW": "登入",
+            "NO_SIGNUP": "無法登入"
         }
     },
     "LOCK": {
-        "TITLE": "欢迎回来",
-        "LOGGED_OUT": "你已经退出的原因懒惰的行为。 输入你的密码登录进来了",
+        "TITLE": "歡迎回來",
+        "LOGGED_OUT": "閒置過久自動登出。 請輸入您的密碼重新登入",
         "PASSWORD": {
-            "LABEL": "密码",
-            "PLEASE_ENTER": "请输入你的密码"
+            "LABEL": "密碼",
+            "PLEASE_ENTER": "請輸入您的密碼"
         },
-        "LOGIN": "登陆",
-        "LOGOUT": "记下来",
+        "LOGIN": "登入",
+        "LOGOUT": "登出",
         "MESSAGES": {
-            "ACCESS_DENIED": "用户名和密码不正确"
+            "ACCESS_DENIED": "用戶名或密碼不正確"
         }
     },
     "FORGOT": {
-        "TITLE": "忘了你的密码?",
-        "ENTER_EMAIL": "请输入你的电子邮件下",
+        "TITLE": "忘記密碼?",
+        "ENTER_EMAIL": "請輸入您的電子郵件",
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址。",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址。"
+            "LABEL": "電子郵件",
+            "PLEASE_ENTER": "請輸入您的電子郵件。",
+            "PLEASE_VALID": "請輸入有效的電子郵件。"
         },
-        "RESET": "重新设置",
-        "LOGIN": "记得吗? 登录在这里",
+        "RESET": "重設密碼",
+        "LOGIN": "記得密碼? 由此登入",
         "MESSAGES": {
-            "RESET_SENT": "你的新的密码就一直是邮寄的",
-            "LOGIN_NOW": "登陆",
-            "NO_RESET": "不可能重置的用户密码"
+            "RESET_SENT": "已寄出新密碼至您指定的電子郵件信箱",
+            "LOGIN_NOW": "登入",
+            "NO_RESET": "無法重新設定密碼"
         }
     },
     "PROFILE": {
-        "TITLE": "简介",
+        "TITLE": "用戶簡介",
         "NAME": {
-            "LABEL": "的名字",
-            "PLEASE_ENTER": "请输入你的名字"
+            "LABEL": "名字",
+            "PLEASE_ENTER": "請輸入您的姓名"
         },
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址"
+            "LABEL": "電子郵件",
+            "PLEASE_ENTER": "請輸入您的電子郵件",
+            "PLEASE_VALID": "請輸入有效的電子郵件"
         },
         "LOCATION": {
-            "LABEL": "地点"
+            "LABEL": "地點"
         },
         "WEBSITE": {
-            "LABEL": "网站"
+            "LABEL": "網站"
         },
         "BIO": {
-            "LABEL": "生物"
+            "LABEL": "自介"
         },
         "TWITTER": {
             "LABEL": "twitter"
         },
         "PASSWORD": {
-            "LABEL": "新密码",
+            "LABEL": "新密碼",
             "CURRENT": "目前的",
-            "PLEASE_ENTER": "请输入密码",
-            "MIN_LENGTH": "你的密码必须超过8个字符长",
-            "SAME_PASSWORD": "你得输入密码"
+            "PLEASE_ENTER": "請輸入密碼",
+            "MIN_LENGTH": "您的密碼必須超過8個字符",
+            "SAME_PASSWORD": "請確認您的密碼"
         },
         "PASSWORD_CONFIRM": {
-            "LABEL": "确认密码"
+            "LABEL": "確認密碼"
         },
-        "BUTTON": "更新环境"
+        "BUTTON": "更新密碼"
     }
 }

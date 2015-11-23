@@ -1,9 +1,10 @@
 {
     "MENU": {
         "PRODUCTS": {
-            "CART":"Cart",
-            "LIST": "Product List",
-            "DETAIL": "Product Detail"
+            "CART":"購物車",
+            "LIST": "產品清單",
+            "DETAIL": "產品介紹",
+            "SHOPPINGCART":"購物車"
         }
     }
 }
