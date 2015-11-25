@@ -27,7 +27,7 @@
 
             var menuColor = obTheming.getThemeHue($mdTheme.$mdTheme, 'primary', 'default');
             var menuColorRGBA = obTheming.rgba(menuColor.value);
-            $element.css({ 'background-color': menuColorRGBA });
+            $element.parent().css({ 'background-color': menuColorRGBA });
             $element.children('md-content').css({ 'background-color': menuColorRGBA });
         }
     }

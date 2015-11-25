@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.examples.authentication')
+        .module('app.examples.elements')
         .config(moduleConfig);
 
     /* @ngInject */
