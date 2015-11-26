@@ -21,8 +21,9 @@
         </md-menu-content>
     </md-menu>
 
-    <md-button class="md-icon-button toolbar-button"
-               ui-sref="obsidian.admin-default.shoppingCart">
+    <md-button class="md-icon-button toolbar-button animated"
+               ui-sref="obsidian.admin-default.shoppingCart"
+               aria-label="shopping cart">
         <md-icon md-font-icon="fa fa-shopping-cart"></md-icon>
         <span class="toolbar-button-badge" theme-background="accent" ng-if="vm.cartSubTotal()>0">{{vm.cartSubTotal()}}</span>
     </md-button>
@@ -31,7 +32,7 @@
                class="md-icon-button toolbar-button animated"
                ng-click="vm.toggleNotificationsTab(0)"
                aria-label="side navigation">
-        <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
+        <md-icon md-font-icon="fa fa-envelope"></md-icon>
         <span class="toolbar-button-badge animated" theme-background="accent" ng-class="{ 'toolbar-button-badge-new' : vm.emailNew }">5</span>
     </md-button>
 

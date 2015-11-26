@@ -190,7 +190,9 @@
 
         // BLUE SKY SKIN
         obThemingProvider.theme('blue')
-            .primaryPalette('blue')
+            .primaryPalette('blue',{
+                "default":'700'
+            })
             .accentPalette('red')
             .warnPalette('lime');
 
