@@ -3,7 +3,6 @@
         <md-card>
             <md-toolbar>
                 <div class="padding-20 text-center">
-                    <div><img ng-src="{{::vm.obSettings.logo}}" alt="{{vm.obSettings.name}}"></div>
                     <h1 class="md-headline" translate>SIGNUP.TITLE</h1>
                 </div>
             </md-toolbar>
@@ -35,13 +34,13 @@
                     <md-input-container>
                         <label for="password" translate>SIGNUP.PASSWORD.LABEL</label>
                         <input id="password" label="password" name="password" type="password" ng-model="vm.pass" ob-same-password="signup.confirm" ng-minlength="8" required/>
-                        <ng-messages for="signup.password.$error" ng-include="'app/examples/authentication/signup/password.messages.html'" ng-if="signup.password.$dirty"></ng-messages>
+                        <ng-messages for="signup.password.$error" ng-include="'app/obsidian/components/authentication/signup/password.messages.html'" ng-if="signup.password.$dirty"></ng-messages>
                     </md-input-container>
 
                     <md-input-container>
                         <label for="password" translate>SIGNUP.PASSWORD_CONFIRM.LABEL</label>
                         <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.confirm" ob-same-password="signup.password" ng-minlength="8" required/>
-                        <ng-messages for="signup.confirm.$error" ng-include="'app/examples/authentication/signup/password.messages.html'" ng-if="signup.confirm.$dirty"></ng-messages>
+                        <ng-messages for="signup.confirm.$error" ng-include="'app/obsidian/components/authentication/signup/password.messages.html'" ng-if="signup.confirm.$dirty"></ng-messages>
                     </md-input-container>
 
                     <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" ng-click="vm.createAccount()" ng-disabled="signup.$invalid" translate="SIGNUP.BUTTON" aria-label="{{'SIGNUP.BUTTON' | translate}}"></md-button>

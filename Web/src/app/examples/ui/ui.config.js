@@ -75,7 +75,7 @@
             name: 'MENU.UI.UI',
             icon: 'zmdi zmdi-ruler',
             type: 'dropdown',
-            priority: 3.2,
+            priority: 2.4,
             children: [{
                 name: 'MENU.UI.COLORS',
                 state: 'obsidian.admin-default.ui-colors',

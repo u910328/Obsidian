@@ -13,8 +13,6 @@
         ])
         // version of this seed app is compatible with angularFire 1.0.0
         // see tags for other versions: https://github.com/firebase/angularFire-seed/tags
-        .constant('version', '2.2.0')
-        // create a constant for languages so they can be added to both obsidian & translate
         .constant('APP_LANGUAGES', [{
             name: 'LANGUAGES.CHINESE',
             key: 'zh'

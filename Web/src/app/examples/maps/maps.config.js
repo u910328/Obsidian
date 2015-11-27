@@ -30,7 +30,7 @@
             name: 'MENU.MAPS.MAPS',
             icon: 'zmdi zmdi-pin',
             type: 'dropdown',
-            priority: 7.1,
+            priority: 3.4,
             children: [{
                 name: 'MENU.MAPS.FULLWIDTH',
                 state: 'obsidian.admin-default.maps-fullwidth',

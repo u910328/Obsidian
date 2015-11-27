@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.parts.authentication')
+        .module('obsidian.components')
         .controller('LockController', LockController);
 
     /* @ngInject */

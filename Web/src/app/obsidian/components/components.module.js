@@ -4,6 +4,7 @@
     angular
         .module('obsidian.components', [
             'firebase',
-            'ui.router'
+            'ui.router',
+            'pascalprecht.translate'
         ]);
 })();

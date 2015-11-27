@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.examples.authentication')
+        .module('obsidian.components')
         .controller('LoginController', LoginController);
 
     /* @ngInject */
@@ -14,36 +14,9 @@
         vm.confirm = null;
         vm.createMode = false;
 
-        function redirectTo(state) {
-            $state.go(state);
-        }
-
-        function showError(err) {
-            vm.err = angular.isObject(err) && err.code ? err.code : err + '';
-        }
-
         vm.loginOption={};
-
-        vm.login = function (email, pass, opt) {
-            vm.err = null;
-            Auth.$authWithPassword({email: email, password: pass}, opt)
-                .then(function (/* user */) {
-                    redirectTo(config.home);
-                }, showError);
-        };
-
-        vm.loginWithProvider = function (provider, opt) {
-            Auth.loginWithProvider(provider, opt)
-                .then(function (user) {
-                    redirectTo(config.home);
-                    return Auth.checkIfAccountExistOnFb(user)
-                }, showError)
-                .then(Auth.createAccount, showError)
-                .then(function () {
-                }, showError)
-        };
-
-        vm.loginClick = loginClick;
+        vm.login = login;
+        vm.loginWithProvider = loginWithProvider;
         vm.socialLogins = [{
             provider:'twitter',
             icon: 'fa fa-twitter',
@@ -74,8 +47,31 @@
 
         ////////////////
 
-        function loginClick() {
-            $state.go('obsidian.admin-default.introduction');
+        function redirectTo(state) {
+            $state.go(state);
+        }
+
+        function showError(err) {
+            vm.err = angular.isObject(err) && err.code ? err.code : err + '';
+        }
+
+        function login(email, pass, opt) {
+            vm.err = null;
+            Auth.$authWithPassword({email: email, password: pass}, opt)
+                .then(function (/* user */) {
+                    redirectTo(config.home);
+                }, showError);
+        }
+
+        function loginWithProvider(provider, opt) {
+            Auth.loginWithProvider(provider, opt)
+                .then(function (user) {
+                    redirectTo(config.home);
+                    return Auth.checkIfAccountExistOnFb(user)
+                }, showError)
+                .then(Auth.createAccount, showError)
+                .then(function () {
+                }, showError)
         }
     }
 })();

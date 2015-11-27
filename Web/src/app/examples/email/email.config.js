@@ -106,7 +106,7 @@
             name: 'MENU.EMAIL.EMAIL',
             icon: 'zmdi zmdi-email',
             type: 'dropdown',
-            priority: 2.1,
+            priority: 1.3,
             children: []
         };
 
@@ -120,10 +120,5 @@
         });
 
         obMenuProvider.addMenu(emailMenu);
-
-        obMenuProvider.addMenu({
-            type: 'divider',
-            priority: 2.3
-        });
     }
 })();

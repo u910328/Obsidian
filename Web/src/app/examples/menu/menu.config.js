@@ -31,7 +31,7 @@
             name: 'MENU.MENU.MENU',
             icon: 'zmdi zmdi-receipt',
             type: 'dropdown',
-            priority: 6.1,
+            priority: 3.3,
             children: [{
                 name: 'MENU.MENU.DYNAMIC',
                 type: 'link',

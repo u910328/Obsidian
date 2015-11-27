@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.examples.authentication')
+        .module('obsidian.components')
         .controller('ForgotController', ForgotController);
 
     /* @ngInject */

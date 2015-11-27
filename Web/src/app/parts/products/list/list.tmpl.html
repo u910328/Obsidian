@@ -1,10 +1,10 @@
-<md-content class="padded-content-page">
+<div class="padded-content-page overlay-5" style="position:absolute" layout="column" layout-fill>
 
     <div firebase="products" layout-gt-sm="row" layout-sm="column" layout-wrap layout-padding>
         <div flex="25" flex-sm="90"
-             ng-repeat="(itemId, item) in ref.$value" style="min-width: 250px">
+             ng-repeat="(itemId, item) in ref.$value" style="min-width: 30rem">
             <md-card ng-click="vm.showDetail(itemId)"
-                     class="md-whiteframe-5dp"
+                     class="md-whiteframe-2dp"
                      style="cursor:pointer">
                 <img class="md-card-image" ng-src="{{item.image}}">
                 <md-card-content layout-align="center center">
@@ -21,4 +21,4 @@
             </md-card>
         </div>
     </div>
-</md-content>
+</div>

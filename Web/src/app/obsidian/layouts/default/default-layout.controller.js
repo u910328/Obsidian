@@ -18,13 +18,14 @@
         .controller('DefaultLayoutController', DefaultLayoutController);
 
     /* @ngInject */
-    function DefaultLayoutController($scope, $element, obLayout) {
+    function DefaultLayoutController($scope, $element, $mdSidenav, obLayout) {
         // we need to use the scope here because otherwise the expression in md-is-locked-open doesnt work
         $scope.layout = obLayout.layout; //eslint-disable-line
         var vm = this;
 
         vm.activateHover = activateHover;
         vm.removeHover  = removeHover;
+        vm.toggleSidenav = toggleSidenav;
 
         ////////////////
 
@@ -38,6 +39,10 @@
             if(obLayout.layout.sideMenuSize === 'icon') {
                 $element.find('.admin-sidebar-left').removeClass('hover');
             }
+        }
+
+        function toggleSidenav(navId) {
+            $mdSidenav(navId).toggle();
         }
     }
 })();

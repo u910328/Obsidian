@@ -6,7 +6,7 @@ $zmdi-font-path: "../bower_components/material-design-iconic-font/dist/fonts";
 @import "angular-material/angular-material.scss";
 
 // import obsidian module scss
-@import "obsidian/obsidian";
+@import "obsidian/obsidian.scss";
 
 // set template font family
 button, select, html, textarea, input {

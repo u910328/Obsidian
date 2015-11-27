@@ -1,9 +1,0 @@
-{
-    "MENU": {
-        "PRODUCTS": {
-            "CART":"Cart",
-            "LIST": "Product List",
-            "DETAIL": "Product Detail"
-        }
-    }
-}

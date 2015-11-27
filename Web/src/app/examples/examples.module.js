@@ -3,7 +3,6 @@
 
     angular
         .module('app.examples', [
-            //'app.examples.authentication',
             'app.examples.calendar',
             'app.examples.charts',
             'app.examples.dashboards',
@@ -18,7 +17,5 @@
             'app.examples.todo',
             'app.examples.ui'//,
             //'example.seed-module'
-            //'example.products'
-
         ]);
 })();

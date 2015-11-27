@@ -1,14 +1,21 @@
-<md-content  firebase="products/{{vm.id}}" class="padded-content-page">
-    <md-card class="md-whiteframe-5dp" flex-gt-sm="30">
-        <img class="md-card-image" ng-src="{{ref.$value.image}}">
-    </md-card>
-    <md-card class="md-whiteframe-5dp" flex-gt-sm="30">
-        <md-card-content layout-align="center center">
-            <div class="content-padded">
-                <h2 class="md-title">{{ref.$value.itemName}}</h2>
-                <p>
-                    {{ref.$value.description}}
-                </p>
+<div class="padded-content-page overlay-5" style="position:absolute" layout="column" layout-fill>
+    <div firebase="products/{{vm.id}}"
+         layout="row" layout-sm="column" layout-wrap>
+        <md-card class="md-whiteframe-2dp" flex="40" flex-sm="100" style="min-width: 40rem">
+            <img class="md-card-image" ng-src="{{ref.$value.image}}">
+        </md-card>
+        <md-card class="md-whiteframe-2dp" flex="40" flex-sm="100" style="min-width: 40rem">
+            <md-card-content layout-align="center center">
+                <div class="content-padded">
+                    <h2 class="md-title">{{ref.$value.itemName}}</h2>
+                    <p>
+                        {{ref.$value.description}}
+                    </p>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card class="md-whiteframe-2dp" flex flex-sm="100" style="min-width: 15rem">
+            <md-card-content layout-align="center center">
                 <md-input-container>
                     <label>Options</label>
                     <md-select ng-model="vm.selectedOption">
@@ -21,14 +28,16 @@
                 <p>
                     Price:{{ref.$value.price|currency : '$' : 2}}
                 </p>
-            </div>
-            <md-divider></md-divider>
-            <ngcart-addtocart  id="{{ ref.$value.itemId }}"
-                              name="{{ ref.$value.itemName }}"
-                              price="{{ ref.$value.price }}"
-                              quantity="{{ref.$value.quantity||1}}"
-                              quantity-max="30"
-                              data="ref.$value">Add</ngcart-addtocart>
-        </md-card-content>
-    </md-card>
-</md-content>
+                <md-divider></md-divider>
+                <ngcart-addtocart  id="{{ ref.$value.itemId }}"
+                                   name="{{ ref.$value.itemName }}"
+                                   price="{{ ref.$value.price }}"
+                                   quantity="{{ref.$value.quantity||1}}"
+                                   quantity-max="30"
+                                   data="ref.$value">Add</ngcart-addtocart>
+            </md-card-content>
+
+        </md-card>
+    </div>
+</div>
+

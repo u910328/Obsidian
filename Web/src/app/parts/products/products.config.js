@@ -36,7 +36,7 @@
             name: 'MENU.PRODUCTS.CART',
             icon: 'fa fa-shopping-cart',
             type: 'dropdown',
-            priority: 2.1,
+            priority: 1.4,
             children: [{
                 name: 'MENU.PRODUCTS.LIST',
                 state: 'obsidian.admin-default.productList',

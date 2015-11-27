@@ -173,7 +173,7 @@
             name: 'MENU.ELEMENTS.ELEMENTS',
             icon: 'zmdi zmdi-graduation-cap',
             type: 'dropdown',
-            priority: 3.1,
+            priority: 2.3,
             children: [{
                 name: 'MENU.ELEMENTS.BUTTONS',
                 type: 'link',
