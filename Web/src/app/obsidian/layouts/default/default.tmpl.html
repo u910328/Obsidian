@@ -9,7 +9,8 @@
         <ob-loader></ob-loader>
 
         <!-- top toolbar -->
-        <md-toolbar class="admin-toolbar" ng-if="layout.showToolbar" md-theme="{{obSkin.elements.toolbar}}" ui-view="toolbar" ng-class="[layout.toolbarSize,layout.toolbarClass]"></md-toolbar>
+        <md-toolbar class="admin-toolbar" ng-if="layout.showToolbar&&!layout.toolbarShrink" md-theme="{{obSkin.elements.toolbar}}" ui-view="toolbar" ng-class="[layout.toolbarSize,layout.toolbarClass]"></md-toolbar>
+        <md-toolbar md-scroll-shrink class="admin-toolbar" ng-if="layout.showToolbar&&layout.toolbarShrink" md-theme="{{obSkin.elements.toolbar}}" ui-view="toolbar" ng-class="[layout.toolbarSize,layout.toolbarClass]"></md-toolbar>
 
         <!-- scrollable content -->
         <md-content ng-class="layout.contentClass" flex ob-default-content ui-view="content"></md-content>
