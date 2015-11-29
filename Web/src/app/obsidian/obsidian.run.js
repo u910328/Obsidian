@@ -6,7 +6,7 @@
         .run(runFunction);
 
     /* @ngInject */
-    function runFunction($rootScope, $window, $http, $state, $mdSidenav, promiseService, Auth, $firebase, snippet, config) {
+    function runFunction($rootScope, $window, $http, $state, $mdSidenav, promiseService, Auth, $firebase, config) {
         // add a class to the body if we are on windows
         if($window.navigator.platform.indexOf('Win') !== -1) {
             $rootScope.bodyClasses = ['os-windows'];
@@ -37,6 +37,7 @@
                     '$uid': user.uid
                 };
                 $rootScope.loggedIn = !!user;
+                console.log(user);
 
                 var loadList = {
                     info: {

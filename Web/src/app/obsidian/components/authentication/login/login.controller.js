@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state, obSettings, Auth, config) {
+    function LoginController($state, $mdMedia, obSettings, Auth, config) {
         var vm = this;
 
         vm.email = null;
@@ -63,15 +63,23 @@
                 }, showError);
         }
 
-        function loginWithProvider(provider, opt) {
-            Auth.loginWithProvider(provider, opt)
-                .then(function (user) {
-                    redirectTo(config.home);
-                    return Auth.checkIfAccountExistOnFb(user)
-                }, showError)
-                .then(Auth.createAccount, showError)
-                .then(function () {
-                }, showError)
+        function loginWithProvider(provider) {
+            if($mdMedia('sm')) {
+                var homeUrl=window.location.href.split('#')[0]+'#'+config.defaultUrl;
+                vm.loginOption.popup=false;
+                vm.loginOption.remember='default';
+                window.location.href=homeUrl;
+                Auth.loginWithProvider(provider, vm.loginOption);
+            } else {
+                Auth.loginWithProvider(provider, vm.loginOption)
+                    .then(function (user) {
+                        redirectTo(config.home);
+                        return Auth.checkIfAccountExistOnFb(user)
+                    }, showError)
+                    .then(Auth.createAccount, showError)
+                    .then(function () {
+                    }, showError)
+            }
         }
     }
 })();
