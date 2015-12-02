@@ -3,7 +3,14 @@
 
     angular
         .module('app.parts.products')
-        .config(moduleConfig);
+        .config(moduleConfig)
+        .config(disqusConfig);
+
+    /* @ngInject */
+    function disqusConfig($disqusProvider, $locationProvider){
+        $disqusProvider.setShortname('obsidianseed');
+        $locationProvider.hashPrefix('!');
+    }
 
     /* @ngInject */
     function moduleConfig($translatePartialLoaderProvider, $stateProvider, obMenuProvider) {
