@@ -45,7 +45,7 @@
         }
 
         function hideMenuButton() {
-            return obLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-md');
+            return obLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-sm');
         }
 
         function toggleNotificationsTab(tab) {
