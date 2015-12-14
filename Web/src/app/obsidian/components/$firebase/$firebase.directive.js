@@ -3,17 +3,17 @@
 
     angular
         .module('obsidian.components')
-        .directive('ngFirebase', ngFirebase)
-        .directive('ngFirebaseObject', ngFirebaseObject);
+        .directive('firebase', firebase)
+        .directive('angularfireObject', angularfireObject);
 
 
     /*@ngInject*/
-    function ngFirebase($firebase) {
+    function firebase($firebase) {
         return {
             restrict: 'A',
             transclude: true,
             scope: {
-                ngFirebase: '@',
+                firebase: '@',
                 orderBy: '@',
                 startAt: '@',
                 endAt: '@',
@@ -37,36 +37,42 @@
 
                 function init(ref) {
 
-                    var valueAs = attrs.valueAs || '$value',
-                        errorAs = attrs.errorAs || '$error';
+                    var valueAs = '$value',
+                        errorAs = '$error',
+                        isLoadingAs= '$isLoading',
+                        refName= attrs.refName||'ref';
 
                     scope.eventType=scope.eventType===undefined? 'value': scope.eventType;
                     scope.callback=angular.isFunction(scope.callback)? scope.callback:angular.noop;
+                    element.empty();
 
 
                     transcludeFn(function (clone, trclScope) {
                         element.append(clone);
+                        trclScope[refName]={};
+                        trclScope[refName][isLoadingAs]=true;
 
                         ref[opt.sync||opt.sync===undefined? 'on' : 'once'](scope.eventType, onSuccess, onError);
 
                         function onSuccess(snap, prevChildKey) {
-                            trclScope[valueAs]=trclScope[valueAs]? trclScope[valueAs]:{};
-
+                            trclScope[refName][valueAs]=trclScope[refName][valueAs]? trclScope[refName][valueAs]:{};
+                            if(trclScope[refName][isLoadingAs]) trclScope[refName][isLoadingAs]=false;
                             if (scope.eventType === 'value') {
-                                trclScope[valueAs] = snap.val();
+                                trclScope[refName][valueAs] = snap.val();
                             } else {
-                                trclScope[valueAs][snap.key()] = snap.val();
+                                trclScope[refName][valueAs][snap.key()] = snap.val();
                             }
                             scope.callback(snap, prevChildKey);
                         }
                         function onError(error) {
                             scope[errorAs] = error;
+                            if(trclScope[refName][isLoadingAs]) trclScope[refName][isLoadingAs]=false;
                         }
                     });
                 }
 
-                scope.$watch('ngFirebase', function () {
-                    var ref = $firebase.ref(scope.ngFirebase, scope.options || opt);
+                scope.$watch('firebase', function () {
+                    var ref = $firebase.ref(scope.firebase, scope.options || opt);
                     init(ref);
                 });
             }
@@ -75,47 +81,69 @@
     }
 
     /*@ngInject*/
-    function ngFirebaseObject($firebase) {
+    function angularfireObject($firebase) {
         return {
             restrict: 'A',
             transclude: true,
             scope: {
-                ngFirebaseObject: '@',
-                loading: '@'
+                angularfireObject: '@',
+                orderBy: '@',
+                startAt: '@',
+                endAt: '@',
+                equalTo: '@',
+                limitToFirst: '@',
+                limitToLast: '@',
+                options: '=',
+                sync: '@',
+                eventType: '@',
+                callback: '='
             },
             link: function (scope, element, attrs, ctrl, transcludeFn) {
+                var opt = {
+                    orderBy: scope.orderBy,
+                    startAt: scope.startAt,
+                    endAt: scope.endAt,
+                    equalTo: scope.equalTo,
+                    limitToFirst: scope.limitToFirst,
+                    limitToLast: scope.limitToLast
+                };
                 function init(obj) {
-                    element.append(scope.loading);
-                    obj.$loaded(appendTransclude, appendTransclude);
+                    var valueAs = '$value',
+                        errorAs = '$error',
+                        isLoadingAs= '$isLoading',
+                        refName= attrs.refName||'ref';
 
-                    var valueAs = attrs.valueAs || '$value',
-                        errorAs = attrs.errorAs || '$error';
+                    element.empty();
+                    transcludeFn(function (clone, trclScope) {
+                        obj.$loaded(onSuccess, onError);
 
-                    function appendTransclude(dataOrError) {
-                        element.empty();
-                        transcludeFn(function (clone, trclScope) {
-                            element.append(clone);
-                            if (dataOrError === obj) {
-                                trclScope[valueAs] = dataOrError.$value ? dataOrError.$value : dataOrError;
+                        element.append(clone);
+                        trclScope[refName]={};
+                        trclScope[refName][isLoadingAs]=true;
 
-                                trclScope.$firebaseObject = dataOrError;
-                                trclScope.$eval(attrs.loaded);
-                            } else {
-                                trclScope[errorAs] = dataOrError;
-                                obj.$destroy();
-                            }
-                        })
-                    }
+                        function onSuccess(firebaseObj) {
+                            trclScope[refName][valueAs] = firebaseObj.$value ? firebaseObj.$value : firebaseObj;
+                            if(trclScope[refName][isLoadingAs]) trclScope[refName][isLoadingAs]=false;
+                            trclScope[refName].$firebaseObject = firebaseObj;
+                            trclScope.$eval(attrs.loaded);
+                        }
+
+                        function onError(error) {
+                            trclScope[refName][errorAs] = error;
+                            obj.$destroy();
+                        }
+                    });
                 }
 
-                var obj = $firebase.$object(scope.ngFirebaseObject);
-                var isInitiated = false;
-                scope.$watch('ngFirebaseObject', function () {
-                    if (isInitiated) {
-                        obj.$destroy();
-                        obj = $firebase.$object(scope.ngFirebaseObject);
+                var obj = $firebase.$object(scope.angularfireObject, scope.options || opt),
+                    isFirstTime=true;
+                scope.$watch('angularfireObject', function () {
+                    if(isFirstTime){
                         init(obj);
+                        isFirstTime=false;
                     } else {
+                        obj.$destroy();
+                        obj = $firebase.$object(scope.angularfireObject, scope.options || opt);
                         init(obj);
                     }
                 });

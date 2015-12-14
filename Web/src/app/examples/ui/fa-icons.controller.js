@@ -28,7 +28,7 @@
                 $mdDialog.alert()
                 .parent(angular.element($document.body))
                 .title('Here\'s the code for that icon')
-                .content('<div hljs language="html"><md-icon md-font-icon="'+ icon.className +'"></md-icon></div>')
+                .htmlContent('<div hljs language="html"><md-icon md-font-icon="'+ icon.className +'"></md-icon></div>')
                 .ok('Thanks')
                 .targetEvent($event)
             );

@@ -37,13 +37,13 @@
      * for changes in auth status which might require us to navigate away from a path
      * that we can no longer view.
      */
-        .run(/*@ngInject*/ function ($rootScope, $location, $state, Auth, loginRedirectState) {
+        .run(/*@ngInject*/ function ($rootScope, $location, $state, Auth, config) {
             Auth.$onAuth(checkState);
 
             function checkState(user) {
                 if (!user && authStateRequired($state.current.name)) {
                     console.log('check failed', user, $location.path()); //debug
-                    $state.go(loginRedirectState);
+                    $state.go(config.loginRedirectState);
                 }
             }
 
@@ -51,7 +51,7 @@
                 function (event, toState, toParams, fromState, fromParams, error) {
                     if (error === "AUTH_REQUIRED") {
                         event.preventDefault();
-                        $state.transitionTo(loginRedirectState);
+                        $state.transitionTo(config.loginRedirectState);
                     }
                 });
 

@@ -1,9 +1,9 @@
 {
     "MENU": {
         "MAPS": {
-            "MAPS": "地图",
-            "FULLWIDTH": "Fullwidth",
-            "DEMOS": "Demos"
+            "MAPS": "地圖",
+            "FULLWIDTH": "全寬度",
+            "DEMOS": "範例"
         }
     }
 }

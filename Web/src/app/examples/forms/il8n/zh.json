@@ -1,12 +1,12 @@
 {
     "MENU": {
         "FORMS": {
-            "FORMS": "形式",
-            "INPUTS": "投入",
-            "BINDING": "数据的具有约束力的",
+            "FORMS": "表單",
+            "INPUTS": "輸入",
+            "BINDING": "是具綁定",
             "AUTOCOMPLETE": "Autocomplete",
-            "VALIDATION": "验证",
-            "WIZARD": "巫师"
+            "VALIDATION": "驗證",
+            "WIZARD": "巫師"
         }
     },
     "FORMS": {

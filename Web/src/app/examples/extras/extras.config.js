@@ -37,7 +37,7 @@
             name: 'MENU.EXTRAS.EXTRAS',
             icon: 'zmdi zmdi-view-list-alt',
             type: 'dropdown',
-            priority: 8.1,
+            priority: 3.5,
             children: [{
                 name: 'MENU.EXTRAS.GALLERY',
                 state: 'obsidian.admin-default.extra-gallery',

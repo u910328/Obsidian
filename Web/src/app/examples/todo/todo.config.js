@@ -38,7 +38,7 @@
             state: 'obsidian.admin-default.todo',
             type: 'link',
             badge: Math.round(Math.random() * (20 - 1) + 1),
-            priority: 2.4
+            priority: 2.2
         });
     }
 })();

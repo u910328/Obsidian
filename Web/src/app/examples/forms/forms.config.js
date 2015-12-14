@@ -43,7 +43,7 @@
             name: 'MENU.FORMS.FORMS',
             icon: 'zmdi zmdi-calendar-check',
             type: 'dropdown',
-            priority: 3.3,
+            priority: 2.5,
             children: [{
                 name: 'MENU.FORMS.AUTOCOMPLETE',
                 type: 'link',
@@ -65,10 +65,6 @@
                 type: 'link',
                 state: 'obsidian.admin-default.forms-validation'
             }]
-        });
-        obMenuProvider.addMenu({
-            type: 'divider',
-            priority: 3.4
         });
     }
 })();

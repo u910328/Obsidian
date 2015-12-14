@@ -184,9 +184,23 @@
 
         obSkinsProvider.skin('indigo-island', 'Indigo Island')
         .sidebarTheme('indigo')
-        .toolbarTheme('indigo')
+        .toolbarTheme('white-cyan')
         .logoTheme('indigo')
         .contentTheme('indigo');
+
+        // BLUE SKY SKIN
+        obThemingProvider.theme('blue')
+            .primaryPalette('blue',{
+                "default":'700'
+            })
+            .accentPalette('red')
+            .warnPalette('lime');
+
+        obSkinsProvider.skin('blue-sky', 'Blue Sky')
+            .sidebarTheme('blue')
+            .toolbarTheme('white-cyan')
+            .logoTheme('blue')
+            .contentTheme('indigo');
 
         // KERMIT GREEN SKIN
         obThemingProvider.theme('light-green')
@@ -220,6 +234,6 @@
         /**
          *  SET DEFAULT SKIN
          */
-        obSkinsProvider.setSkin('cyan-cloud');
+        obSkinsProvider.setSkin('blue-sky');
     }
 })();

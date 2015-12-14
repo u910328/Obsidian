@@ -27,7 +27,7 @@
     }
 
     /* @ngInject */
-    function obMenuItemController($scope, $mdSidenav, $state, $filter, obBreadcrumbsService) {
+    function obMenuItemController($scope, $mdSidenav, $state, $filter, obBreadcrumbsService, $timeout) {
         var obMenuItem = this;
         // load a template for this directive based on the type ( link | dropdown )
         obMenuItem.item.template = 'app/obsidian/components/menu/menu-item-' + obMenuItem.item.type + '.tmpl.html';
@@ -83,10 +83,12 @@
         }
 
         function openLink() {
-            var params = angular.isUndefined(obMenuItem.item.params) ? {} : obMenuItem.item.params;
-            $state.go(obMenuItem.item.state, params);
-            obMenuItem.item.active = true;
-            $mdSidenav('left').close();
+            $timeout(function () {
+                $mdSidenav('left').close();
+                var params = angular.isUndefined(obMenuItem.item.params) ? {} : obMenuItem.item.params;
+                $state.go(obMenuItem.item.state, params);
+                obMenuItem.item.active = true;
+            },250);
         }
     }
 })();

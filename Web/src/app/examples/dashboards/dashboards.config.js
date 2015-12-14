@@ -81,16 +81,16 @@
 
         obMenuProvider.addMenu({
             name: 'MENU.DASHBOARDS.DASHBOARDS',
-            icon: 'zmdi zmdi-home',
+            icon: 'fa fa-dashboard',
             type: 'dropdown',
-            priority: 1.1,
+            priority: 1.2,
             children: [{
-                name: 'MENU.DASHBOARDS.ANALYTICS',
-                state: 'obsidian.admin-default.dashboard-analytics',
-                type: 'link'
-            },{
                 name: 'MENU.DASHBOARDS.GENERAL',
                 state: 'obsidian.admin-default.dashboard-general',
+                type: 'link'
+            }, {
+                name: 'MENU.DASHBOARDS.ANALYTICS',
+                state: 'obsidian.admin-default.dashboard-analytics',
                 type: 'link'
             },{
                 name: 'MENU.DASHBOARDS.SALES',

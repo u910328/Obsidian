@@ -1,0 +1,8 @@
+<md-content class="padded-content-page">
+    <form target="_blank" method="post" action="https://capi.pay2go.com/MPG/mpg_gateway">
+        <div ng-repeat="(name, value) in vm.order">
+            {{name}}:<input type='text' name="name" value="value" ng-model="value"><br>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</md-content>

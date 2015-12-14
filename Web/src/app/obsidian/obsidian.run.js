@@ -6,14 +6,14 @@
         .run(runFunction);
 
     /* @ngInject */
-    function runFunction($rootScope, $window, $http, $state, $mdSidenav, promiseService, Auth, $firebase, snippet, config) {
+    function runFunction($rootScope, $window, $http, $state, $mdSidenav, promiseService, Auth, $firebase, config) {
         // add a class to the body if we are on windows
         if($window.navigator.platform.indexOf('Win') !== -1) {
             $rootScope.bodyClasses = ['os-windows'];
         }
         // get client's geoip
         promiseService.add('geoip', function (resolve, reject) {
-            $http.jsonp('https://www.telize.com/geoip?callback=JSON_CALLBACK').then(function (response) {
+            $http.get('https://www.freegeoip.net/json/').then(function (response) {
                 console.log(response);
                 resolve(response);
             }, function (error) {
@@ -37,6 +37,7 @@
                     '$uid': user.uid
                 };
                 $rootScope.loggedIn = !!user;
+                console.log(user);
 
                 var loadList = {
                     info: {

@@ -15,6 +15,12 @@
         this.removeMenu = removeMenu;
 
         function addMenu(item) {
+            //add a divider before the item if the priority of the item is 2.1, 3.1, 4.1...
+            if(item.priority>2&&(item.priority-Math.floor(item.priority))<0.11) menu.push({
+                type:'divider',
+                priority: Math.floor(item.priority)+0.1
+            });
+
             menu.push(item);
         }
 

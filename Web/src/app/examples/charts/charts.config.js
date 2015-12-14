@@ -43,7 +43,7 @@
             name: 'MENU.CHARTS.CHARTS',
             icon: 'zmdi zmdi-chart',
             type: 'dropdown',
-            priority: 5.1,
+            priority: 3.2,
             children: [{
                 name: 'MENU.CHARTS.GOOGLE',
                 type: 'dropdown',

@@ -1,0 +1,9 @@
+{
+  "firebase": "lauchbox",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
