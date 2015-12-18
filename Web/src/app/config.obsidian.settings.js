@@ -13,7 +13,7 @@
         obSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' BYH');
         obSettingsProvider.setLogo('assets/images/logo.png');
         // set current version of app (shown in footer)
-        obSettingsProvider.setVersion('2.0.1');
+        obSettingsProvider.setVersion('2.0.2');
 
         // setup available languages in obsidian
         for (var lang = APP_LANGUAGES.length - 1; lang >= 0; lang--) {

@@ -1,6 +1,6 @@
 {
     "name": "obsidian",
-    "version": "1.0.1",
+    "version": "2.0.2",
     "devDependencies": {
         "browser-sync": "~1.7.1",
         "chalk": "~0.5.1",

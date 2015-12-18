@@ -18,6 +18,14 @@
             // set the controller to load for this page (in seed-page.controller.js)
             controller: 'Pay2goTestController',
             controllerAs: 'vm'
+        }).state('obsidian.admin-default.cryptoTest', {
+            // set the url of this page
+            url: '/test/cryptoTest',
+            // set the html template to show on this page
+            templateUrl: 'app/examples/test/cryptoTest.tmpl.html',
+            // set the controller to load for this page (in seed-page.controller.js)
+            controller: 'CryptoTestController',
+            controllerAs: 'vm'
         });
 
         obMenuProvider.addMenu({
@@ -34,6 +42,12 @@
                 name: 'MENU.TEST.PAY2GO',
                 // point this menu to the state we created in the $stateProvider above
                 state: 'obsidian.admin-default.pay2goTest',
+                // set the menu type to a link
+                type: 'link'
+            },{
+                name: 'MENU.TEST.CRYPTO',
+                // point this menu to the state we created in the $stateProvider above
+                state: 'obsidian.admin-default.cryptoTest',
                 // set the menu type to a link
                 type: 'link'
             }]
